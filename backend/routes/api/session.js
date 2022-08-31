@@ -32,12 +32,12 @@ router.post(
       err.errors = ['The provided credentials were invalid.'];
       return next(err);
     }
-    
-    await setTokenCookie(res, user);
-    
-    return res.json({
-      user
-    });
+  
+    let token = await setTokenCookie(res, user);
+    let newUser = user.toJSON()
+    newUser.token = token;
+    return res.json(newUser);
+  
   }
   );
   
