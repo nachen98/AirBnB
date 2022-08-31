@@ -52,7 +52,8 @@ const setTokenCookie = (res, user) => {
   // If there is no current user, return an error
 const requireAuth = function (req, _res, next) {
     if (req.user) return next();
-  
+    //console.log(req.user)  
+    
     const err = new Error('Unauthorized');
     err.title = 'Unauthorized';
     err.errors = ['Unauthorized'];
