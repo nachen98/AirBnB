@@ -4,19 +4,7 @@ const { User, Spot, Review, Sequelize, SpotImage } = require('../../db/models');
 const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-router.get(
-    '/current', async(req, res, next) => {
-        const {user} = req
-        const currentUserSpot = await Spot.findAll({
-            where: {
-                ownerId: user.id
-            }
-        })
-        return res.json({
-            Spots: currentUserSpot
-        })
-    }
-)
+
 router.get(
     '/', async(req, res) => {
       
@@ -64,7 +52,41 @@ router.get(
 router.post(
     '/', requireAuth, async(req, res, next) => {
         const {address, city, state, country, lat, lng, name, description, price} = req.body;
-
+        if(!address || !city || !state || !country || !lat || !lng || !name || !description || price) {
+            res.status(400);
+            return res.json({
+                "message": "Validation Error",
+                "statusCode": 400,
+                "errors": {
+                    "address": "Street address is required",
+                    "city": "City is required",
+                    "state": "State is required",
+                    "country": "Country is required",
+                    "lat": "Latitude is not valid",
+                    "lng": "Longitude is not valid",
+                    "name": "Name must be less than 50 characters",
+                    "description": "Description is required",
+                    "price": "Price per day is required"
+                
+            }
+        })
+        }
+        let createdSpot = await Spot.create({
+            ownerId: req.user.id, address, city, state, country, lat, lng, name, description, price,
+        });
+        return res.json(createdSpot)
+    }),
+router.get(
+    '/current', async(req, res, next) => {
+        const {user} = req
+        const currentUserSpot = await Spot.findAll({
+            where: {
+                ownerId: user.id
+            }
+        })
+        return res.json({
+            Spots: currentUserSpot
+        })
     }
-)
+),
 module.exports = router;
