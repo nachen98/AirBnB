@@ -409,7 +409,7 @@ async function bookingConflicts(spotId, startDate, endDate){
 //Create a Booking from a Spot based on the Spot's id
 router.post('/:spotId/bookings', requireAuth, async(req, res) => {
     let {startDate, endDate} = req.body
-    const {spotId} = req.params.spotId
+    const {spotId} = req.params
     const selectedSpot = await Spot.findByPk(spotId, {raw: true});
   
     if(selectedSpot){
@@ -420,7 +420,7 @@ router.post('/:spotId/bookings', requireAuth, async(req, res) => {
                 "statusCode": 403
             })
         }else {
-            if(!startDate || !endDate){
+            if(startDate>endDate){
                 res.status(400);
                 return res.json({
                     "message": "Validation error",
