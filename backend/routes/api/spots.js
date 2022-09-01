@@ -319,4 +319,5 @@ router.post('/:spotId/reviews', requireAuth, async(req, res)=> {
     console.log(reviews)
     return res.json(reviews)   
 })
+
 module.exports = router;

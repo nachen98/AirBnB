@@ -31,7 +31,7 @@ router.get(
             }
         ]
     })
-    console.log('currReviews**********', currReviews)
+    //console.log('currReviews**********', currReviews)
     for (let i = 0; i< currReviews.length; i++){
         reviewObj = currReviews[i].toJSON();
         const previewImageUrl = await SpotImage.findByPk(currReviews[i].id, {
@@ -48,5 +48,33 @@ router.get(
         Reviews: newArray})
 })
 
-
+router.post('/:reviewId/images', requireAuth, async(req, res) => {
+    const reviews = await Review.findByPk(req.params.reviewId)
+    if(!reviews){
+        res.status(404);
+        res.json({
+            "message": "Review couldn't be found",
+            "statusCode": 404
+        })
+    }
+    const images = await ReviewImage.findAll({
+        where: {
+            reviewId: req.params.reviewId
+        }
+    })
+    if(images.length >=10){
+        res.status(403);
+        res.json({
+            "message": "Maximum number of images for this resource was reached",
+            "statusCode": 403
+        })
+    }
+    const {url} = req.body
+    const newImage = await ReviewImage.create({
+        reviewId: req.params.reviewId, url
+    })
+    return res.json({
+        id: newImage.id, url
+    })
+})
 module.exports = router;
