@@ -38,8 +38,7 @@ router.get('/current', requireAuth, async(req, res) => {
 })
 
 
-// let {startDate, endDate} =(req.body)
-// startDate = new Date(startDate)
+
 
 
 module.exports = router;

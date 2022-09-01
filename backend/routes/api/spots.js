@@ -2,6 +2,7 @@ const express = require('express')
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Spot, Review, Sequelize, SpotImage, ReviewImage, Booking } = require('../../db/models');
 const router = express.Router();
+const { Op } = require("sequelize");
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -366,5 +367,23 @@ router.get('/:spotId/bookings', async(req, res) => {
             "statusCode": 404
         })
     }
+})
+
+    let {startDate, endDate} = (req.body)
+    // startDate = new Date(startDate)
+    // endDate = new Date(endDate)
+    async function bookingConflicts(spotId, startDate, endDate){
+        const conflictBookings = await Booking.findOne({
+            where: {
+                spotId,
+
+                [Op.all]: Sequelize.literal(`(startDate, endDate) OVERLAPS (to_timestamp(${new Date(startDate).getTime() / 1000}),
+                to_timestamp(${new Date(endDate).getTime() / 1000}))`),
+            }
+    })
+//Create a Booking from a Spot based on the Spot's id
+router.post('/:spotId/bookings', requireAuth, async(req, res) => {
+    const selectedSpot = await Spot.findByPk(req.params.spotId, {raw: true});
+
 })
 module.exports = router;
