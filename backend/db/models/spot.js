@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Spot.hasMany(
         models.SpotImage,
-        {foreignKey: 'spotId'}
+        {foreignKey: 'spotId',
+        onDelete: 'CASCADE'}
       );
       Spot.hasMany(
         models.Review,
