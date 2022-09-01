@@ -369,21 +369,96 @@ router.get('/:spotId/bookings', async(req, res) => {
     }
 })
 
-    let {startDate, endDate} = (req.body)
-    // startDate = new Date(startDate)
-    // endDate = new Date(endDate)
-    async function bookingConflicts(spotId, startDate, endDate){
-        const conflictBookings = await Booking.findOne({
-            where: {
-                spotId,
+    
 
-                [Op.all]: Sequelize.literal(`(startDate, endDate) OVERLAPS (to_timestamp(${new Date(startDate).getTime() / 1000}),
-                to_timestamp(${new Date(endDate).getTime() / 1000}))`),
-            }
-    })
+async function bookingConflicts(spotId, startDate, endDate){
+    const conflictBookings = await Booking.findOne({
+        where: {
+            spotId,
+            [Op.or]: [{
+                    startDate: {
+                        [Op.lte]: endDate,
+                        [Op.gte]: startDate
+                    }
+                },{
+                    endDate: {
+                        [Op.lte]: endDate,
+                        [Op.gte]: startDate
+                    }
+                },{
+                    startDate: {
+                        [Op.lte]: startDate
+                    },
+                    endDate: {
+                        [Op.gte]: endDate
+                    }
+                },{
+                    startDate: {
+                        [Op.gte]: startDate
+                    },
+                    endDate: {
+                        [Op.lte]: endDate
+                    }
+                }
+            ],
+        }
+    });
+
+    return conflictBookings
+}
 //Create a Booking from a Spot based on the Spot's id
 router.post('/:spotId/bookings', requireAuth, async(req, res) => {
-    const selectedSpot = await Spot.findByPk(req.params.spotId, {raw: true});
+    let {startDate, endDate} = req.body
+    const {spotId} = req.params.spotId
+    const selectedSpot = await Spot.findByPk(spotId, {raw: true});
+  
+    if(selectedSpot){
+        if(selectedSpot.ownerId === req.user.id){
+            res.status(403);
+            return res.json({
+                "message": "Forbidden error",
+                "statusCode": 403
+            })
+        }else {
+            if(!startDate || !endDate){
+                res.status(400);
+                return res.json({
+                    "message": "Validation error",
+                    "statusCode": 400,
+                    "errors": {
+                    "endDate": "endDate cannot be on or before startDate"
+                        }
+                    })
+                }
+                const conflictBookings = await bookingConflicts(spotId, startDate, endDate)
+                if(conflictBookings){
+                    res.status(403);
+                    return res.json({
+                        "message": "Sorry, this spot is already booked for the specified dates",
+                        "statusCode": 403,
+                        "errors": {
+                          "startDate": "Start date conflicts with an existing booking",
+                          "endDate": "End date conflicts with an existing booking"
+                        }
+                    });
+                }
+                const createdBooking = await Booking.create({
+                    spotId,
+                    userId: req.user.id,
+                    startDate,
+                    endDate
+                })
+                return res.json(createdBooking)
+            }
+        }else{
 
+            res.status(404);
+            return res.json({
+                "message": "Spot couldn't be found",
+                "statusCode": 404
+            });
+        }  
 })
+
+
 module.exports = router;
