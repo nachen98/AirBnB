@@ -77,4 +77,60 @@ router.post('/:reviewId/images', requireAuth, async(req, res) => {
         id: newImage.id, url
     })
 })
+
+router.put('/:reviewId', requireAuth, async(req, res)=> {
+    const reviews = await Review.findByPk(req.params.reviewId)
+    if(!reviews){
+        res.status(404)
+        res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+        })
+    }
+    if(reviews.userId !== req.user.id){
+        res.status(403);
+        return res.json({
+            "message": "Forbidden",
+            "statusCode": 403
+        })
+    }
+    const {review, stars} = req.body;
+    
+    if(!review && !stars || parseInt(stars) > 5 || parseInt(stars) < 1 || !Number.isInteger(stars) ){
+        res.status(400)
+        return res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+                "review": "Review text is required",
+                "stars": "Stars must be an integer from 1 to 5",
+            }
+        })
+    }
+    if(!review ){
+        res.status(400)
+        return res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+                "review": "Review text is required",
+            }
+        })
+    }
+    if(!stars || parseInt(stars) > 5 || parseInt(stars) < 1 || !Number.isInteger(stars)){
+        res.status(400)
+        return res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+                "stars": "Stars must be an integer from 1 to 5",
+            }
+        })
+    }
+
+ 
+    const editedReviews = await reviews.update({review, stars})
+    return res.json(editedReviews)    
+       
+})
 module.exports = router;

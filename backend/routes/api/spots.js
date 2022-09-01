@@ -291,6 +291,17 @@ router.post('/:spotId/reviews', requireAuth, async(req, res)=> {
             "statusCode": 404
         })
     }
+    if(!review && !stars || parseInt(stars) > 5 || parseInt(stars) < 1 || !Number.isInteger(stars) ){
+        res.status(400)
+        return res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+                "review": "Review text is required",
+                "stars": "Stars must be an integer from 1 to 5",
+            }
+        })
+    }
     if(!review ){
         res.status(400)
         return res.json({
