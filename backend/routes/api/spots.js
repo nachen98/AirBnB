@@ -237,13 +237,13 @@ router.delete('/:spotId', requireAuth, async(req, res) => {
 })
 
 //get reviews by a spot's id
-router.get('/:spotId/reviews', requireAuth, async(req, res) => {
-    const selectedSpot = await Spot.findByPk(req.params.spotId);
+router.get('/:spotId/reviews', async(req, res) => {
+    const selectedSpot = await Spot.findByPk(req.params.spotId, {raw: true});
     if(selectedSpot){
-        const selectedSpotObj = selectedSpot.toJSON()
+      
         const reviews = await Review.findAll({
             where: {
-                spotId: selectedSpotObj.id
+                spotId: selectedSpot.id
             },
             include: [{
                 model: User,
@@ -253,6 +253,7 @@ router.get('/:spotId/reviews', requireAuth, async(req, res) => {
                 attributes: ['id', 'url']
             }]
         })
+       
         return res.json({Reviews: reviews})
     }else{
         res.status(404);
