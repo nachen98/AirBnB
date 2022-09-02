@@ -7,23 +7,63 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 
-function valueCheck(val, defaultVal, minVal, maxVal, parser, errorObj, name, message){
-    if(!val)return defaultVal, errorObj;
-    val = parser(val);
 
-    if(Number.isNaN(val) || val<minVal || val>maxVal){
-        errorObj[name] = message
-        return defaultVal, errorObj;
-    }
-    return val, errorObj;
-}
 
 async function getAllSpots(queries={}){
+    errorObj = {}
+        const {page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query
+
+        page, errorObj = valueCheck(page, 1, 1, 10, parseInt, errorObj, 'page', 'Page must be between 1 and 20.');
+        size, errorObj = valueCheck(size, 20, 1, 20, parseInt, errorObj, 'size', 'Size must be greater than or equal to 0');
+        minLat, errorObj = valueCheck(minLat, -90, -90, 90, parseFloat, errorObj, 'minLat', "Minimum latitude is invalid")
+        maxLat, errorObj = valueCheck(maxLat, 90, -90, 90, parseFloat, errorObj, 'maxLat', "Maximum latitude is invalid")
+        minLng, errorObj = valueCheck(minLng, -180, -180, 180, parseFloat, errorObj, "minLng", "Minimum longitude is invalid")
+        maxLng, errorObj = valueCheck(maxLng, 180, -180, 180, parseFloat, errorObj, "maxLng", "Maximum longitude is invalid")
+        minPrice, errorObj = valueCheck(minPrice, 0, 0, Number.MAX_SAFE_INTEGER, parseInt, errorObj, "minPrice", "Maximum price must be greater than or equal to 0")
+        maxPrice, errorObj = valueCheck(maxPrice, Number.MAX_SAFE_INTEGER, 0, Number.MAX_SAFE_INTEGER, parseInt, errorObj, "maxPrice", "Minimum price must be greater than or equal to 0")
+       
+        if(Object.keys(errorObj).length){
+            return res.json({
+                "message": "Validation Error",
+                "statusCode": 400,
+                "errors": errorObj
+            });    
+        }
+        queries = {
+            where: {
+                lat: {
+                    [Op.gte]: minLat,
+                    [Op.lte]: maxLat
+                },
+                lng: {
+                    [Op.gte]: minLng,
+                    [Op.lte]: maxLng
+                },
+                price: {
+                    [Op.gte]: minPrice,
+                    [Op.lte]: maxPrice
+                }
+            }
+        }
+        queries.limit = size;
+        queries.offset = (page -1)* size;
+        if(minLat === undefined && maxLat === undefined){
+
+            delete queries.where.lat;
+        }
     
+        if(minLng === undefined && maxLng === undefined){
+    
+            delete queries.where.lng;
+        }
+    
+        if(minPrice === undefined && maxPrice === undefined){
+    
+            delete queries.where.price;
+        }
     let spots = await Spot.findAll({
-        attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'description', 'price', 'createdAt', 'updatedAt'],
-        
-       ...queries
+        attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'description', 'price', 'createdAt', 'updatedAt']    
+        , queries
     })
     //console.log(spots)
     let newArray = [];
@@ -56,12 +96,30 @@ async function getAllSpots(queries={}){
     return newArray
     
 }
+
 //get all spots
 router.get(
     '/', async(req, res) => {
         errorObj = {}
-        const {page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query
+        let {page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query
+        page = parseInt(page)
+        size = parseInt(size)
 
+        if (Number.isNaN(page) || Number.isNaN(size)) {
+            page = 1
+            size = 20
+        }
+        function valueCheck(val, defaultVal, minVal, maxVal, parser, errorObj, name, message){
+            if(!val)return defaultVal, errorObj;
+            val = parser(val);
+            console.log('val*******', typeof val)
+            if(Number.isNaN(val) || val<minVal || val>maxVal){
+                errorObj[name] = message
+                return defaultVal, errorObj;
+                console.log('&&&&&&&&&&&&&&&')
+            }
+            return val, errorObj;
+        }
         page, errorObj = valueCheck(page, 1, 1, 10, parseInt, errorObj, 'page', 'Page must be between 1 and 20.');
         size, errorObj = valueCheck(size, 20, 1, 20, parseInt, errorObj, 'size', 'Size must be greater than or equal to 0');
         minLat, errorObj = valueCheck(minLat, -90, -90, 90, parseFloat, errorObj, 'minLat', "Minimum latitude is invalid")
@@ -70,7 +128,7 @@ router.get(
         maxLng, errorObj = valueCheck(maxLng, 180, -180, 180, parseFloat, errorObj, "maxLng", "Maximum longitude is invalid")
         minPrice, errorObj = valueCheck(minPrice, 0, 0, Number.MAX_SAFE_INTEGER, parseInt, errorObj, "minPrice", "Maximum price must be greater than or equal to 0")
         maxPrice, errorObj = valueCheck(maxPrice, Number.MAX_SAFE_INTEGER, 0, Number.MAX_SAFE_INTEGER, parseInt, errorObj, "maxPrice", "Minimum price must be greater than or equal to 0")
-       
+        console.log('size**********', size, typeof size)
         if(Object.keys(errorObj).length){
             return res.json({
                 "message": "Validation Error",
@@ -78,7 +136,7 @@ router.get(
                 "errors": errorObj
             });    
         }
-        const queries = {
+        queries = {
             where: {
                 lat: {
                     [Op.gte]: minLat,
@@ -96,31 +154,54 @@ router.get(
         }
         queries.limit = size;
         queries.offset = (page -1)* size;
-        if(minLat === undefined){
-            queries.where.lat[Op.gte]=-90;
-        }
-        if(maxLat === undefined){
+        if(minLat === undefined && maxLat === undefined){
 
-            queries.where.lat[Op.lte]=90;
+            delete queries.where.lat;
         }
     
-        if(minLng === undefined) {
-            
+        if(minLng === undefined && maxLng === undefined){
     
-            queries.where.lng[Op.gte]= -180;
+            delete queries.where.lng;
         }
-        
-        if(maxLng === undefined){
-            queries.where.lng[Op.lte] = 180;
-        }
+    
         if(minPrice === undefined && maxPrice === undefined){
     
             delete queries.where.price;
         }
-        newArray = await getAllSpots(queries);
+    let spots = await Spot.findAll({
+        attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'description', 'price', 'createdAt', 'updatedAt']    
+        , ...queries
+    })
+    console.log(queries)
+    let newArray = [];
+    let SpotsObj
+    let avgRating
+    for(let i = 0; i< spots.length; i++){
+        SpotsObj = spots[i].toJSON()
 
+        avgRating = await Review.findAll({
+            where: {
+                spotId: spots[i].id
+            },
+            attributes: [[Sequelize.fn('AVG', Sequelize.col("stars")), 'avgRating']],
+            raw: true
+        })
+        //console.log("avgRating******", avgRating) 
+        //SpotsObj.avgRating = !avgRating[0].dataValues.avgRating ? 0 : avgRating[0].dataValues.avgRating 
+        SpotsObj.avgRating = !avgRating ?  0 : avgRating[0].avgRating;
+        
+        const previewImageUrl = await SpotImage.findByPk(spots[i].id, {
+            where: { preview: true },
+            attributes: ['url']
+        })
+       
+        SpotsObj.previewImage = !previewImageUrl ? '' : previewImageUrl.url
+        newArray.push(SpotsObj)
+    }
+    //console.log('SpotsObj********', SpotsObj)
+       
         return res.json({
-            Spots: newArray, 
+            Spots: newArray,
             page,
             size
         })        
