@@ -6,45 +6,121 @@ const { Op } = require("sequelize");
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
+
+function valueCheck(val, defaultVal, minVal, maxVal, parser, errorObj, name, message){
+    if(!val)return defaultVal, errorObj;
+    val = parser(val);
+
+    if(Number.isNaN(val) || val<minVal || val>maxVal){
+        errorObj[name] = message
+        return defaultVal, errorObj;
+    }
+    return val, errorObj;
+}
+
+async function getAllSpots(queries={}){
+    let spots = await Spot.findAll({
+        attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'description', 'price', 'createdAt', 'updatedAt'],
+        ...queries
+    })
+    //console.log(spots)
+    let newArray = [];
+    let SpotsObj
+    let avgRating
+    for(let i = 0; i< spots.length; i++){
+        SpotsObj = spots[i].toJSON()
+
+        avgRating = await Review.findAll({
+            where: {
+                spotId: spots[i].id
+            },
+            attributes: [[Sequelize.fn('AVG', Sequelize.col("stars")), 'avgRating']],
+            raw: true
+        })
+        //console.log("avgRating******", avgRating) 
+        //SpotsObj.avgRating = !avgRating[0].dataValues.avgRating ? 0 : avgRating[0].dataValues.avgRating 
+        SpotsObj.avgRating = !avgRating ?  0 : avgRating[0].avgRating;
+        
+        const previewImageUrl = await SpotImage.findByPk(spots[i].id, {
+            where: { preview: true },
+            attributes: ['url']
+        })
+       
+        SpotsObj.previewImage = !previewImageUrl ? '' : previewImageUrl.url
+        newArray.push(SpotsObj)
+    }
+    //console.log('SpotsObj********', SpotsObj)
+  
+    return newArray
+    
+}
 //get all spots
 router.get(
     '/', async(req, res) => {
-      
-        let spots = await Spot.findAll({
-            attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'description', 'price', 'createdAt', 'updatedAt']
-        });
-        //console.log(spots)
-        let newArray = []
-        let SpotsObj
-        let avgRating
-        for(let i = 0; i< spots.length; i++){
-            SpotsObj = spots[i].toJSON()
-            avgRating = await Review.findAll({
-                where: {
-                    spotId: spots[i].id
-                },
-                attributes: [[Sequelize.fn('AVG', Sequelize.col("stars")), 'avgRating']],
-                raw: true
-            })
-            //console.log("avgRating******", avgRating) 
-            //SpotsObj.avgRating = !avgRating[0].dataValues.avgRating ? 0 : avgRating[0].dataValues.avgRating 
-            SpotsObj.avgRating = !avgRating ?  0 : avgRating[0].avgRating;
-            const previewImageUrl = await SpotImage.findByPk(spots[i].id, {
-                where: { preview: true },
-                attributes: ['url']
-            })
-           
-            SpotsObj.previewImage = !previewImageUrl ? '' : previewImageUrl.url
+        errorObj = {}
+        const {page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query
 
-            newArray.push(SpotsObj)
+        page, errorObj = valueCheck(page, 1, 1, 10, parseInt, errorObj, 'page', 'Page must be between 1 and 20.');
+        size, errorObj = valueCheck(size, 20, 1, 20, parseInt, errorObj, 'size', 'Size must be greater than or equal to 0');
+        minLat, errorObj = valueCheck(minLat, -90, -90, 90, parseFloat, errorObj, 'minLat', "Minimum latitude is invalid")
+        maxLat, errorObj = valueCheck(maxLat, 90, -90, 90, parseFloat, errorObj, 'maxLat', "Maximum latitude is invalid")
+        minLng, errorObj = valueCheck(minLng, -180, -180, 180, parseFloat, errorObj, "minLng", "Minimum longitude is invalid")
+        maxLng, errorObj = valueCheck(maxLng, 180, -180, 180, parseFloat, errorObj, "maxLng", "Maximum longitude is invalid")
+        minPrice, errorObj = valueCheck(minPrice, 0, 0, Number.MAX_SAFE_INTEGER, parseInt, errorObj, "minPrice", "Maximum price must be greater than or equal to 0")
+        maxPrice, errorObj = valueCheck(maxPrice, Number.MAX_SAFE_INTEGER, 0, Number.MAX_SAFE_INTEGER, parseInt, errorObj, "maxPrice", "Minimum price must be greater than or equal to 0")
+       
+        if(Object.keys(errorObj).length){
+            return res.json({
+                "message": "Validation Error",
+                "statusCode": 400,
+                "errors": errorObj
+            });    
         }
-        //console.log(avgRating)
+        const queries = {
+            where: {
+                lat: {
+                    [Op.gte]: minLat,
+                    [Op.lte]: maxLat
+                },
+                lng: {
+                    [Op.gte]: minLng,
+                    [Op.lte]: maxLng
+                },
+                price: {
+                    [Op.gte]: minPrice,
+                    [Op.lte]: maxPrice
+                }
+            }
+        }
+        queries.limit = size;
+        queries.offset = (page -1)* size;
+        if(minLat === undefined && maxLat === undefined){
+
+            delete queries.where.lat;
+        }
+    
+        if(minLng === undefined && maxLng === undefined){
+    
+            delete queries.where.lng;
+        }
+    
+        if(minPrice === undefined && maxPrice === undefined){
+    
+            delete queries.where.price;
+        }
+        newArray = await getAllSpots(queries);
+
         return res.json({
-            Spots: newArray
-        })
+            Spots: newArray, 
+            page,
+            size
+        })        
+                
+    })
+            
         
-    }
-)
+
+// Add Query Filters to Get All Spots
 
 //post a spot
 router.post(
@@ -203,7 +279,7 @@ router.put ('/:spotId', requireAuth, async(req, res)=> {
     
     }
     const spot = await Spot.findByPk(req.params.spotId);
-    console.log(spot)
+    //console.log(spot)
     if(spot){
         const updatedSpot = await spot.update({
             address, city, state, country, lat, lng, name, description, price
@@ -328,7 +404,7 @@ router.post('/:spotId/reviews', requireAuth, async(req, res)=> {
         userId: user.id, 
         review, stars,
     })
-    console.log(reviews)
+    //console.log(reviews)
     return res.json(reviews)   
 })
 
