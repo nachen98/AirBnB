@@ -19,9 +19,11 @@ function valueCheck(val, defaultVal, minVal, maxVal, parser, errorObj, name, mes
 }
 
 async function getAllSpots(queries={}){
+    
     let spots = await Spot.findAll({
         attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'description', 'price', 'createdAt', 'updatedAt'],
-        ...queries
+        
+       ...queries
     })
     //console.log(spots)
     let newArray = [];
@@ -94,16 +96,23 @@ router.get(
         }
         queries.limit = size;
         queries.offset = (page -1)* size;
-        if(minLat === undefined && maxLat === undefined){
+        if(minLat === undefined){
+            queries.where.lat[Op.gte]=-90;
+        }
+        if(maxLat === undefined){
 
-            delete queries.where.lat;
+            queries.where.lat[Op.lte]=90;
         }
     
-        if(minLng === undefined && maxLng === undefined){
+        if(minLng === undefined) {
+            
     
-            delete queries.where.lng;
+            queries.where.lng[Op.gte]= -180;
         }
-    
+        
+        if(maxLng === undefined){
+            queries.where.lng[Op.lte] = 180;
+        }
         if(minPrice === undefined && maxPrice === undefined){
     
             delete queries.where.price;
