@@ -83,7 +83,7 @@ router.put('/:reviewId', requireAuth, async(req, res)=> {
     if(!reviews){
         res.status(404)
         res.json({
-            "message": "Spot couldn't be found",
+            "message": "Review couldn't be found",
             "statusCode": 404
         })
     }
