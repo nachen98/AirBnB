@@ -59,7 +59,7 @@ function SignupFormPage() {
         <input
           type="text"
           value={firstName}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setfirstName(e.target.value)}
           required
         />
       </label>
@@ -68,7 +68,7 @@ function SignupFormPage() {
         <input
           type="text"
           value={lastName}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setlastName(e.target.value)}
           required
         />
       </label>
