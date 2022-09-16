@@ -38,11 +38,12 @@ router.post(
       })
     }
   
+    else {
     let token = await setTokenCookie(res, user);
     let newUser = user.toJSON()
     newUser.token = token;
     return res.json(newUser);
-  
+    }
   }
   );
   
