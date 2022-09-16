@@ -33,7 +33,7 @@ router.post(
   async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
     
-    if(!username || !email){
+    if(!username || !email || !firstName || !lastName ){
       res.status(400);
       return res.json({
           "message": "Validation error",
