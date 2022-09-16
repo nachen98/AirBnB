@@ -102,7 +102,9 @@ router.get(
     '/', async(req, res) => {
         errorObj = {}
         let {page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query
+        
         page = parseInt(page)
+        console.log("page************", page)
         size = parseInt(size)
 
         if (Number.isNaN(page) || Number.isNaN(size)) {

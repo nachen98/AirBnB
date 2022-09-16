@@ -138,7 +138,7 @@ router.delete('/:bookingId', requireAuth, async(req, res) => {
         }else{
             if(booking.startDate < today){
                 res.status(403)
-                res.json({
+                return res.json({
                     "message": "Bookings that have been started can't be deleted",
                     "statusCode": 403
                 })
