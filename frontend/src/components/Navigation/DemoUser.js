@@ -5,9 +5,10 @@ import { useDispatch } from 'react-redux';
 
 export default function DemoUserLoginButton() {
     const dispatch = useDispatch();
+  
     const clickHandler = (e) => {
         e.preventDefault();
-        const demoUser = { credential: 'Demo-lition', password: 'password1' };
+        const demoUser  = { credential: 'Demo-lition', password: 'password1' };
         dispatch(sessionActions.login(demoUser));
     }
 
