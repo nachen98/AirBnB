@@ -40,8 +40,6 @@ export const signup = (user) => async (dispatch) => {
 export const login = (user) => async (dispatch) => {
   console.log('goes here')
   const { credential, password } = user;
-  try{
-
     const response = await csrfFetch('/api/session', {
       
       method: 'POST',
@@ -59,9 +57,6 @@ export const login = (user) => async (dispatch) => {
       console.log('get here')
       return response
     }
-  }catch(error){
-    console.log('error!!!', error)
-  }
 };
 
 

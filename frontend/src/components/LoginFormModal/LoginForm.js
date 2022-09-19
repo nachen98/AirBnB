@@ -20,6 +20,12 @@ function LoginForm() {
     );
   };
 
+  const demoUserLogin = (e) => {
+          e.preventDefault();
+          const demoUser  = { credential: 'Demo-lition', password: 'password1' };
+          dispatch(sessionActions.login(demoUser));
+      }
+
   return (
     <form onSubmit={handleSubmit}>
       <ul>
@@ -33,7 +39,7 @@ function LoginForm() {
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
-          required
+          //required
         />
       </label>
       <label>
@@ -42,12 +48,26 @@ function LoginForm() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          //required
         />
       </label>
       <button type="submit">Log In</button>
+      <button onClick={demoUserLogin}>Demo User</button>
     </form>
   );
 }
 
+// export default function DemoUserLoginButton() {
+//   const dispatch = useDispatch();
+
+//   const clickHandler = (e) => {
+//       e.preventDefault();
+//       const demoUser  = { credential: 'Demo-lition', password: 'password1' };
+//       dispatch(sessionActions.login(demoUser));
+//   }
+
+//   return (
+//       
+//   );
+// }
 export default LoginForm;
