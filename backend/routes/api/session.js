@@ -32,7 +32,8 @@ router.post(
       // err.errors = ['The provided credentials were invalid.'];
       // return next(err);
       res.status(401)
-      res.json({
+      console.log('backend response')
+      return res.json({
         "message": "Invalid credentials",
         "statusCode": 401
       })
