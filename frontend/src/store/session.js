@@ -29,10 +29,12 @@ export const signup = (user) => async (dispatch) => {
       lastName
     }),
   });
-  const data = await response.json();
-  //console.log('data!!!!!!!', data)
-  dispatch(setUser(data));
-  return response;
+  if (response.ok) {
+    const data = await response.json();
+    //console.log('data!!!!!!!', data)
+    dispatch(setUser(data));
+    return response;
+  }
 };
 
 export const login = (user) => async (dispatch) => {
@@ -44,9 +46,11 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
-  const data = await response.json();
-  dispatch(setUser(data));
-  return response;
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data));
+    return response;
+  }
 };
 
 
