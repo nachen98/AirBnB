@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSpots } from '../../store/spots';
-
+import SpotCards from '../SpotCards';
 const SpotsList = () => {
     const dispatch = useDispatch();
     const spotsList = useSelector ((state => state.spots))
