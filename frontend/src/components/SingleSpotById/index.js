@@ -23,7 +23,8 @@ export function SingleSpot(){
         await dispatch(deleteSpot(spotId))
         history.push('/')
     }
-    if(!oneSpotById) return null;
+    
+    if(Object.keys(oneSpotById).length === 0) return null
     console.log('oneSpotById!!!!!!!', oneSpotById)
     return(
         <div className='single-spot-info'>
@@ -48,7 +49,7 @@ export function SingleSpot(){
             <div className="space"> · </div>
             <div className='single-spot-review'>
     
-                {oneSpotById?.numReviews }reviews
+                {oneSpotById?.numReviews} review
             
             </div>
             <div className='single-spot-img'>
@@ -58,7 +59,7 @@ export function SingleSpot(){
                 })}
             </div>
             <div className='single-spot-owner'>
-                <h2>Hosted by: {oneSpotById.owner.firstName }{oneSpotById.owner.lastName}</h2>
+                <h2>Hosted by: {oneSpotById.Owner.firstName} {oneSpotById.Owner.lastName}</h2>
 
             </div>
             <div className='single-spot-description'>

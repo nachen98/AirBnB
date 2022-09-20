@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 const GET_ALL_SPOTS = '/spots/getAllSpots';
 const GET_ONE_SPOT_By_ID = 'spots/getOneSpot';
-
+const CREATE_ONE_SPOT = 'spots/createOneSpot'
 
 const loadSpots = (list) => {
   return {
@@ -18,6 +18,12 @@ const loadOneSpot = (spotId) => {
     }
 }
 
+const createOneSpot = (spot) => {
+    return {
+        type:  CREATE_ONE_SPOT,
+        spot
+    }    
+}
 //thunk action creator
 export const getAllSpots = ()=> async(dispatch) => {
     
@@ -40,6 +46,16 @@ export const getOneSpot = (spotId) => async(dispatch) => {
         dispatch(loadOneSpot(oneSpot))
     }
 } 
+
+// export const addSpot=(spotBody)=> async(dispatch)=> {
+//         const response = await csrfFetch(`/api/spots/`, {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body:JSON.stringify(spotBody)
+//         }
+
 //state object
 const initialState = {
     allSpots: {},
