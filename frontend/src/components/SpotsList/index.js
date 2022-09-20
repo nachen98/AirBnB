@@ -4,7 +4,7 @@ import { getAllSpots } from '../../store/spots';
 import SpotCards from '../SpotCards';
 const SpotsList = () => {
     const dispatch = useDispatch();
-    const spotsList = useSelector ((state => state.spots))
+    const spotsList = useSelector ((state => state.spots.allSpots))
     console.log('spotsList!!!!!!!!!', spotsList)
     const spots = Object.values(spotsList)
 
