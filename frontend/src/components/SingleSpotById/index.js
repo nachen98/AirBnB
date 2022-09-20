@@ -1,13 +1,14 @@
 import './SingleSpot.css';
-import {useParam, useHistory} from 'react-redux';
+import {useParams, useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-export function SingleSpot({spotId}){
+import { useEffect } from "react";
+import { getOneSpot } from '../../store/spots';
+export function SingleSpot(){
     
-    const {spotId} = useParam()
+    const {spotId} = useParams()
     const dispatch = useDispatch();
     const history = useHistory()
-    const oneSpotById = useSelector(state => state.spot.singleSpot)
+    const oneSpotById = useSelector(state => state.spots.singleSpot)
     const currUser = useSelector(state => state.session.user)
 
     useEffect(()=> {
@@ -15,7 +16,7 @@ export function SingleSpot({spotId}){
     }, [dispatch, spotId])
 
     let currUserIsOwner = false;
-    if(currUser && currUser.id === ownerId) currUserIsOwner = true;
+    if(currUser && currUser.id === oneSpotById.ownerId) currUserIsOwner = true;
 
     const deleteSpot = async(e) => {
         e.preventDefault()
@@ -23,7 +24,7 @@ export function SingleSpot({spotId}){
         history.push('/')
     }
     if(!oneSpotById) return null;
-
+    console.log('oneSpotById!!!!!!!', oneSpotById)
     return(
         <div className='single-spot-info'>
             <div className='spot-name'>
@@ -51,6 +52,7 @@ export function SingleSpot({spotId}){
             
             </div>
             <div className='single-spot-img'>
+               
                 {oneSpotById.SpotImages.map(img => {
                     <img key={img.id} src={img.url} />
                 })}

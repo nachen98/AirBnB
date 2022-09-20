@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupForm from '../src/components/SignupFormModal'
+
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SpotsList from "../src/components/SpotsList/index"
+import { SingleSpot } from "./components/SingleSpotById";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,6 +21,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <SpotsList />
+          </Route>
+          <Route path="/spots/:spotId">
+            <SingleSpot />
           </Route>
         </Switch>
       )}
