@@ -35,6 +35,15 @@ export function SingleSpot({spotId}){
             <div className='single-spot-rating'>
             {Number(oneSpotById?.avgStarRating).toFixed(1)}
             </div>
+            
+            {currUserIsOwner && (
+                <div className='owner-for-spot'>
+                    <button onClick={deleteSpot}>Delete your spot</button>
+                    {/* <EditSpotModalForm spotId={spotId} /> */}
+                </div>
+          
+            )}
+            
             <div className="space"> · </div>
             <div className='single-spot-review'>
     
@@ -42,9 +51,9 @@ export function SingleSpot({spotId}){
             
             </div>
             <div className='single-spot-img'>
-            <img src={oneSpotById?.previewImage} className='spotcard-img'
-                    style={{ height: 400, width: 400 }}
-                />
+                {oneSpotById.SpotImages.map(img => {
+                    <img key={img.id} src={img.url} />
+                })}
             </div>
             <div className='single-spot-owner'>
                 <h2>Hosted by: {oneSpotById.owner.firstName }{oneSpotById.owner.lastName}</h2>
@@ -53,6 +62,7 @@ export function SingleSpot({spotId}){
             <div className='single-spot-description'>
                 Description: {oneSpotById.description}
             </div>
+            
         </div>
     )
 }
