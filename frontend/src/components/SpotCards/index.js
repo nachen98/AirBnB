@@ -12,7 +12,7 @@ export default function SpotCards ({spot}) {
                     </div>
                     <div className="location-rating">
                     <i className="fa-solid fa-star"></i>
-                        {spot.avgRating}
+                        {Number(spot.avgRating).toFixed(1)}
                     </div>
                     <div className="location-price">
                         {`$${spot.price} `} 
