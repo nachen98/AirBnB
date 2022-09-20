@@ -5,7 +5,7 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
-
+const path = require('path')
 const { environment } = require('./config');
 const isProduction = environment === 'production';
 
@@ -16,6 +16,7 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
 
+app.use("/authenticate-me/backend/assets/", express.static(path.join(__dirname + "/assets/")))
 // Security Middleware
 if (!isProduction) {
     // enable cors only in development

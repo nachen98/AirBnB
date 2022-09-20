@@ -2,19 +2,21 @@ import "./SpotCards.css"
 import { Link } from "react-router-dom"
 export default function SpotCards ({spot}) {
     return (
-        <div>
-            <Link to={`/spots/${spot.id}`} className='link-for-spot'>
+        <div className='link-for-spot'>
+            <Link to={`/spots/${spot.id}`} >
               
-                <img src={spot.previewImage} alt={spot.description} className='spotcard-img'/>
+                <img src={spot.previewImage} className='spotcard-img'/>
                 <div className="spotcard-info">
                     <div className="spotcard-location">
                         {spot.city},{spot.state}
                     </div>
                     <div className="location-rating">
+                    <i className="fa-solid fa-star"></i>
                         {spot.avgRating}
                     </div>
                     <div className="location-price">
-                        {spot.price} night
+                        {`$${spot.price} `} 
+                        <span>night</span>
                     </div>
                 </div>
             </Link>
