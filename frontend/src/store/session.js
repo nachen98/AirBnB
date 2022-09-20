@@ -48,15 +48,12 @@ export const login = (user) => async (dispatch) => {
         password,
       }),
     });
-    console.log('Response!!!!!!!!', response)
+    
     if (response.ok) {
       const data = await response.json();
       dispatch(setUser(data));
       return response;
-    } else{
-      console.log('get here')
-      return response
-    }
+    } 
 };
 
 

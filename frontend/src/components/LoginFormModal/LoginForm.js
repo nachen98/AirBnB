@@ -57,17 +57,5 @@ function LoginForm() {
   );
 }
 
-// export default function DemoUserLoginButton() {
-//   const dispatch = useDispatch();
 
-//   const clickHandler = (e) => {
-//       e.preventDefault();
-//       const demoUser  = { credential: 'Demo-lition', password: 'password1' };
-//       dispatch(sessionActions.login(demoUser));
-//   }
-
-//   return (
-//       
-//   );
-// }
 export default LoginForm;

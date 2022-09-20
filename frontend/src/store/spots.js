@@ -31,8 +31,8 @@ const spotsReducer = (state = initialState, action) => {
     switch(action.type){
         case GET_ALL_SPOTS: 
             const allSpots = {};
-            console.log('action.spots!!!!!!!!!!!', action.spots)
-            action.spots.forEach((spot) => {allSpots[spot.id] = spot})
+            console.log('action.list!!!!!!!!!!!', action.list)
+            action.list.Spots.forEach((spot) => {allSpots[spot.id] = spot})
             return allSpots;
         
         default:

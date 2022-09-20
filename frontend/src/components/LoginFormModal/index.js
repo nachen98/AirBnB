@@ -1,7 +1,6 @@
 // frontend/src/components/LoginFormModal/index.js
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import DemoUserLoginButton from './LoginForm';
 import LoginForm from './LoginForm';
 
 function LoginFormModal() {
@@ -13,7 +12,6 @@ function LoginFormModal() {
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />
-          <DemoUserLoginButton />
         </Modal>
       )}
     </>
