@@ -47,15 +47,22 @@ export const getOneSpot = (spotId) => async(dispatch) => {
     }
 } 
 
-// export const addSpot=(spotBody)=> async(dispatch)=> {
-//         const response = await csrfFetch(`/api/spots/`, {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body:JSON.stringify(spotBody)
-//         }
-
+export const addSpot=(spotBody, user)=> async(dispatch)=> {
+        const response = await csrfFetch(`/api/spots`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify(spotBody)
+        })
+        if(response.ok){
+            const newSpot = await response.json()
+            dispatch(createOneSpot(newSpot))
+        }else {
+            const result = await response.json()
+            return result
+        }
+    }
 //state object
 const initialState = {
     allSpots: {},
@@ -77,6 +84,11 @@ const spotsReducer = (state = initialState, action) => {
             const newState1 = {...state}
             newState1.singleSpot= action.spotId
             return newState1
+
+        case CREATE_ONE_SPOT:
+            const newState2 = {...state}
+            newState2.allSpots= {...state.allSpots, [action.spot.id]: action.spot}
+            return newState2
         default:
             return state
     }

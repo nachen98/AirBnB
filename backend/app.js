@@ -17,6 +17,8 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/authenticate-me/backend/assets/", express.static(path.join(__dirname + "/assets/")))
+
+app.use("/spots/authenticate-me/backend/assets/", express.static(path.join(__dirname + "/assets/")))
 // Security Middleware
 if (!isProduction) {
     // enable cors only in development

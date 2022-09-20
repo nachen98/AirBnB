@@ -49,13 +49,13 @@ export function SingleSpot(){
             <div className="space"> · </div>
             <div className='single-spot-review'>
     
-                {oneSpotById?.numReviews} review
+                {oneSpotById?.numReviews} reviews
             
             </div>
             <div className='single-spot-img'>
                
                 {oneSpotById.SpotImages.map(img => {
-                    <img key={img.id} src={img.url} />
+                    (<img key={img.id} src={img.url} />)
                 })}
             </div>
             <div className='single-spot-owner'>

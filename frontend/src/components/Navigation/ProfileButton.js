@@ -31,6 +31,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
+      <CreateSpotModal />
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
