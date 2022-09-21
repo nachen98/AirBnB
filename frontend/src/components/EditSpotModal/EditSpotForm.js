@@ -6,10 +6,10 @@ import { Redirect } from "react-router-dom";
 import "./EditSpot.css"
 import { updateSpot, getOneSpot } from '../../store/spots';
 
-function EditSpotForm({setShowModal, spotId}) {
+function EditSpotForm({setShowModal}) {
   const dispatch = useDispatch();
   const history = useHistory();
-  //const {spotId} = useParams()
+  const {spotId} = useParams()
 
   const spot = useSelector(state => state.spots.singleSpot)
   const currUser = useSelector(state => state.session.user)
@@ -25,7 +25,7 @@ function EditSpotForm({setShowModal, spotId}) {
   const [price, setPrice] = useState(spot.price);
   const [errors, setErrors] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
+  
   useEffect(() => {
     dispatch(getOneSpot(spotId))
 }, [dispatch, spotId]);
@@ -70,6 +70,7 @@ function EditSpotForm({setShowModal, spotId}) {
         } else{
             setShowModal(false)
             history.push(`/spots/${spotId}`)
+          
           }
         }
       )

@@ -161,6 +161,7 @@ const spotsReducer = (state = initialState, action) => {
             const newState3 = {...state}
             newState3.allSpots={...state.allSpots, [action.spot.id]: action.spot}
             newState3.singleSpot={...state.singleSpot, [action.spot.id]: action.spot}
+            console.log('newState3!!!!!!!!!!', newState3)
             return newState3
         
         case DELETE_ONE_SPOT:
