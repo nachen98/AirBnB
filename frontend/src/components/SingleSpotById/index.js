@@ -3,6 +3,7 @@ import {useParams, useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getOneSpot } from '../../store/spots';
+import EditSpotModal from '../EditSpotModal'
 export function SingleSpot(){
     
     const {spotId} = useParams()
@@ -37,13 +38,13 @@ export function SingleSpot(){
             <i className="fa-solid fa-star"></i>
             </div>
             <div className='single-spot-rating'>
-            {Number(oneSpotById?.avgStarRating).toFixed(1)}
+            {Number(oneSpotById.avgStarRating) !==0 ? Number(oneSpotById.avgStarRating).toFixed(1) : ` New`}
             </div>
             
             {currUserIsOwner && (
                 <div className='owner-for-spot'>
                     <button onClick={deleteSpot}>Delete your spot</button>
-                    {/* <EditSpotModalForm spotId={spotId} /> */}
+                    <EditSpotModal spotId={spotId} />
                 </div>
           
             )}
@@ -63,6 +64,9 @@ export function SingleSpot(){
             <div className='single-spot-owner'>
                 <h2>Hosted by: {oneSpotById.Owner.firstName} {oneSpotById.Owner.lastName}</h2>
 
+            </div>
+            <div className='single-spot-price'>
+                    {`$${oneSpotById.price} `} night
             </div>
             <div className='single-spot-description'>
                 Description: {oneSpotById.description}

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CreateSpotForm from './CreateSpotForm.js';
+import EditSpotForm from './EditSpotForm.js';
 
-function CreateSpotModal() {
+function EditSpotModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Become a Host</button>
+      <button onClick={() => setShowModal(true)}>Edit your spot</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateSpotForm setShowModal={setShowModal}/>
+          <EditSpotForm setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default CreateSpotModal;
+export default EditSpotModal;

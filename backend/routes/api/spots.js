@@ -104,7 +104,7 @@ router.get(
         let {page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query
         
         page = parseInt(page)
-        console.log("page************", page)
+        //console.log("page************", page)
         size = parseInt(size)
 
         if (Number.isNaN(page) || Number.isNaN(size)) {
@@ -114,11 +114,11 @@ router.get(
         function valueCheck(val, defaultVal, minVal, maxVal, parser, errorObj, name, message){
             if(!val)return defaultVal, errorObj;
             val = parser(val);
-            console.log('val*******', typeof val)
+            //console.log('val*******', typeof val)
             if(Number.isNaN(val) || val<minVal || val>maxVal){
                 errorObj[name] = message
                 return defaultVal, errorObj;
-                console.log('&&&&&&&&&&&&&&&')
+                //console.log('&&&&&&&&&&&&&&&')
             }
             return val, errorObj;
         }
@@ -130,7 +130,7 @@ router.get(
         maxLng, errorObj = valueCheck(maxLng, 180, -180, 180, parseFloat, errorObj, "maxLng", "Maximum longitude is invalid")
         minPrice, errorObj = valueCheck(minPrice, 0, 0, Number.MAX_SAFE_INTEGER, parseInt, errorObj, "minPrice", "Maximum price must be greater than or equal to 0")
         maxPrice, errorObj = valueCheck(maxPrice, Number.MAX_SAFE_INTEGER, 0, Number.MAX_SAFE_INTEGER, parseInt, errorObj, "maxPrice", "Minimum price must be greater than or equal to 0")
-        console.log('size**********', size, typeof size)
+        //console.log('size**********', size, typeof size)
         if(Object.keys(errorObj).length){
             return res.json({
                 "message": "Validation Error",
@@ -174,7 +174,7 @@ router.get(
         attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'description', 'price', 'createdAt', 'updatedAt']    
         , ...queries
     })
-    console.log(queries)
+    //console.log(queries)
     let newArray = [];
     let SpotsObj
     let avgRating
@@ -240,7 +240,7 @@ router.post(
         let createdSpot = await Spot.create({
             ownerId: req.user.id, address, city, state, country, lat, lng, name, description, price,
         });
-        console.log('createdSpot!!!!!!', createdSpot)
+        //console.log('createdSpot!!!!!!', createdSpot)
         return res.json(createdSpot)
     }),
 
@@ -285,8 +285,8 @@ router.get(
 router.post(
     '/:spotId/images', async(req, res) => {
         const spot = await Spot.findByPk(req.params.spotId)
-        console.log('spot*********', spot)
-        console.log('req*********', req.body)
+        //console.log('spot*********', spot)
+        //console.log('req*********', req.body)
         const {url, preview} = req.body
         if(!spot){
            res.status(404)

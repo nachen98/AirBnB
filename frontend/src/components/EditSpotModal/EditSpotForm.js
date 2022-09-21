@@ -1,38 +1,37 @@
 // frontend/src/components/LoginFormModal/LoginForm.js
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams} from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import "./CreateSpot.css"
-import { addSpot, addImage, getAllSpots } from '../../store/spots';
+import "./EditSpot.css"
+import { updateSpot, getOneSpot } from '../../store/spots';
 
-function CreateSpotForm({setShowModal}) {
+function EditSpotForm({setShowModal, spotId}) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [lat, setLat] = useState("");
-  const [lng, setLng] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [imgUrl, setImgUrl] = useState("");
+  //const {spotId} = useParams()
+
+  const spot = useSelector(state => state.spots.singleSpot)
+  const currUser = useSelector(state => state.session.user)
+
+  const [address, setAddress] = useState(spot.address);
+  const [city, setCity] = useState(spot.city);
+  const [state, setState] = useState(spot.state);
+  const [country, setCountry] = useState(spot.country);
+  const [lat, setLat] = useState(spot.lat);
+  const [lng, setLng] = useState(spot.lng);
+  const [name, setName] = useState(spot.name);
+  const [description, setDescription] = useState(spot.description);
+  const [price, setPrice] = useState(spot.price);
   const [errors, setErrors] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    dispatch(getAllSpots())
-}, []);
+    dispatch(getOneSpot(spotId))
+}, [dispatch, spotId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const validUrls = ['jpg', 'jpeg', 'png', 'svg', 'gif', 'heic']
-
-    let splittedUrl = imgUrl.split('/')
-    let parsedUrl = splittedUrl[splittedUrl.length - 1].split('.')[1]
 
     const validationErrors = []
 
@@ -42,7 +41,7 @@ function CreateSpotForm({setShowModal}) {
     if (country.length === 0) validationErrors.push('Country is required');
     if (name.length === 0) validationErrors.push('Name is required');
     if (description.length === 0) validationErrors.push('Description is required');
-    if (!validUrls.includes(parsedUrl)) validationErrors.push('Please provide a valid image format')
+    
     if(lat.length === 0) validationErrors.push('Latitude is required')
     if(lng.length === 0) validationErrors.push('Longitute is required')
     if (lat < -90 || lat > 90) validationErrors.push('Latitude must be a value in the range of -90 and 90');
@@ -57,46 +56,32 @@ function CreateSpotForm({setShowModal}) {
     //console.log('!!!!!!!!!!!!!!validationErrors', validationErrors)
     setErrors([]);
 
-    const addedSpot = { address, city, state, country, lat, lng, name, description, price }
+    const updatedSpot = { address, city, state, country, lat, lng, name, description, price }
     //console.log('!!!!!!!!!!!!!!addSpot', addedSpot)
-    dispatch(addSpot(addedSpot)).then(
+    dispatch(updateSpot(updatedSpot, spotId)).then(
       async (res) => {
         console.log('!!!!!!!!!!!!!!res', res)
         //const data = await res.json();
         //console.log('!!!!!!!!!!!!!!data', data)
-        let newSpot=res
+       
         if (res && res.errors) {
           //console.log('!!!!!!!!!!!!!!errros', res.errors)
           setErrors(res.errors);
         } else{
-          //console.log('###########imgUrl', imgUrl)
-          dispatch(addImage(res.id, { preview: true, url: imgUrl })).then(
-            async (res) => {
-              const data = await res.json();
-              if (data && data.errors) {
-                setErrors(data.errors);
-              } else{
-                setShowModal(false)
-                history.push(`/spots/${newSpot.id}`)
-              }
-            }
-          )
-
-
+            setShowModal(false)
+            history.push(`/spots/${spotId}`)
+          }
         }
-      }
-    );
-    
+      )
 
 
-  };
-
+}
 
 
   return (
     <div className="form-container">
       <div className="form-header">
-        Create a Spot
+        Update this spot
       </div>
       <div className="form-body">
         <form onSubmit={handleSubmit}>
@@ -207,16 +192,6 @@ function CreateSpotForm({setShowModal}) {
           </label>
           </div>
 
-          <div className="form-input-container">
-          <label>
-            <input
-              type="url"
-              value={imgUrl}
-              placeholder = 'Image Url'
-              onChange={(e) => setImgUrl(e.target.value)}
-            />
-          </label>
-            </div>
 
           <button 
           type="submit"
@@ -235,4 +210,4 @@ function CreateSpotForm({setShowModal}) {
 }
 
 
-export default CreateSpotForm;
+export default EditSpotForm;
