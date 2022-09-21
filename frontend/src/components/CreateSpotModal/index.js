@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CreateSpotForm from './LoginForm';
+import CreateSpotForm from './CreateSpotForm.js';
 
-function LoginFormModal() {
+function CreateSpotModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -17,4 +17,4 @@ function LoginFormModal() {
   );
 }
 
-export default LoginFormModal;
+export default CreateSpotModal;

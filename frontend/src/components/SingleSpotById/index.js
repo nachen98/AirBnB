@@ -24,7 +24,9 @@ export function SingleSpot(){
         history.push('/')
     }
     
+   
     if(Object.keys(oneSpotById).length === 0) return null
+    
     console.log('oneSpotById!!!!!!!', oneSpotById)
     return(
         <div className='single-spot-info'>
@@ -54,9 +56,9 @@ export function SingleSpot(){
             </div>
             <div className='single-spot-img'>
                
-                {oneSpotById.SpotImages.map(img => {
-                    (<img key={img.id} src={img.url} />)
-                })}
+                {oneSpotById.SpotImages.map(img => 
+                    (<img key={img.id} src={img.url} alt={img.url} style={{height:300, width:300}} />)
+                )}
             </div>
             <div className='single-spot-owner'>
                 <h2>Hosted by: {oneSpotById.Owner.firstName} {oneSpotById.Owner.lastName}</h2>

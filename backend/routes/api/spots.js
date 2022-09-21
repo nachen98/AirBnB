@@ -240,6 +240,7 @@ router.post(
         let createdSpot = await Spot.create({
             ownerId: req.user.id, address, city, state, country, lat, lng, name, description, price,
         });
+        console.log('createdSpot!!!!!!', createdSpot)
         return res.json(createdSpot)
     }),
 
@@ -284,7 +285,8 @@ router.get(
 router.post(
     '/:spotId/images', async(req, res) => {
         const spot = await Spot.findByPk(req.params.spotId)
-        //console.log('spot*********', spot)
+        console.log('spot*********', spot)
+        console.log('req*********', req.body)
         const {url, preview} = req.body
         if(!spot){
            res.status(404)
