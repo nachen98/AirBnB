@@ -2,7 +2,7 @@ import './SingleSpot.css';
 import {useParams, useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getOneSpot } from '../../store/spots';
+import { getOneSpot , deleteSpot} from '../../store/spots';
 import EditSpotModal from '../EditSpotModal'
 export function SingleSpot(){
     
@@ -19,8 +19,8 @@ export function SingleSpot(){
     let currUserIsOwner = false;
     if(currUser && currUser.id === oneSpotById.ownerId) currUserIsOwner = true;
 
-    const deleteSpot = async(e) => {
-        e.preventDefault()
+    const deleteSpotButton = async(e) => {
+        e.preventDefault();
         await dispatch(deleteSpot(spotId))
         history.push('/')
     }
@@ -43,7 +43,7 @@ export function SingleSpot(){
             
             {currUserIsOwner && (
                 <div className='owner-for-spot'>
-                    <button onClick={deleteSpot}>Delete your spot</button>
+                    <button onClick={deleteSpotButton}>Delete your spot</button>
                     <EditSpotModal spotId={spotId} />
                 </div>
           

@@ -52,9 +52,9 @@ export const getAllSpots = ()=> async(dispatch) => {
 }
 
 export const getOneSpot = (spotId) => async(dispatch) => {
-    console.log(`/api/spots/${spotId}`)
+    //console.log(`/api/spots/${spotId}`)
     const response = await csrfFetch(`/api/spots/${spotId}`)
-    console.log('oneSpot!!!!!!!')
+    //console.log('oneSpot!!!!!!!')
     if(response.ok){
         const oneSpot = await response.json()
        
@@ -160,8 +160,8 @@ const spotsReducer = (state = initialState, action) => {
         case UPDATE_ONE_SPOT:
             const newState3 = {...state}
             newState3.allSpots={...state.allSpots, [action.spot.id]: action.spot}
-            newState3.singleSpot={...state.singleSpot, [action.spot.id]: action.spot}
-            console.log('newState3!!!!!!!!!!', newState3)
+            newState3.singleSpot={...state.singleSpot, ...action.spot}
+            //console.log('newState3!!!!!!!!!!', newState3)
             return newState3
         
         case DELETE_ONE_SPOT:

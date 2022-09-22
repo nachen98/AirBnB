@@ -28,7 +28,7 @@ function EditSpotForm({setShowModal}) {
   
   useEffect(() => {
     dispatch(getOneSpot(spotId))
-}, [dispatch, spotId]);
+}, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
