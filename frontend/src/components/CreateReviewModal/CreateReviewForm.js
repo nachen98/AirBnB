@@ -29,7 +29,7 @@ function CreateReviewForm({ setShowModal}) {
 
         dispatch(addReview({ stars, review }, spotId, user)).then(
             async(res)=> {
-                console.log('res%%%%%%%%%%%%', res)
+                //console.log('res%%%%%%%%%%%%', res)
             const data = res;//await res.json();
               if (data && data.errors) {
                 setErrors(data.errors);

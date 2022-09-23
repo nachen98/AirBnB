@@ -424,7 +424,7 @@ router.get('/:spotId/reviews', async(req, res) => {
                 attributes: ['id', 'url']
             }]
         })
-        console.log('reviews!!!!!!!!!!!!!', reviews)
+        //console.log('reviews!!!!!!!!!!!!!', reviews)
         return res.json({Reviews: reviews})
     }else{
         res.status(404);

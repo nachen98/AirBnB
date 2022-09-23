@@ -60,7 +60,7 @@ function EditSpotForm({setShowModal}) {
     //console.log('!!!!!!!!!!!!!!addSpot', addedSpot)
     dispatch(updateSpot(updatedSpot, spotId)).then(
       async (res) => {
-        console.log('!!!!!!!!!!!!!!res', res)
+        //console.log('!!!!!!!!!!!!!!res', res)
         //const data = await res.json();
         //console.log('!!!!!!!!!!!!!!data', data)
        

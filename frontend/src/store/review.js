@@ -26,9 +26,9 @@ const deleteOneRevew= (reviewId) => {
 }
 
 export const getAllReviewsBySpot = (spotId) => async(dispatch) => {
-    console.log(`/api/spots/${spotId}`)
+    //console.log(`/api/spots/${spotId}`)
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`);
-    console.log('review response!!!!')
+    //console.log('review response!!!!')
     if(response.ok){
         const reviews = await response.json()
         dispatch(getReviewsBySpot(reviews))
@@ -37,7 +37,7 @@ export const getAllReviewsBySpot = (spotId) => async(dispatch) => {
 }
 
 export const addReview = (createdReview, spotId, user)=> async(dispatch) => {
-    console.log('spotId!!!!!!!!!', spotId)
+    //console.log('spotId!!!!!!!!!', spotId)
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: "POST",
         headers: {
@@ -45,10 +45,10 @@ export const addReview = (createdReview, spotId, user)=> async(dispatch) => {
         },
         body:JSON.stringify(createdReview)
     }).catch(res=>res)
-    console.log('res!!!!!!!!!', response)
+    //console.log('res!!!!!!!!!', response)
     if(response.ok){
         const newReview = await response.json()
-        console.log("user:33333333333333", user)
+        //console.log("user:33333333333333", user)
         newReview.User = {id: user.user.id, firstName: user.user.firstName, lastName: user.user.lastName}
         dispatch(createOneReview(newReview))
         return newReview
@@ -74,13 +74,13 @@ const reviewsReducer = (state=initialState, action)=> {
         case GET_ALL_REVIEWS_By_SPOT:
             const newState = {...state};
             const newAllReviews = {}
-            console.log('action.reviews!!!!!!!!!!!', action.reviews)
+            //console.log('action.reviews!!!!!!!!!!!', action.reviews)
             action.reviews.Reviews.forEach((review) => {newAllReviews[review.id] = review})
             newState.spot = newAllReviews
             return newState;
         
         case CREATE_ONE_REVIEW:
-            console.log(state, "state!!!!!!!!!!!!!!!!!!!")
+            //console.log(state, "state!!!!!!!!!!!!!!!!!!!")
             //action.review.User = {...state.session.user}
             const newState1 = {spot: {...state.spot}, user: {...state.user}}
             newState1.spot[action.review.id]= action.review

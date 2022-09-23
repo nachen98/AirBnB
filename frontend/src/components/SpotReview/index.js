@@ -12,7 +12,7 @@ function toMonthName(monthNumber) {
   }
 
   export default function SpotReview({reviewContent}){
-    console.log('reviewContent!!!!!!!!!!', reviewContent)
+    //console.log('reviewContent!!!!!!!!!!', reviewContent)
     const dispatch = useDispatch()
     const currUser = useSelector(state => state.session.user)
 

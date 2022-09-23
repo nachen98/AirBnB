@@ -16,7 +16,7 @@ export function SingleSpot(){
     const oneSpotById = useSelector(state => state.spots.singleSpot)
     const currUser = useSelector(state => state.session.user)
     const reviews = useSelector(state => state.reviews.spot)
-    console.log('reviews!!!!!!!!!!!!!!', reviews)
+    //console.log('reviews!!!!!!!!!!!!!!', reviews)
 
     const reviewContents = Object.values(reviews)
     useEffect(()=> {
@@ -36,13 +36,13 @@ export function SingleSpot(){
    
     if(Object.keys(oneSpotById).length === 0) return null
      //console.log('oneSpotById!!!!!!!', oneSpotById)
-     console.log('reviewContents*************', reviewContents)
+     //console.log('reviewContents*************', reviewContents)
      //console.log('currUser!!!!!!', currUser.id)
      
     let userCreatedReview = false
     let filteredContents = reviewContents.filter (reviewContent => reviewContent.userId === currUser.id) 
     
-    console.log('filteredContents!!!!!!!!!!!', filteredContents)
+    //console.log('filteredContents!!!!!!!!!!!', filteredContents)
     if(filteredContents.length > 0) userCreatedReview = true
 
 

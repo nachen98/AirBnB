@@ -60,7 +60,7 @@ function CreateSpotForm({setShowModal}) {
     //console.log('!!!!!!!!!!!!!!addSpot', addedSpot)
     dispatch(addSpot(addedSpot)).then(
       async (res) => {
-        console.log('!!!!!!!!!!!!!!res', res)
+        //console.log('!!!!!!!!!!!!!!res', res)
         //const data = await res.json();
         //console.log('!!!!!!!!!!!!!!data', data)
         let newSpot=res
