@@ -448,6 +448,7 @@ router.post('/:spotId/reviews', requireAuth, async(req, res)=> {
             userId: user.id
         }
     })
+    //console.log('1'.repeat(20))
     if(currReview.length){
         res.status(403)
         return res.json({
@@ -455,6 +456,7 @@ router.post('/:spotId/reviews', requireAuth, async(req, res)=> {
             "statusCode": 403
         })
     }
+    //console.log('2'.repeat(20))
     if(!spot) {
         res.status(404)
         return res.json({
@@ -462,7 +464,8 @@ router.post('/:spotId/reviews', requireAuth, async(req, res)=> {
             "statusCode": 404
         })
     }
-    if(!review && !stars || parseInt(stars) > 5 || parseInt(stars) < 1 || !Number.isInteger(stars) ){
+    //console.log('3'.repeat(20))
+    if(!review && !stars || parseInt(stars) > 5 || parseInt(stars) < 1 || !Number.isInteger(parseInt(stars)) ){
         res.status(400)
         return res.json({
             "message": "Validation error",
@@ -473,6 +476,7 @@ router.post('/:spotId/reviews', requireAuth, async(req, res)=> {
             }
         })
     }
+    //console.log('4'.repeat(20))
     if(!review ){
         res.status(400)
         return res.json({
@@ -483,7 +487,8 @@ router.post('/:spotId/reviews', requireAuth, async(req, res)=> {
             }
         })
     }
-    if(!stars || parseInt(stars) > 5 || parseInt(stars) < 1 || !Number.isInteger(stars)){
+    //console.log('5'.repeat(20))
+    if(!stars || parseInt(stars) > 5 || parseInt(stars) < 1 || !Number.isInteger(parseInt(stars))){
         res.status(400)
         return res.json({
             "message": "Validation error",
@@ -493,6 +498,7 @@ router.post('/:spotId/reviews', requireAuth, async(req, res)=> {
             }
         })
     }
+    //console.log('6'.repeat(20))
     const reviews = await Review.create({
         spotId: req.params.spotId,
         userId: user.id, 

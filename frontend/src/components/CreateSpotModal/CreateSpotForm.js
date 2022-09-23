@@ -1,8 +1,7 @@
 // frontend/src/components/LoginFormModal/LoginForm.js
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 import "./CreateSpot.css"
 import { addSpot, addImage, getAllSpots } from '../../store/spots';
 
@@ -22,9 +21,9 @@ function CreateSpotForm({setShowModal}) {
   const [errors, setErrors] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  useEffect(() => {
-    dispatch(getAllSpots())
-}, []);
+//   useEffect(() => {
+//     dispatch(getAllSpots())
+// }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
