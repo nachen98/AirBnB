@@ -1,0 +1,43 @@
+.single-spot-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2% 24% 0 24%;
+    font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+}
+.spot-name{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.star-rating-review-location{
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    justify-content: space-between;
+    margin-bottom: 20px
+}
+
+.space{
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.single-spot-review{
+    margin-right: 5px;
+}
+
+.info-without-button{
+    display: flex;
+    flex-direction: row;
+}
+
+.delete-spot-button{
+    background-color: #db0d64;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 12px;
+    cursor:pointer;
+    margin-right: 10px
+}

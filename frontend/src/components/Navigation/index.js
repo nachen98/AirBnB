@@ -8,7 +8,7 @@ import './Navigation.css';
 import SignUpFormModal from '../SignupFormModal';
 import logo from '../../Images/logo.png'
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded, NavBar}){
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -28,7 +28,7 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='NavContainer'>
-    <div className='NavBar'>
+    <div className={NavBar}>
       <NavLink exact to="/" className="navlink">
         <img src={logo} className='logo-picture' alt='logo' />
         <h1>funfairbnb</h1>

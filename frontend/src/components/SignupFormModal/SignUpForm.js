@@ -40,11 +40,11 @@ function SignupForm() {
         <div className="nav-header">
           Welcome to funfairbnb!
         </div>
-        <div className="error-message">
+        {errors.length > 0 && (<div className="error-message">
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
-        </div>
+        </div>)}
 
         <div className="input-field-container">
           <div className="input-field">
@@ -55,7 +55,7 @@ function SignupForm() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
-                required
+                //required
               />
             </label>
           </div>
@@ -68,7 +68,7 @@ function SignupForm() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
-              required
+              //required
             />
           </label>
         </div>
@@ -80,7 +80,7 @@ function SignupForm() {
               value={firstName}
               onChange={(e) => setfirstName(e.target.value)}
               placeholder="First Name"
-              required
+              //required
             />
           </label>
         </div>
@@ -92,7 +92,7 @@ function SignupForm() {
                 value={lastName}
                 onChange={(e) => setlastName(e.target.value)}
                 placeholder="Last Name"
-                required
+                //required
               />
             </label>
           </div>
@@ -104,7 +104,7 @@ function SignupForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
-                required
+                //required
               />
             </label>
           </div>
@@ -116,7 +116,7 @@ function SignupForm() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm Password"
-                required
+                //required
               />
             </label>
           </div>

@@ -1,11 +1,11 @@
-// frontend/src/components/LoginFormModal/LoginForm.js
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams} from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import "./EditSpot.css"
 import { updateSpot, getOneSpot } from '../../store/spots';
-
+import "./EditSpot.css"
 function EditSpotForm({setShowModal}) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -84,14 +84,14 @@ function EditSpotForm({setShowModal}) {
       <div className="form-header">
         Update this spot
       </div>
-      <div className="form-body">
         <form onSubmit={handleSubmit}>
+        {errors.length > 0 && (<div className="error-message">
           <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
-          <div className="form-input-container">
+        </div>)}
+          <div className="input-field-container">
+          <div className="input-field">
           <label>
             <input
               type="text"
@@ -102,7 +102,7 @@ function EditSpotForm({setShowModal}) {
           </label>
           </div>
           
-          <div className="form-input-container">
+          <div className="input-field">
           <label>
             <input
               type="text"
@@ -113,7 +113,7 @@ function EditSpotForm({setShowModal}) {
           </label>
           </div>
           
-          <div className="form-input-container">
+          <div className="input-field">
           <label>
             <input
               type="text"
@@ -124,7 +124,7 @@ function EditSpotForm({setShowModal}) {
           </label>
           </div>
 
-          <div className="form-input-container">
+          <div className="input-field">
           <label>
             <input
               type="text"
@@ -135,7 +135,7 @@ function EditSpotForm({setShowModal}) {
           </label>
             </div>
             
-            <div className="form-input-container">
+            <div className="input-field">
           <label>
             <input
               type="number"
@@ -143,25 +143,23 @@ function EditSpotForm({setShowModal}) {
               name="latitude"
               placeholder ='Latitude'
               onChange={(e) => setLat(e.target.value)}
-              // min='-90'
-              // max='90'
+          
             />
           </label>
             </div>
-            <div className="form-input-container">
+            <div className="input-field">
           <label> 
             <input
               type="number"
               value={lng}
               placeholder = 'Longitude'
               onChange={(e) => setLng(e.target.value)}
-              // min='-180'
-              // max='180'
+              
             />
           </label>
             </div>
 
-            <div className="form-input-container">
+            <div className="input-field">
           <label>
             <input
               type="text"
@@ -172,18 +170,18 @@ function EditSpotForm({setShowModal}) {
             />
           </label>
             </div>
-            <div className="form-input-container">
+            <div className="input-field">
           <label>
             <input
               type="text"
               value={price}
               placeholder = 'Price'
               onChange={(e) => setPrice(e.target.value)}
-              // min='0'
+            
             />
           </label>
             </div>
-            <div className="form-input-container text-area">
+            <div className="input-field text-area">
           <label>
             <textarea
               value={description}
@@ -192,7 +190,7 @@ function EditSpotForm({setShowModal}) {
             />
           </label>
           </div>
-
+        </div>
 
           <button 
           type="submit"
@@ -203,7 +201,7 @@ function EditSpotForm({setShowModal}) {
           </button>       
   
         </form>
-      </div>
+     
 
     </div>
 

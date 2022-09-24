@@ -1,0 +1,64 @@
+.edit-spot-button{
+    background-color: #db0d64;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 12px;
+    cursor:pointer;
+}
+
+.form-container{
+    padding-top: 10px;
+    width:550px;
+    height: auto;
+    border: 2px solid rgb(94, 93, 93);
+    border-radius: 15px;
+    padding:10px;
+    background-color: white;
+}
+.form-header{
+  
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif; 
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgb(201, 201, 201);
+    padding-top: 8px;
+    padding-bottom: 13px
+
+}
+.error-message{
+    color: #db0d64;
+    margin-top: 2px;
+    margin-bottom:1px
+}
+.input-field-container{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(197, 194, 194);
+    margin-top: 60px
+}
+.input-field input{
+    border: 0 none;
+    outline: none;
+    width: 99%;
+    height: 50px;
+    font-size: 20px;  
+
+}
+.input-field textarea{
+    border: 0 none;
+    outline: none;
+    width: 99%;
+    height: 50px;
+    font-size: 20px;  
+}
+.input-field{
+    border-bottom: 2px solid rgb(197, 194, 194);
+}
+
+li{
+    list-style-type: none;
+}

@@ -1,17 +1,17 @@
 import './SingleSpot.css';
-import {useParams, useHistory} from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getOneSpot , deleteSpot} from '../../store/spots';
-import { getAllReviewsBySpot} from '../../store/review';
+import { getOneSpot, deleteSpot } from '../../store/spots';
+import { getAllReviewsBySpot } from '../../store/review';
 import EditSpotModal from '../EditSpotModal';
 import CreateReviewModal from '../CreateReviewModal';
 import SpotReview from '../SpotReview';
 
 
-export function SingleSpot(){
-    
-    const {spotId} = useParams()
+export function SingleSpot() {
+
+    const { spotId } = useParams()
     const dispatch = useDispatch();
     const history = useHistory()
     const oneSpotById = useSelector(state => state.spots.singleSpot)
@@ -20,65 +20,76 @@ export function SingleSpot(){
     //console.log('reviews!!!!!!!!!!!!!!', reviews)
 
     const reviewContents = Object.values(reviews)
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(getOneSpot(spotId))
         dispatch(getAllReviewsBySpot(spotId))
     }, [dispatch, spotId])
 
-   
-    let currUserIsOwner = false;
-    if(currUser && currUser.id === oneSpotById.ownerId) currUserIsOwner = true;
 
-    const deleteSpotButton = async(e) => {
+    let currUserIsOwner = false;
+    if (currUser && "id" in currUser && currUser.id === oneSpotById.ownerId) currUserIsOwner = true;
+
+    const deleteSpotButton = async (e) => {
         e.preventDefault();
         await dispatch(deleteSpot(spotId))
         history.push('/')
     }
-    
-   
-    if(Object.keys(oneSpotById).length === 0) return null
-     //console.log('oneSpotById!!!!!!!', oneSpotById)
-     //console.log('reviewContents*************', reviewContents)
-     //console.log('currUser!!!!!!', currUser.id)
-     
+
+
+    if (Object.keys(oneSpotById).length === 0) return null
+    //console.log('oneSpotById!!!!!!!', oneSpotById)
+    //console.log('reviewContents*************', reviewContents)
+    //console.log('currUser!!!!!!', currUser.id)
+
     let userCreatedReview = false
-    let filteredContents = reviewContents.filter (reviewContent => reviewContent.userId === currUser.id) 
-    
-    //console.log('filteredContents!!!!!!!!!!!', filteredContents)
-    if(filteredContents.length > 0) userCreatedReview = true
+    if (currUser && "id" in currUser) {
+        let filteredContents = reviewContents.filter(reviewContent => reviewContent.userId === currUser.id)
+
+        //console.log('filteredContents!!!!!!!!!!!', filteredContents)
+        if (filteredContents.length > 0) userCreatedReview = true
+    } else
+        userCreatedReview = true;
 
 
-    return(
+    return (
         <div className='single-spot-info'>
             <div className='spot-name'>
-                {oneSpotById?.name }
+                {oneSpotById?.name}
             </div>
-            <div className='rating-star'>
-            <i className="fa-solid fa-star"></i>
-            </div>
-            <div className='single-spot-rating'>
-            {Number(oneSpotById.avgStarRating) !==0 ? Number(oneSpotById.avgStarRating).toFixed(1) : ` New`}
-            </div>
-            <div className="space"> · </div>
-            <div className='single-spot-review'>
-    
-                {oneSpotById?.numReviews} reviews
-            
-            </div>
-            <div className='single-spot-location'>{`${oneSpotById.city}, ${oneSpotById.state}, ${oneSpotById.country}`}</div>
-            
-            {currUserIsOwner && (
-                <div className='owner-for-spot'>
-                    <button onClick={deleteSpotButton}>Delete your spot</button>
-                    <EditSpotModal spotId={spotId} />
+
+            <div className='star-rating-review-location'>
+                <div className="info-without-button">
+                    <div className='rating-star'>
+                        <i className="fa-solid fa-star"></i>
+                        {Number(oneSpotById.avgStarRating) !== 0 ? Number(oneSpotById.avgStarRating).toFixed(1) : ` New`}
+                    </div>
+                    <div className="space">  ·  </div>
+                    <div className='single-spot-review'>
+
+                        {oneSpotById?.numReviews} reviews
+
+                    </div>
+
+                    <div className="space">  ·  </div>
+                    <div className='single-spot-location'>{`${oneSpotById.city}, ${oneSpotById.state}, ${oneSpotById.country}`}</div>
                 </div>
-          
-            )}
-           
+
+                <div className='buttons'>
+
+                    {currUserIsOwner && (
+                        <div >
+                            <button onClick={deleteSpotButton} className='delete-spot-button'>Delete spot</button>
+                            <EditSpotModal spotId={spotId} />
+                        </div>
+
+                    )}
+                </div>
+            </div>
+
             <div className='single-spot-img'>
-               
-                {oneSpotById.SpotImages.map(img => 
-                    (<img key={img.id} src={img.url} alt={img.url} style={{height:300, width:300}} />)
+
+                {oneSpotById.SpotImages.map(img =>
+                    (<img key={img.id} src={img.url} alt={img.url} style={{ height: 300, width: 300 }} />)
                 )}
             </div>
             <div className='single-spot-owner'>
@@ -86,17 +97,17 @@ export function SingleSpot(){
 
             </div>
             <div className='single-spot-price'>
-                    {`$${oneSpotById.price} `} night
+                {`$${oneSpotById.price} `} night
             </div>
             <div className='single-spot-description'>
                 Description: {oneSpotById.description}
             </div>
-            
+
             <div className='rating-star'>
-            <i className="fa-solid fa-star"></i>
-            </div>      
+                <i className="fa-solid fa-star"></i>
+            </div>
             <div className='single-spot-rating'>
-            {Number(oneSpotById.avgStarRating) !==0 ? Number(oneSpotById.avgStarRating).toFixed(1) : ` New`}
+                {Number(oneSpotById.avgStarRating) !== 0 ? Number(oneSpotById.avgStarRating).toFixed(1) : ` New`}
             </div>
             <div className="space"> · </div>
             <div className='single-spot-review'>

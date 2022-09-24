@@ -2,7 +2,7 @@
 .loginform-container{
    padding-top: 10px;
    width:550px;
-   height: 500px;
+   height: auto;
    border: 2px rgb(94, 93, 93);
    border-radius: 15px;
    /* box-shadow: 0 0 0 6px rgba(94, 93, 93); */
@@ -25,7 +25,7 @@
 }
 
 .nav-header{
-    margin-top:40px;
+    margin-top:30px;
     margin-bottom: 15px;
     font-size: 25px;
     font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif; 
@@ -57,7 +57,7 @@
 .input-field input{
     border: 0 none;
     outline: none;
-    width: 95%;
+    width: 99%;
     height: 50px;
     font-size: 20px;
     

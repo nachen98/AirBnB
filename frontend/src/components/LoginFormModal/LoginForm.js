@@ -38,13 +38,14 @@ function LoginForm() {
         <div className="nav-header">
           Welcome to funfairbnb!
         </div>
-        <div className="error-message">
+        {errors.length > 0 && (<div className="error-message">
+         
           <ul>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
           </ul>
-        </div>
+        </div>)}
         <div className="field-container">
         <div className="input-field-container">
         <div className="input-field email">

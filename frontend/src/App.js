@@ -16,17 +16,21 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <SpotsList />
-          </Route>
-          <Route path="/spots/:spotId">
-            <SingleSpot />
-          </Route>
-        </Switch>
-      )}
+
+      <Switch>
+
+        <Route exact path="/">
+          <Navigation isLoaded={isLoaded} NavBar="NavBar" />
+          {isLoaded && (
+            <SpotsList />)}
+        </Route>
+        <Route path="/spots/:spotId">
+          <Navigation isLoaded={isLoaded} NavBar="NavBarNarrow"/>
+          {isLoaded && (
+            <SingleSpot />)}
+        </Route>
+      </Switch>
+
     </>
   );
 }
