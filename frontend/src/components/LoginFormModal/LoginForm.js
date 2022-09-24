@@ -32,11 +32,11 @@ function LoginForm() {
     <form onSubmit={handleSubmit}>
       <div className="loginform-container">
         <div className="nav-container">
-          Log in or sign up
+          Log in
         </div>
 
         <div className="nav-header">
-          Welcome to FunFairBnB!
+          Welcome to funfairbnb!
         </div>
         <div className="error-message">
           <ul>
@@ -45,11 +45,12 @@ function LoginForm() {
             ))}
           </ul>
         </div>
+        <div className="field-container">
         <div className="input-field-container">
         <div className="input-field email">
         <label>
           
-          <input
+          <input className="input"
             type="text"
             value={credential}
             placeholder="Username or Email"
@@ -61,7 +62,7 @@ function LoginForm() {
       
         <div className="input-field">
         <label>
-          <input
+          <input className="input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -76,6 +77,7 @@ function LoginForm() {
           </div>      
         <div className="demo-button">
         <button onClick={demoUserLogin}>Log in as demo user</button>
+        </div>
         </div>
       </div>
     </form>

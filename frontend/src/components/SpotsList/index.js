@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSpots } from '../../store/spots';
 import SpotCards from '../SpotCards';
+import "./SpotsList.css"
 const SpotsList = () => {
     const dispatch = useDispatch();
     const spotsList = useSelector ((state => state.spots.allSpots))
@@ -18,14 +19,12 @@ const SpotsList = () => {
 
     return (
         <div className='outer-container'>
-            <div className='inner-container'>
+            
                 {spots.map((spot) => (
                     <div className='most-inner-container'>
                         <SpotCards key={spot.id} spot={spot} />
                     </div>
                 ))}
-
-            </div>
 
         </div>
     )

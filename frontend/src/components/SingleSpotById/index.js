@@ -8,6 +8,7 @@ import EditSpotModal from '../EditSpotModal';
 import CreateReviewModal from '../CreateReviewModal';
 import SpotReview from '../SpotReview';
 
+
 export function SingleSpot(){
     
     const {spotId} = useParams()
@@ -24,6 +25,7 @@ export function SingleSpot(){
         dispatch(getAllReviewsBySpot(spotId))
     }, [dispatch, spotId])
 
+   
     let currUserIsOwner = false;
     if(currUser && currUser.id === oneSpotById.ownerId) currUserIsOwner = true;
 

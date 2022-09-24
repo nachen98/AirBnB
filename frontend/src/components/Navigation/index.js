@@ -31,7 +31,7 @@ function Navigation({ isLoaded }){
     <div className='NavBar'>
       <NavLink exact to="/" className="navlink">
         <img src={logo} className='logo-picture' alt='logo' />
-        <h1>FunFairBnB</h1>
+        <h1>funfairbnb</h1>
       </NavLink>
       <div className='RightNav'>
         {isLoaded && sessionLinks}

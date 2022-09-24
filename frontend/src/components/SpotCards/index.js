@@ -5,27 +5,24 @@ export default function SpotCards({ spot }) {
         <div className='link-for-spot'>
             <Link to={`/spots/${spot.id}`} >
 
-                <img src={spot.previewImage} className='spotcard-img'
-                    style={{ height: 100, width: 100 }}
-                />
+                <img src={spot.previewImage} className='spotcard-img' />
                 <div className="spotcard-info">
-                    <div className="spotcard-location">
-                        {spot.city},{spot.state}
-                    </div>
-                    <div className='rating-star'>
-                        <i className="fa-solid fa-star"></i>
-                    </div>
-                    <div className='single-spot-rating'>
-                        {Number(spot.avgRating).toFixed(1)}
+                    <div className="location-plus-rating">
+
+
+                        <div className="spotcard-location">
+                            {spot.city},{spot.state}
+                        </div>
+                        <div className='rating-star'>
+                            <i className="fa-solid fa-star"></i>
+                            {Number(spot.avgRating).toFixed(1)}
+                        </div>
                     </div>
                     <div className="location-price">
-                        {`$${spot.price} `}
-                        <span>night</span>
+                        <span style={{ fontWeight: 'bold' }}> {`$${spot.price} `}</span> night
                     </div>
                 </div>
             </Link>
-
-
         </div>
     )
 }
