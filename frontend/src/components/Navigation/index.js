@@ -6,6 +6,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import SignUpFormModal from '../SignupFormModal';
+import logo from '../../Images/logo.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -28,8 +29,9 @@ function Navigation({ isLoaded }){
   return (
     <div className='NavContainer'>
     <div className='NavBar'>
-      <NavLink exact to="/">
-        Home
+      <NavLink exact to="/" className="navlink">
+        <img src={logo} className='logo-picture' alt='logo' />
+        <h1>FunFairBnB</h1>
       </NavLink>
       <div className='RightNav'>
         {isLoaded && sessionLinks}

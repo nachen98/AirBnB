@@ -1,0 +1,80 @@
+.loginform-container{
+   padding-top: 10px;
+   width:550px;
+   height: 450px;
+   border: 2px solid rgb(94, 93, 93);
+   border-style:hidden;
+   border-radius: 15px;
+   box-shadow: 0 0 0 6px rgba(94, 93, 93);
+   padding:10px
+   
+}
+.nav-container{
+
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif; 
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgb(201, 201, 201);
+    padding-top: 8px;
+    padding-bottom: 13px
+}
+
+.nav-header{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 25px;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif; 
+    padding-left: 10px;
+    font-weight: 500;
+}
+.error-message{
+    color: #db0d64;
+}
+.input-field-container{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(197, 194, 194);
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.input-field input{
+    border: 0 none;
+    outline: none;
+    width: 95%;
+    height: 50px;
+    font-size: 20px
+}
+
+li{
+    list-style-type: none;
+}
+
+.input-field.email{
+    border-bottom: 2px solid rgb(197, 194, 194);
+}
+
+.login-button{
+    width: 100%;
+    border: none;
+    background-color: #db0d64;
+    margin-top: 30px;
+    height: 50px;
+    margin-left: 10px;
+    margin-right: 50px;
+    border-radius: 10px;
+}
+
+.demo-button{
+    width: 100%;
+    border: none;
+    background-color: #db0d64;
+    margin-top: 30px;
+    height: 50px;
+    margin-left: 10px;
+    margin-right: 50px;
+    border-radius: 10px;
+}

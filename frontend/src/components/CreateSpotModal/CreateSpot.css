@@ -1,0 +1,19 @@
+.host-button{
+    position:relative;
+    right: 60px;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif; 
+    padding: 5px 10px;
+    top: 10px;
+    border-radius: 12px;
+    border:none;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.host-button:hover{
+    background-color: rgb(243, 242, 242);
+}

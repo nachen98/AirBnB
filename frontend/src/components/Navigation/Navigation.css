@@ -1,4 +1,153 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+.NavContainer{
+    border-bottom: 2px solid rgb(236, 232, 232);
+}
 .NavBar{
     display:flex;
-    justify-content: space-between
+    justify-content: space-between;
+    margin: 0 14% 0 14%;
+    height: 80px
+}
+
+.navlink{
+    background-color: yellow;
+    color: palevioletred;
+    position: relative;
+}
+
+.navlink h1{
+    position: relative;
+    bottom: 75px;
+    left: 70px;
+    font-family: cursive;
+    font-size: 25px;
+}
+
+.navlink img{
+    width: 60px;
+    height: 80px;
+}
+
+#login-nav{
+    position:relative;
+    right: 50px;
+    color: black;
+    font-size: 20px;
+    font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    padding: 5px 10px;
+    top: 15px;
+    border-radius: 12px;
+    border: none;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+#signup-nav{
+    position:relative;
+    right: 10px;
+    color: black;
+    font-size: 20px;
+    font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    padding: 5px 10px;
+    top: 15px;
+    border-radius: 12px;
+    border: none;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+#login-nav:hover{
+    transition: 0.3s;
+    box-shadow: 0px 2px 2px 2px rgba(128, 128, 128, 0.5);
+}
+
+#signup-nav:hover{
+    transition: 0.3s;
+    box-shadow: 0px 2px 2px 2px rgba(128, 128, 128, 0.5);
+}
+
+.profile-button{
+    padding:  10px 20px;
+    position:relative;
+    right:30px;
+    top: 20px;
+    border-radius: 30px;
+    background-color: white;
+    /* border-color: rgb(244, 243, 243); */
+    /* width: 30px; */
+    height: 50px;
+    /* outline-color: rgb(225, 217, 217); */
+    border-top: 2px solid rgb(222, 219, 219);
+    border-bottom: 2px solid rgb(222, 219, 219);
+    border-left: 2px solid rgb(222, 219, 219);
+    border-right: 2px solid rgb(222, 219, 219);
+    cursor: pointer;
+}
+
+.profile-button:hover{
+    transition: 0.3s;
+    box-shadow: 0px 2px 2px 2px rgba(128, 128, 128, 0.5)
+}
+
+.fa-solid.fa-bars{
+    position:relative;
+    right: 8px;
+    /* width: 20px;
+    height: 20px; */
+    font-size:20px;
+    bottom: 3px
+}
+
+.fas.fa-user-circle{
+    position:relative;
+    font-size: 30px;
+    left: 8px;
+    /* width: 20px;
+    height: 20px;*/
+}
+
+/* .profile-dropdown{
+    /* background-color: blue; */
+    /* position: relative;
+    left: 90px;
+    top: 15px;
+    
+} */ 
+
+.div-profile-dropdown{
+    border: 2px solid rgb(213, 212, 212);
+    border-radius: 10px;
+    position: relative;
+    top: 20px;
+    right: 45px;
+    margin-top: 10px;
+    height: 100px;
+    width: 222px;
+    box-shadow: 2px 2px 2px 0px rgba(195, 195, 195, 0.6);
+}
+li{
+    list-style-type: none;
+    font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    padding: 5px;
+    position: relative;
+    right: 20px;
+    bottom: 5px
+}
+
+.logout-button{
+    font-size: 16px;
+    background: none;
+    border: none;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    text-align: left;
+    position: relative;
+    right: 3px
+ 
+}
+.button-li:hover{
+    background-color: rgb(243, 242, 242);
+    background: stretch;
 }
