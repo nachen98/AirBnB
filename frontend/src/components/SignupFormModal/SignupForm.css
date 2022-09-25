@@ -78,7 +78,7 @@ li{
     color: white;
     width: 97%;
     border: none;
-    background-color: #db0d64;
+    background: linear-gradient(45deg, rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
     margin-top: 40px;
     height: 45px;
     margin-left: 10px;
@@ -87,4 +87,7 @@ li{
     cursor: pointer;
     
     
+}
+.signup-button button:hover{
+    background: linear-gradient(45deg,  rgb(248, 112, 15), rgb(244, 27, 63));
 }

@@ -79,7 +79,7 @@ input:focus{
 .login-button button{
     width: 97%;
     border: none;
-    background-color: #db0d64;
+    background: linear-gradient(45deg, rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
     margin-top: 40px;
     height: 45px;
     margin-left: 10px;
@@ -90,10 +90,13 @@ input:focus{
     font-size: 20px
 }
 
+.login-button button:hover{
+    background: linear-gradient(45deg,  rgb(248, 112, 15), rgb(244, 27, 63));
+}
 .demo-button button{
     width: 97%;
     border: none;
-    background-color: #db0d64;
+    background: linear-gradient(45deg,  rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
     margin-top: 35px;
     height: 45px;
     margin-left: 10px;
@@ -103,7 +106,7 @@ input:focus{
     color: white;
     font-size: 20px
 }
-/* .field-container{
- 
-    /* margin-top: 50px */
 
+.demo-button button:hover{
+    background: linear-gradient(45deg,  rgb(248, 112, 15), rgb(244, 27, 63));
+}
