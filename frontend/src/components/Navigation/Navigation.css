@@ -28,7 +28,7 @@
     position: relative;
     bottom:55px;
     left: 50px;
-    font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    font-family:Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
     font-size: 20px;
 }
 
@@ -43,7 +43,7 @@
     right: 50px;
     color: black;
     font-size: 20px;
-    font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    font-family:Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
     padding: 5px 10px;
     top: 15px;
     border-radius: 12px;
@@ -58,7 +58,7 @@
     right: 10px;
     color: black;
     font-size: 20px;
-    font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    font-family:Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
     padding: 5px 10px;
     top: 15px;
     border-radius: 12px;
@@ -102,11 +102,11 @@
 
 .fa-solid.fa-bars{
     position:relative;
-    right: 8px;
+    right: 5px;
     /* width: 20px;
     height: 20px; */
     font-size:20px;
-    bottom: 3px
+    bottom: 5px
 }
 
 .fas.fa-user-circle{
@@ -139,7 +139,7 @@
 }
 li{
     list-style-type: none;
-    font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    font-family:Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
     padding: 5px;
     position: relative;
     right: 20px;
@@ -150,14 +150,24 @@ li{
     font-size: 16px;
     background: none;
     border: none;
-    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    font-family: Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
     text-align: left;
     position: relative;
     right: 3px;
     cursor: pointer;
+    
  
 }
 .button-li:hover{
     background-color: rgb(243, 242, 242);
     background: stretch;
+}
+.button-li{
+    cursor: pointer;
+    padding: 7px 0 7px 30px;
+    font-family: Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
+}
+.user-info{
+    padding: 7px 0 7px 30px;
+    font-family: Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
 }

@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     margin: 2% 24% 0 24%;
-    font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    font-family:Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif
 }
 .spot-name{
     font-size: 1.5em;
@@ -43,21 +43,24 @@
     margin-right: 10px
 }
 
-.single-spot-img{
+/* .single-spot-img{
     margin: 4% 24% 10% 24%;
-}
+} */
 img{
     width: 100%;
     object-fit: cover;
+    border-radius: 15px
 }
 
 .single-spot-info-container{
     display: flex;
     justify-content: space-between;
+    margin-top: 50px
 
 }
 .spot-info-left{
-    width: 75%
+    width: 70%;
+    border-bottom: 1px solid rgb(223, 222, 222);
 }
 
 .single-spot-owner{
@@ -68,6 +71,7 @@ img{
 .single-spot-description{
     border-top: 1px solid rgb(223, 222, 222);
     padding-top: 5px;
+    
 }
 
 .spot-info-right{
@@ -75,13 +79,36 @@ img{
     box-shadow: 0 0 5px grey;
     border: 1px solid grey;
     border-radius: 15px;
-    height: 150px;
-    padding: 20px;
-    width: 40%;
+    height: 100px;
+    padding: 30px;
+    width: 30%;
     cursor: pointer;
     justify-content: space-between;
 }
 .single-spot-price span{
     font-size: 20px;
     font-weight: 800
+}
+
+.star-reviews{
+    display:flex;
+    flex-direction: row;
+}
+
+.space{
+    margin-left: 4px;
+    margin-right: 4px
+}
+
+.review-container{
+    margin-top: 50px
+}
+
+i{
+    margin-right: 5px
+}
+
+.big-star-reviews{
+    font-size: 40px;
+    font-weight:800
 }

@@ -106,7 +106,7 @@ export function SingleSpot() {
 
                 <div className='spot-info-right'>
                     <div className='single-spot-price'>
-                    <span style={{ fontWeight: 'bold' }}> {`$${oneSpotById.price} `}</span> night
+                        <span style={{ fontWeight: 'bold' }}> {`$${oneSpotById.price} `}</span> night
                     </div>
                     <div className='star-reviews'>
 
@@ -121,37 +121,42 @@ export function SingleSpot() {
 
                         </div>
 
-                        <div className="space">  ·  </div>
+
                     </div>
                 </div>
 
 
             </div>
+            <div className='review-container'>
 
-            <div className='rating-star'>
-                <i className="fa-solid fa-star"></i>
-            </div>
-            <div className='single-spot-rating'>
-                {Number(oneSpotById.avgStarRating) !== 0 ? Number(oneSpotById.avgStarRating).toFixed(1) : ` New`}
-            </div>
-            <div className="space"> · </div>
-            <div className='single-spot-review'>
-                {oneSpotById?.numReviews} reviews
-            </div>
+                <div className='star-reviews'>
 
-            {!userCreatedReview && !currUserIsOwner && (
-                <div className='user-create-review'>
-                    <CreateReviewModal spotId={spotId} />
+                    <div className='rating-star'>
+                   
+                        <i className="fa-solid fa-star fa-1.75x"></i>
+                        {Number(oneSpotById.avgStarRating) !== 0 ? Number(oneSpotById.avgStarRating).toFixed(1) : ` New`}
+                    </div>
+                    <div className="space">  ·  </div>
+                    <div className='single-spot-review'>
+                        {oneSpotById?.numReviews} reviews
+                    </div>
+
+                    {!userCreatedReview && !currUserIsOwner && (
+                        <div className='user-create-review'>
+                            <CreateReviewModal spotId={spotId} />
+                        </div>
+                    )}
+
                 </div>
-            )}
-
-            {reviewContents.map(reviewContent => {
-                console.log('reviewContent333333333333', reviewContent)
-                return (<SpotReview key={reviewContent.id} reviewContent={reviewContent} />)
-            }
-            )}
 
 
+                {reviewContents.map(reviewContent => {
+                    console.log('reviewContent333333333333', reviewContent)
+                    return (<SpotReview key={reviewContent.id} reviewContent={reviewContent} />)
+                }
+                )}
+
+            </div>
         </div>
     )
 }
