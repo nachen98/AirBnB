@@ -92,15 +92,40 @@ export function SingleSpot() {
                     (<img key={img.id} src={img.url} alt={img.url} />)
                 )}
             </div>
-            <div className='single-spot-owner'>
-                <h2>Hosted by: {oneSpotById.Owner.firstName} {oneSpotById.Owner.lastName}</h2>
+            <div className='single-spot-info-container'>
+                <div className='spot-info-left'>
+                    <div className='single-spot-owner'>
+                        <spa>Home hosted by: {oneSpotById.Owner.firstName} {oneSpotById.Owner.lastName}  </spa>
 
-            </div>
-            <div className='single-spot-price'>
-                {`$${oneSpotById.price} `} night
-            </div>
-            <div className='single-spot-description'>
-                Description: {oneSpotById.description}
+                    </div>
+                    <div className='single-spot-description'>
+                        <span>{oneSpotById.description}</span>
+                    </div>
+
+                </div>
+
+                <div className='spot-info-right'>
+                    <div className='single-spot-price'>
+                    <span style={{ fontWeight: 'bold' }}> {`$${oneSpotById.price} `}</span> night
+                    </div>
+                    <div className='star-reviews'>
+
+                        <div className='rating-star'>
+                            <i className="fa-solid fa-star"></i>
+                            {Number(oneSpotById.avgStarRating) !== 0 ? Number(oneSpotById.avgStarRating).toFixed(1) : ` New`}
+                        </div>
+                        <div className="space">  ·  </div>
+                        <div className='single-spot-review'>
+
+                            {oneSpotById?.numReviews} reviews
+
+                        </div>
+
+                        <div className="space">  ·  </div>
+                    </div>
+                </div>
+
+
             </div>
 
             <div className='rating-star'>

@@ -6,8 +6,9 @@
     font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
 }
 .spot-name{
-    font-size: 30px;
+    font-size: 1.5em;
     margin-bottom: 10px;
+    font-weight: 600
 }
 
 .star-rating-review-location{
@@ -43,9 +44,44 @@
 }
 
 .single-spot-img{
-    margin: 2% 24% 0 24%;
+    margin: 4% 24% 10% 24%;
 }
 img{
     width: 100%;
     object-fit: cover;
+}
+
+.single-spot-info-container{
+    display: flex;
+    justify-content: space-between;
+
+}
+.spot-info-left{
+    width: 75%
+}
+
+.single-spot-owner{
+    font-size: 20px;
+    padding-bottom: 10px
+}
+
+.single-spot-description{
+    border-top: 1px solid rgb(223, 222, 222);
+    padding-top: 5px;
+}
+
+.spot-info-right{
+    display: flex;
+    box-shadow: 0 0 5px grey;
+    border: 1px solid grey;
+    border-radius: 15px;
+    height: 150px;
+    padding: 20px;
+    width: 40%;
+    cursor: pointer;
+    justify-content: space-between;
+}
+.single-spot-price span{
+    font-size: 20px;
+    font-weight: 800
 }
