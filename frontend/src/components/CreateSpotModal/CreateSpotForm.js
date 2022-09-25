@@ -99,10 +99,10 @@ function CreateSpotForm({ setShowModal }) {
       </div>
       <div className="form-body">
         <form onSubmit={handleSubmit}>
-          {errors.length > 0 && (<div className="error-message">
-            <ul>
-              {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
+          {errors.length > 0 && (<div className="error-message-create-spot">
+          
+              {errors.map((error, idx) => <div key={idx}>{error}</div>)}
+          
           </div>)}
           <div className="input-field-container">
             <div className="input-field">

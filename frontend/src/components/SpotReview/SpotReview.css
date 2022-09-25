@@ -1,0 +1,27 @@
+
+.individual-review-container{
+    margin-top: 40px
+}
+
+.user-name{
+    font-weight:700;
+    font-size: 20px
+}
+
+.review-time{
+    color: grey;
+}
+.review-info{
+    margin-top: 10px
+}
+
+
+.delete-review-button button{
+    background-color: #db0d64;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 12px;
+    cursor:pointer;
+    margin-right: 10px
+}

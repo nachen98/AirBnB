@@ -17,3 +17,10 @@
 .host-button:hover{
     background-color: rgb(243, 242, 242);
 }
+.error-message-create-spot{
+    margin-left: 8px;
+    color: #db0d64;
+    margin-top: 2px;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif; 
+    height: auto
+}

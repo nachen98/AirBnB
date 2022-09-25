@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./CreateReview.css"
 import { addReview } from '../../store/review';
 import { useParams } from "react-router-dom";
-
+import {getOneSpot} from "../../store/spots"
 function CreateReviewForm({ setShowModal }) {
     const { spotId } = useParams()
     const dispatch = useDispatch();
@@ -27,13 +27,23 @@ function CreateReviewForm({ setShowModal }) {
             return;
         }
 
-        dispatch(addReview({ stars, review }, spotId, user)).then(
-            async (res) => {
-                //console.log('res%%%%%%%%%%%%', res)
-                const data = res;//await res.json();
-                if (data && data.errors) {
-                    setErrors(data.errors);
+        // dispatch(addReview({ stars, review }, spotId, user)).then(
+        //     async (res) => {
+        //         //console.log('res%%%%%%%%%%%%', res)
+        //         const data = res;//await res.json();
+        //         if (data && data.errors) {
+        //             setErrors(data.errors);
+        //         } else {
+        //             setShowModal(false)
+        //         }
+        //     }
+        // )
+        dispatch (addReview({stars, review}, spotId, user)).then(
+            async(res) => {
+                if(res && res.errors){
+                    setErrors(res.errors);
                 } else {
+                    dispatch(getOneSpot(spotId))
                     setShowModal(false)
                 }
             }

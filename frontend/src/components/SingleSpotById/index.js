@@ -26,6 +26,7 @@ export function SingleSpot() {
     }, [dispatch, spotId])
 
 
+
     let currUserIsOwner = false;
     if (currUser && "id" in currUser && currUser.id === oneSpotById.ownerId) currUserIsOwner = true;
 
@@ -146,10 +147,10 @@ export function SingleSpot() {
                     )}
 
                 </div>
-
+                        
 
                 {reviewContents.map(reviewContent => {
-                    console.log('reviewContent333333333333', reviewContent)
+                    
                     return (<SpotReview key={reviewContent.id} reviewContent={reviewContent} />)
                 }
                 )}
