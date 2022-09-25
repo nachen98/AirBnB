@@ -41,3 +41,11 @@
     cursor:pointer;
     margin-right: 10px
 }
+
+.single-spot-img{
+    margin: 2% 24% 0 24%;
+}
+img{
+    width: 100%;
+    object-fit: cover;
+}
