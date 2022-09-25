@@ -49,9 +49,15 @@
 img{
     width: 100%;
     object-fit: cover;
-    border-radius: 15px
+    border-radius: 15px;
+    cursor: pointer;
+    transition-duration: 200ms
 }
 
+img:hover{
+    filter: brightness(90%);
+    transition-duration: 200ms
+}
 .single-spot-info-container{
     display: flex;
     justify-content: space-between;
@@ -104,11 +110,22 @@ img{
     margin-top: 50px
 }
 
+input:focus{
+    border:1px solid black
+}
+
+textarea:focus{
+    border:1px solid black
+}
+  
 i{
     margin-right: 5px
 }
 
 .big-star-reviews{
-    font-size: 40px;
-    font-weight:800
+    display:flex;
+    flex-direction: row;
+    font-size: 23px;
+    font-weight:500
 }
+

@@ -6,8 +6,9 @@ function CreateReviewModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
+
     <>
-      <button onClick={() => setShowModal(true)}>Create a Review</button>
+      <button onClick={() => setShowModal(true)} className='create-review-button'>Create a Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CreateReviewForm setShowModal={setShowModal}/>

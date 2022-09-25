@@ -70,9 +70,12 @@ li{
 .input-field.email{
     border-bottom: 2px solid rgb(197, 194, 194);
 }
+
 input:focus{
-  border:2px solid black
+  border:1px solid black
 }
+
+
 .login-button button{
     width: 97%;
     border: none;

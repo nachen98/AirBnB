@@ -129,9 +129,9 @@ export function SingleSpot() {
             </div>
             <div className='review-container'>
 
-                <div className='star-reviews'>
+                <div className='big-star-reviews'>
 
-                    <div className='rating-star'>
+                    <div className='big-rating-star'>
                    
                         <i className="fa-solid fa-star fa-1.75x"></i>
                         {Number(oneSpotById.avgStarRating) !== 0 ? Number(oneSpotById.avgStarRating).toFixed(1) : ` New`}
@@ -142,9 +142,7 @@ export function SingleSpot() {
                     </div>
 
                     {!userCreatedReview && !currUserIsOwner && (
-                        <div className='user-create-review'>
-                            <CreateReviewModal spotId={spotId} />
-                        </div>
+                        <CreateReviewModal spotId={spotId} />
                     )}
 
                 </div>

@@ -1,0 +1,25 @@
+.create-review-button{
+    background-color: #db0d64;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 12px;
+    cursor:pointer;
+    margin-left: 10px
+}
+
+
+input:focus{
+    border:1px solid black
+}
+
+textarea:focus{
+    border:1px solid black
+}
+
+.error-message{
+    color: #db0d64;
+    margin-top: 2px;
+    margin-bottom:1px;
+    height: auto
+}
