@@ -1,7 +1,7 @@
 
 .loginform-container{
    padding-top: 10px;
-   width:550px;
+   width:350px;
    height: auto;
    border: 2px rgb(94, 93, 93);
    border-radius: 15px;
@@ -25,7 +25,7 @@
 }
 
 .nav-header{
-    margin-top:30px;
+    margin-top:10px;
     margin-bottom: 15px;
     font-size: 25px;
     font-family: Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif; 
@@ -44,31 +44,39 @@
 .input-field-container{
     display: flex;
     flex-direction: column;
-    border: 2px solid rgb(197, 194, 194);
+    border: 1px solid rgb(80, 80, 80);
     margin-left: 10px;
     margin-right: 10px;
-    border-radius: 10px;
+    border-radius: 4px;
     outline: none;
-    box-shadow: -1px -1px 1px 1px rgb(197, 194, 194);
+    /* box-shadow: -1px -1px 1px 1px rgb(80, 80, 80); */
     position:relative;
     bottom: 13px
 
 }
-.input-field input{
-    border: 0 none;
+.input-field-email input{
+    /* border: 0 none; */
     outline: none;
     width: 99%;
-    height: 50px;
+    height: 30px;
+    font-size: 20px;
+    
+    
+}
+.input-field-password input{
+    /* border: 0 none; */
+    outline: none;
+    width: 99%;
+    height: 30px;
     font-size: 20px;
     
 }
-
 li{
     list-style-type: none;
 }
 
 .input-field.email{
-    border-bottom: 2px solid rgb(197, 194, 194);
+    border-bottom: 1px solid rgb(80, 80, 80);
 }
 
 input:focus{
@@ -80,8 +88,8 @@ input:focus{
     width: 97%;
     border: none;
     background: linear-gradient(45deg, rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
-    margin-top: 40px;
-    height: 45px;
+    /* margin-top: 20px; */
+    height: 35px;
     margin-left: 10px;
     margin-right: 40px;
     border-radius: 10px;
@@ -97,8 +105,8 @@ input:focus{
     width: 97%;
     border: none;
     background: linear-gradient(45deg,  rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
-    margin-top: 35px;
-    height: 45px;
+    margin-top: 15px;
+    height: 35px;
     margin-left: 10px;
     margin-right: 50px;
     border-radius: 10px;

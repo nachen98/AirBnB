@@ -9,7 +9,7 @@
 
 .form-container{
     padding-top: 10px;
-    width:550px;
+    width:350px;
     height: auto;
     border: 2px solid rgb(94, 93, 93);
     border-radius: 15px;
@@ -39,14 +39,14 @@
 .input-field-container{
     display: flex;
     flex-direction: column;
-    border: 2px solid rgb(197, 194, 194);
+    border: 1px solid rgb(80, 80, 80);
     /* margin-top: 60px */
 }
 .input-field input{
     border: 0 none;
     outline: none;
     width: 99%;
-    height: 50px;
+    height: 20px;
     font-size: 20px;  
 
 }
@@ -58,7 +58,7 @@
     font-size: 20px;  
 }
 .input-field{
-    border-bottom: 2px solid rgb(197, 194, 194);
+    border-bottom: 1px solid rgb(80, 80, 80);
 }
 
 li{
@@ -78,7 +78,7 @@ li{
     width: 97%;
     border: none;
     background: linear-gradient(45deg, rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
-    margin-top: 40px;
+    /* margin-top: 40px; */
     height: 45px;
     margin-left: 10px;
 

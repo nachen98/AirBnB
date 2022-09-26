@@ -48,7 +48,7 @@ function LoginForm() {
         </div>)}
         <div className="field-container">
         <div className="input-field-container">
-        <div className="input-field email">
+        <div className="input-field-email">
         <label>
           
           <input className="input"
@@ -61,7 +61,7 @@ function LoginForm() {
         </label>   
         </div>
       
-        <div className="input-field">
+        <div className="input-field-password">
         <label>
           <input className="input"
             type="password"

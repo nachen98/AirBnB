@@ -1,6 +1,6 @@
 .signupform-container{
    padding-top: 10px;
-   width:550px;
+   width:350px;
    height: auto;
    border: 2px solid rgb(94, 93, 93);
    /* border-style:hidden; */
@@ -25,7 +25,7 @@
 }
 
 .nav-header{
-    margin-top: 40px;
+    margin-top: 10px;
     margin-bottom: 40px;
     font-size: 25px;
     font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif; 
@@ -41,23 +41,23 @@
 .input-field-container{
     display: flex;
     flex-direction: column;
-    border: 2px solid rgb(197, 194, 194);
+    border: 1px solid rgb(80, 80, 80);
     /* margin-left: 10px;
     margin-right: 10px;
     border-radius: 10px; */
-    margin-top: 20px
+    margin-top: 15px
 }
 .input-field input{
     border: 0 none;
     outline: none;
     width: 99%;
-    height: 50px;
-    font-size: 20px;  
+    height: 20px;
+    font-size: 10px;  
 
 }
 
 .input-field{
-    border-bottom: 2px solid rgb(197, 194, 194);
+    border-bottom: 1px solid rgb(80, 80, 80);
 }
 
 li{
@@ -65,7 +65,7 @@ li{
 }
 
 .signup-button{
-    margin-top: 10px;
+    margin-top: 0px;
     display:flex;
     flex-direction: center;
   
