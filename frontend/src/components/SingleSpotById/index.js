@@ -148,12 +148,14 @@ export function SingleSpot() {
 
                 </div>
                         
-
+                <div className='review-outer-container'>
                 {reviewContents.map(reviewContent => {
                     
                     return (<SpotReview key={reviewContent.id} reviewContent={reviewContent} />)
                 }
                 )}
+                </div>
+                
 
             </div>
         </div>

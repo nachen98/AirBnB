@@ -133,3 +133,8 @@ i{
     font-weight:500
 }
 
+.review-outer-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 20px
+}

@@ -31,6 +31,60 @@ FunFairBnB is a web application inspired by [AirBnB](https://www.airbnb.com/). I
 
 ## Features Directions:
 
+### Splashing Page
+
+Splended houses are displayed to everyone in a grid view. Clicking each spot will direct user to the spot detailed page.
+
+![image](frontend/src/Images/home-page.png)
+
+### Sign-up Form
+
+Want to be a host? You can sign up easily by filling out this modern sign-up form modal.
+
+![image](frontend/src/Images/sign-up.png)
+
+### Log-in Form
+
+Users are able to log-in to utilize more functions: becoming a host, creating a review... People can also log in as a demo user to browse the website.
+
+![image](frontend/src/Images/log-in.png)
+
+### Dropdown Menu
+
+The dropdown menu displays current user's info and the log-out tab.
+
+![image](frontend/src/Images/drop-down.png)
+
+### Create a Spot Form
+
+Filling out this creating spot form helps you attract travelers all around the world!
+
+![image](frontend/src/Images/createspot.png)
+
+### Spot Details Page
+
+Detailed info including the address, pictures, description, price, reviews, star ratings are rendered on this page neatly.
+
+![image](frontend/src/Images/single-page.png)
+
+### Update Spot Form
+
+Spot info can be conveniently updated by owners via this form.
+
+![image](frontend/src/Images/update-spot.png)
+
+### Create/Delete a Review
+
+Users can freely create and delete their own review on a spot.
+
+![image](frontend/src/Images/create-review.png)
+![image](frontend/src/Images/delete-review.png)
+
+## To-Do List:
+
+ - Add more spot images to a spot.
+ - Add booking feature for users to reserve a spot.
+ - Allow users to browse their own reviews and spots.
 
 ## Get Started:
 
@@ -41,4 +95,7 @@ FunFairBnB is a web application inspired by [AirBnB](https://www.airbnb.com/). I
 * Start running the frontend server by using 'npm start'.
 * The site is able to be viewed at http://localhost:3000/
 
-## Contact Information
+## Contact Information:
+
+www.linkedin.com/in/na-chen-pharmd2019
+https://github.com/nachen98
