@@ -6,7 +6,7 @@ import "./SpotsList.css"
 const SpotsList = () => {
     const dispatch = useDispatch();
     const spotsList = useSelector ((state => state.spots.allSpots))
-    console.log('spotsList!!!!!!!!!', spotsList)
+    //console.log('spotsList!!!!!!!!!', spotsList)
     const spots = Object.values(spotsList)
 
     //loaded the redux store with all the spots

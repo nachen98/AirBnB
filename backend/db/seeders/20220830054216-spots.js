@@ -34,7 +34,7 @@ module.exports = {
         "lng": -117.1792338,
         "name": "Castle in the Forest",
         "description": "Nestled in a deep canyon nearby serene Lake Arrowhead \u2013 you will find Southern California\u2019s secret gem: the Castle In the Forest. Surrounded by towering pine and dogwood trees, this secluded 10,000 square foot chateau provides an unforgettable intimate setting for your stay.",
-        "price": "3,450"
+        "price": "3450"
     },
     {
         "ownerId": 3,
@@ -46,7 +46,7 @@ module.exports = {
         "lng": -118.3963062,
         "name": "Chateau de Laurel",
         "description": "Cancel before 4:00 PM on Oct 1 and only get a refund of the hospitality fee.",
-        "price": "15,840"
+        "price": "15840"
     },
     {
         "ownerId": 4,
@@ -58,7 +58,7 @@ module.exports = {
         "lng": -117.18300401517857,
         "name": "Spectacular Lake Front Retreat",
         "description": "LUXURY LAKE FRONT historic property- newly remodeled with updated features! Relax in the Restoration Hardware furniture as you enjoy the wonderful lake views from nearly every room in the house. Features organic cotton mattresses (including 4 Cal Kings) & ultra-high end custom Pom Pom bedding throughout. This secluded beautifully landscaped property with serene waterfall & pond offers oversized parking accommodations with easy access to the home.",
-        "price": "2,000"
+        "price": "2000"
     },
     {
         "ownerId": 5,
@@ -70,7 +70,7 @@ module.exports = {
         "lng": -116.4354884,
         "name": "'Chateau Dumont' 18,000 sqft, 15 BR/13 BA Resort Compound",
         "description": "The Chateau Dumont (formerly known as the Solomon Estate) is a spectacular 5 acre paradise that sleeps 30, with 15 bedrooms, 13 bathrooms and 18,000 square feet in the heart of Rancho Mirage. One of a kind, and privately gated, its lovely grounds feature a Vegas-style pool and spa, professional lighted tennis court, beach volleyball court and ping pong. The picturesque grounds have swaying palms, lush grass, waterfalls, lakes with Koi fish and turtles, as well as kayaks available for use on the lake. Incredible outdoor living and dining, with plenty of areas to kick back with your group. Outdoor kitchen, dining, misters, fireplace and lounge chairs.",
-        "price": "3,928"
+        "price": "3928"
     },
     {
         "ownerId": 1,
@@ -82,7 +82,7 @@ module.exports = {
         "lng": -106.0465486,
         "name": "Luxury w/Mountain Views + Hot Tub/Elevator + Ski in/Ski out - Epic Retreat",
         "description": "With meticulous attention to detail and designed to deliver an epic experience, you will lack for nothing while vacationing at Epic Retreat, a ski-in/ski-out designer home.",
-        "price": "2,225"
+        "price": "2225"
     },
     {
         "ownerId": 2,
@@ -154,7 +154,7 @@ module.exports = {
         "lng": -89.729323,
         "name": "Dog-friendly home on private island w/boat landing",
         "description": "Take advantage of this once in a lifetime adventure in the Northwoods on your own private island on Katinka Lake!",
-        "price": "1,285"
+        "price": "1285"
     },
     {
         "ownerId": 3,
@@ -178,7 +178,7 @@ module.exports = {
         "lng": -118.689423,
         "name": "The Carbon",
         "description": "Cancel before 4:00 PM on Oct 1 and only get a refund of the hospitality fee.",
-        "price": "3,551"
+        "price": "3551"
     },
     {
         "ownerId": 5,
@@ -190,7 +190,7 @@ module.exports = {
         "lng": -105.3918464,
         "name": "Paraiso Real del Mar",
         "description": "Cancel before 3:00 PM on Oct 1 and only get a refund of the hospitality fee.",
-        "price": "8,000"
+        "price": "8000"
     },
     {
         "ownerId": 1,
@@ -226,7 +226,7 @@ module.exports = {
         "lng": -122.2855293,
         "name": "White House Napa Valley Inn",
         "description": "Great hospitality, great downtown location & very conscious of following covid precautions. Highly recommend!",
-        "price": "12,055"
+        "price": "12055"
     },
     {
         "ownerId": 4,
@@ -238,7 +238,7 @@ module.exports = {
         "lng": -118.242766,
         "name": "The Hideaway",
         "description": "Cancel before 4:00 PM on Oct 1 and only get a refund of the hospitality fee.",
-        "price": "3,560"
+        "price": "3560"
     },
     {
         "ownerId": 5,
@@ -250,7 +250,7 @@ module.exports = {
         "lng": -118.3963062,
         "name": "Chateau de Laurel",
         "description": "Cancel before 4:00 PM on Oct 1 and only get a refund of the hospitality fee.",
-        "price": "15,840"
+        "price": "15840"
     }
 ])
   },
