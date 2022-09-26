@@ -150,7 +150,11 @@ const spotsReducer = (state = initialState, action) => {
             return newState1
 
         case CREATE_ONE_SPOT:
-            const newState2 = {...state, allSpots: {...state.allSpots, [action.spot.id]: action.spot}}
+            // const newState2 = {...state, allSpots: {...state.allSpots, [action.spot.id]: action.spot}}
+            // return newState2
+            let newState2={...state}
+            newState2.allSpots = {...state.allSpots, [action.spot.id]: action.spot}
+            //newState2.singleSpot={...state.singleSpot, ...action.spot}
             return newState2
 
         case UPDATE_ONE_SPOT:
