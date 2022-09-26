@@ -97,5 +97,6 @@ Users can freely create and delete their own review on a spot.
 
 ## Contact Information:
 
-www.linkedin.com/in/na-chen-pharmd2019
+https://www.linkedin.com/in/na-chen-pharmd2019
+
 https://github.com/nachen98
