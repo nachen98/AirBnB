@@ -67,7 +67,7 @@ img:hover{
 
 }
 .spot-info-left{
-    width: 70%;
+    width: 60%;
     border-bottom: 1px solid rgb(223, 222, 222);
 }
 
@@ -79,6 +79,8 @@ img:hover{
 .single-spot-description{
     border-top: 1px solid rgb(223, 222, 222);
     padding-top: 5px;
+    line-height: 1.5;
+    padding-right: 5px
     
 }
 

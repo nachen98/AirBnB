@@ -69,7 +69,7 @@ module.exports = {
         "lat": 33.757805,
         "lng": -116.4354884,
         "name": "'Chateau Dumont' 18,000 sqft, 15 BR/13 BA Resort Compound",
-        "description": "The Chateau Dumont (formerly known as the Solomon Estate) is a spectacular 5 acre paradise that sleeps 30, with 15 bedrooms, 13 bathrooms and 18,000 square feet in the heart of Rancho Mirage. One of a kind, and privately gated, its lovely grounds feature a Vegas-style pool and spa, professional lighted tennis court, beach volleyball court and ping pong. The picturesque grounds have swaying palms, lush grass, waterfalls, lakes with Koi fish and turtles, as well as kayaks available for use on the lake. Incredible outdoor living and dining, with plenty of areas to kick back with your group. Outdoor kitchen, dining, misters, fireplace and lounge chairs. French doors open to a large terrace that overlooks the poolside paradise. A double gated drive approaches the classic porte-cochere entry. Indoors features a grand great room, gourmet kitchen, and service kitchen, formal dining room, wine tasting room, grand piano and family room with step down bar. The master retreat has a private sauna, indoor spa and steam room. The fun continues with a full size pool table, air hockey, foosball table and home theater.",
+        "description": "The Chateau Dumont (formerly known as the Solomon Estate) is a spectacular 5 acre paradise that sleeps 30, with 15 bedrooms, 13 bathrooms and 18,000 square feet in the heart of Rancho Mirage. One of a kind, and privately gated, its lovely grounds feature a Vegas-style pool and spa, professional lighted tennis court, beach volleyball court and ping pong. The picturesque grounds have swaying palms, lush grass, waterfalls, lakes with Koi fish and turtles, as well as kayaks available for use on the lake. Incredible outdoor living and dining, with plenty of areas to kick back with your group. Outdoor kitchen, dining, misters, fireplace and lounge chairs.",
         "price": "3,928"
     },
     {
@@ -105,7 +105,7 @@ module.exports = {
         "lat": 56.0701208,
         "lng": -3.9087351,
         "name": "Duchray Castle - 16th Century Scottish Castle",
-        "description": "2.5 miles from Aberfoyle, nestled in the heart of the Queen Elizabeth Forest this 500 year old tower house with connections to Rob Roy has been fully renovated. It now offers comfortable accommodation with en suite bathrooms to each bedroom. With renewable biomass heating system Duchray Castle is the perfect cosy get away! Guests can enjoy the beautiful estate, sit with a good book by the fire or alternatively explore all there is to offer in the local area of Loch Lomond and Stirlingshire.",
+        "description": "2.5 miles from Aberfoyle, nestled in the heart of the Queen Elizabeth Forest this 500 year old tower house with connections to Rob Roy has been fully renovated. It now offers comfortable accommodation with en suite bathrooms to each bedroom. With renewable biomass heating system Duchray Castle is the perfect cosy get away! ",
         "price": "489"
     },
     {

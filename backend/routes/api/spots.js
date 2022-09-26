@@ -14,7 +14,7 @@ async function getAllSpots(queries={}){
         const {page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query
 
         page, errorObj = valueCheck(page, 1, 1, 10, parseInt, errorObj, 'page', 'Page must be between 1 and 20.');
-        size, errorObj = valueCheck(size, 20, 1, 20, parseInt, errorObj, 'size', 'Size must be greater than or equal to 0');
+        size, errorObj = valueCheck(size, 50, 1, 50, parseInt, errorObj, 'size', 'Size must be greater than or equal to 0');
         minLat, errorObj = valueCheck(minLat, -90, -90, 90, parseFloat, errorObj, 'minLat', "Minimum latitude is invalid")
         maxLat, errorObj = valueCheck(maxLat, 90, -90, 90, parseFloat, errorObj, 'maxLat', "Maximum latitude is invalid")
         minLng, errorObj = valueCheck(minLng, -180, -180, 180, parseFloat, errorObj, "minLng", "Minimum longitude is invalid")
@@ -109,7 +109,7 @@ router.get(
 
         if (Number.isNaN(page) || Number.isNaN(size)) {
             page = 1
-            size = 20
+            size = 50
         }
         function valueCheck(val, defaultVal, minVal, maxVal, parser, errorObj, name, message){
             if(!val)return defaultVal, errorObj;
@@ -123,7 +123,7 @@ router.get(
             return val, errorObj;
         }
         page, errorObj = valueCheck(page, 1, 1, 10, parseInt, errorObj, 'page', 'Page must be between 1 and 20.');
-        size, errorObj = valueCheck(size, 20, 1, 20, parseInt, errorObj, 'size', 'Size must be greater than or equal to 0');
+        size, errorObj = valueCheck(size, 50, 1, 50, parseInt, errorObj, 'size', 'Size must be greater than or equal to 0');
         minLat, errorObj = valueCheck(minLat, -90, -90, 90, parseFloat, errorObj, 'minLat', "Minimum latitude is invalid")
         maxLat, errorObj = valueCheck(maxLat, 90, -90, 90, parseFloat, errorObj, 'maxLat', "Maximum latitude is invalid")
         minLng, errorObj = valueCheck(minLng, -180, -180, 180, parseFloat, errorObj, "minLng", "Minimum longitude is invalid")

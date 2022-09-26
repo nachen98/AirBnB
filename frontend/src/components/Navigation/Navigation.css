@@ -130,7 +130,7 @@
     border-radius: 10px;
     position: absolute;
     top: calc(90%);
-    right: calc(14%);
+    /* right: calc(14%); */
     margin-top: 10px;
     height: 100px;
     width: 222px;
