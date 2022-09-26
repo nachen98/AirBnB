@@ -11,7 +11,7 @@ export default function SpotCards({ spot }) {
 
 
                         <div className="spotcard-location">
-                            {spot.city},{spot.state}
+                            {spot.city}, {spot.state}
                         </div>
                         <div className='rating-star'>
                             <i className="fa-solid fa-star"></i>
