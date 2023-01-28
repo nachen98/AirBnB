@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SpotsList from "../src/components/SpotsList/index"
 import { SingleSpot } from "./components/SingleSpotById";
+import CurrUserTrips from "./components/CurrUserTrips"
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -28,6 +29,13 @@ function App() {
           <Navigation isLoaded={isLoaded} NavBar="NavBarNarrow"/>
           {isLoaded && (
             <SingleSpot />)}
+        </Route>
+
+        <Route path="/trips">
+          <Navigation isLoaded={isLoaded} NavBar="NavBar" />
+          {isLoaded &&(
+            <CurrUserTrips />
+          )}  
         </Route>
       </Switch>
 

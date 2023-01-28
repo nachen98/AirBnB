@@ -7,7 +7,7 @@ import { getAllReviewsBySpot } from '../../store/review';
 import EditSpotModal from '../EditSpotModal';
 import CreateReviewModal from '../CreateReviewModal';
 import SpotReview from '../SpotReview';
-
+import { BookingCard } from '../BookingCard';
 
 export function SingleSpot() {
 
@@ -104,27 +104,9 @@ export function SingleSpot() {
                     </div>
 
                 </div>
-
-                <div className='spot-info-right'>
-                    <div className='single-spot-price'>
-                        <span style={{ fontWeight: 'bold' }}> {`$${oneSpotById.price} `}</span> night
-                    </div>
-                    <div className='star-reviews'>
-
-                        <div className='rating-star'>
-                            <i className="fa-solid fa-star"></i>
-                            {Number(oneSpotById.avgStarRating) !== 0 ? Number(oneSpotById.avgStarRating).toFixed(1) : ` New`}
-                        </div>
-                        <div className="space">  ·  </div>
-                        <div className='single-spot-review'>
-
-                            {oneSpotById?.numReviews} reviews
-
-                        </div>
-
-
-                    </div>
-                </div>
+                
+                <BookingCard oneSpotById={oneSpotById} currUser={currUser}/>
+                
 
 
             </div>
