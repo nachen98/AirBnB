@@ -1,4 +1,3 @@
-import booking from '../../../backend/db/models/booking';
 import { csrfFetch } from './csrf';
 
 const GET_CURRENT_USER_BOOKINGS = 'bookings/getCurrentUserBookings';
@@ -114,6 +113,7 @@ const initialState = { spot: {}, user: {} };
 const bookingsReducer = (state = initialState, action) => {
     
     switch(action.type){
+    
         case GET_CURRENT_USER_BOOKINGS:
             return{
                 spot: {...state.spot},
@@ -164,10 +164,10 @@ const bookingsReducer = (state = initialState, action) => {
             }
         
         case DELETE_ONE_BOOKING:
-            newUserState = { ... state.user}
+            let newUserState = { ... state.user}
             delete newUserState[action.bookingId]
 
-            newSpotState = {... state.spot}
+            let newSpotState = {... state.spot}
             delete newSpotState[action.bookingId]
             return {
                 user: newUserState,
