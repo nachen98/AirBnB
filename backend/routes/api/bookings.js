@@ -32,6 +32,7 @@ router.get('/current', requireAuth, async(req, res) => {
         })
         
         bookingsObj.Spot.previewImage = !previewImageUrl ? '' : previewImageUrl.url;
+        console.log("bookingsObj##################", bookingsObj)
         newArray.push(bookingsObj)
     }
     return res.json({

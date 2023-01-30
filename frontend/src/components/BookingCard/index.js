@@ -5,7 +5,7 @@ import { createBooking, getCurrUserBookings } from "../../store/bookings";
 import LoginForm from '../LoginFormModal/LoginForm';
 import { Modal } from '../../context/Modal';
 
-const dateToStr = (date) => {
+export const dateToStr = (date) => {
     if(Object.prototype.toString.call(date) === "[object Date]"){
         return date.toISOString().split('T')[0];
     }
@@ -32,16 +32,16 @@ export function BookingCard({ oneSpotById, currUser }) {
         const errors = [];
         
 
-        if (dateToStr(startDate) < today || dateToStr(endDate) < today) {
+        if (startDate < today || endDate < today) {
             errors.push("Please book dates after today.")
         }
 
-        if (dateToStr(startDate) > dateToStr(endDate)) {
+        if (startDate > endDate) {
             errors.push("End date cannot be earlier than start date.")
         }
 
         setError(errors)
-
+        console.log('@@@@@@@@@@@startdate in useEffect', startDate)
     }, [startDate, endDate])
 
 
@@ -58,6 +58,7 @@ export function BookingCard({ oneSpotById, currUser }) {
 
         const addedBooking = { startDate, endDate }
 
+        console.log('startdate at submit#########################', startDate)
         dispatch(createBooking(oneSpotById.id, addedBooking))
             .then(async(res) => {
                 console.log("res.ok#################", res.ok)
@@ -68,15 +69,15 @@ export function BookingCard({ oneSpotById, currUser }) {
                     // setStartDate("")
                     // setEndDate("")
                     dispatch(getCurrUserBookings())
-                    history.push('/trips')
+                    history.push('/mytrips')
                 }else{
                     console.log('res@@@@@@@@@@@@@@@@@@@@@@', res)
-                    // const result = await res.json()
+                    const result = await res.json()
     
                     const errors = []
                     // console.log('result@@@@@@@@@@@@@@@@@', result)
-                    if (res && res.message) {
-                        errors.push(res.message)
+                    if (result && result.message) {
+                        errors.push(result.message)
                         console.log('errors!!!!!!!!!!!!!!!!!!', errors)
                     }
                     setError(errors)     
@@ -203,9 +204,7 @@ export function BookingCard({ oneSpotById, currUser }) {
                         </div>
                     </div>
 
-                </>
-                
-                
+                </>    
                 } 
             </form>
         </div>

@@ -42,11 +42,12 @@ const deleteOneBooking = (bookingId) => {
 }
 
 export const getCurrUserBookings = () => async (dispatch) => {
-    const response = await csrfFetch(`/api/bookings/current`);
+    const response = await csrfFetch('/api/bookings/current');
     if (response.ok){
         const userBookings = await response.json()
+        console.log('@@@@@@@@@@@@@@@@@@userBookings', userBookings)
         dispatch(loadCurrentUserBookings(userBookings))
-        return userBookings
+     
     }
 }
 
@@ -72,11 +73,9 @@ export const createBooking = (spotId, bookingInfo) => async (dispatch) => {
     if(response.ok){
         const newBooking = await response.json()
         dispatch(createOneBooking(newBooking))
-        return newBooking
-    }else {
-        const result = await response.json();
-        return result;
+  
     }
+    return response
 }
 
 export const updateBooking = (spotId, bookingInfo) => async (dispatch) => {
@@ -91,11 +90,8 @@ export const updateBooking = (spotId, bookingInfo) => async (dispatch) => {
     if(response.ok){
         const updatedBooking = await response.json()
         dispatch(editOneBooking(updatedBooking))
-        return updatedBooking
-    }else {
-        const result = await response.json();
-        return result;
     }
+    return response
 }
 
 export const deleteBooking = (bookingId) => async (dispatch) => {
@@ -115,9 +111,11 @@ const bookingsReducer = (state = initialState, action) => {
     switch(action.type){
     
         case GET_CURRENT_USER_BOOKINGS:
+            console.log('action.bookings!!!!!!!!!!!!!', action.bookings)
             return{
                 spot: {...state.spot},
                 user: {
+                    ...action.user,
                     ...action.bookings.Bookings.reduce((newUserBooking, booking)=>{
                         newUserBooking[booking.id] = booking
                         return newUserBooking

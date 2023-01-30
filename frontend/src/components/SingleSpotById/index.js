@@ -38,7 +38,7 @@ export function SingleSpot() {
 
 
     if (Object.keys(oneSpotById).length === 0) return null
-    //console.log('oneSpotById!!!!!!!', oneSpotById)
+    console.log('oneSpotById!!!!!!!', oneSpotById)
     //console.log('reviewContents*************', reviewContents)
     //console.log('currUser!!!!!!', currUser.id)
 

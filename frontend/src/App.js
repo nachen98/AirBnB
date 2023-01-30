@@ -31,7 +31,7 @@ function App() {
             <SingleSpot />)}
         </Route>
 
-        <Route path="/trips">
+        <Route path="/mytrips">
           <Navigation isLoaded={isLoaded} NavBar="NavBar" />
           {isLoaded &&(
             <CurrUserTrips />
