@@ -32,6 +32,11 @@ router.get('/current', requireAuth, async(req, res) => {
         })
         
         bookingsObj.Spot.previewImage = !previewImageUrl ? '' : previewImageUrl.url;
+        const ownerObj = await User.findByPk(currBookings[i].Spot.ownerId, {
+            attribues: ['firstName', 'lastName'],
+            raw: true
+        })
+        bookingsObj.Spot.ownerInfo = ownerObj
         console.log("bookingsObj##################", bookingsObj)
         newArray.push(bookingsObj)
     }

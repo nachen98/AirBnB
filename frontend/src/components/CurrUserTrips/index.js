@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import booking from "../../../../backend/db/models/booking";
 import { getCurrUserBookings } from "../../store/bookings";
 import { dateToStr } from "../BookingCard";
 import { BookingCardInTrips } from "../BookingCardInTrips";
@@ -14,33 +13,35 @@ export default function CurrUserTrips() {
 
     const currUser = useSelector(state => state.session.user)
     const currUserBookings = useSelector(state => state.booking.user)
+    
     const [futureBookings, setFutureBookings] = useState([])
     const [previousBookings, setPreviousBookings] = useState([])
-    const futureBookingArr = []
-    const previousBookingArr = []
+    let futureBookingArr = []
+    let previousBookingArr = []
     console.log("@@@@@@@@@@@@@@@currUserBooking", currUserBookings )
 
     const bookingValues = Object.values(currUserBookings)
     console.log("@@@@@@@@@@@@@@@bookingValues", bookingValues )
-    // useEffect(() => {
-    //     dispatch(getCurrUserBookings())
-    // }, [dispatch, currUser])
+    useEffect(() => {
+        dispatch(getCurrUserBookings())
+    }, [dispatch, currUser])
 
 
-    useEffect(() =>{
+    useEffect( () =>{
         if(bookingValues?.length > 0){
-            for (let individualBooking of bookingValues){
-                if (dateToStr(individualBooking.startDate) < new Date().toISOString().split('T')[0]){
+            for (let i = 0; i < bookingValues.length; i++){
+                let individualBooking=bookingValues[i]
+                
+                if (new Date(individualBooking.startDate).toISOString().split('T')[0] < new Date().toISOString().split('T')[0]){
                     previousBookingArr.push(individualBooking)
                 }else{
                     futureBookingArr.push(individualBooking)
                 }
             }
-            setPreviousBookings(previousBookingArr)
-            setFutureBookings(futureBookingArr)
+           setPreviousBookings(previousBookingArr)
+           setFutureBookings(futureBookingArr)
         }   
-    }, [bookingValues])
-
+    }, [dispatch, bookingValues])
 
     useEffect(() => {
         if(!currUser) {
@@ -58,14 +59,14 @@ export default function CurrUserTrips() {
             </div>
 
             <div className="upcoming-reservations">
-                {futureBookingArr?.length > 0 && (
+                {futureBookings?.length > 0 && (
                     <>
                     <div className="upcoming-title"> Upcoming reservations</div> 
-                    {futureBookingArr.map(booking => <BookingCardInTrips key={booking.id} booking={booking}/>)}
+                    {futureBookings.map(futureBooking => <BookingCardInTrips key={futureBooking.id} futureBooking={futureBooking} />)}
                     </>
                 )}
 
-                {futureBookingArr?.length === 0 && (
+                {futureBookings?.length === 0 && (
                     <div className="empty-booking-container">
                         <span className="no-booking-title">No trips booked...yet!</span>
                         <span className="no-booking-message">Time to dust off your bags and start planning your next adventure</span>
@@ -79,17 +80,14 @@ export default function CurrUserTrips() {
                 )}
             </div>
 
-            {previousBookingArr.length > 0 && (
+            {previousBookings.length > 0 && (
                 <div className="previous-bookings">
                     <span className="previous-booking-title">Where You've Been</span>
                     <div>
-                        {previousBookingArr?.map(previousBooking => <PreviousBooking key = {previousBooking.id} previousBooking={previousBooking}/>)}
+                        {previousBookings?.map(previousBooking => <PreviousBooking key = {previousBooking.id} previousBooking={previousBooking}/>)}
                         </div>
                     </div>
             )}
-
-      
-
         </div>
 
 
