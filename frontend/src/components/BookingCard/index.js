@@ -66,8 +66,6 @@ export function BookingCard({ oneSpotById, currUser }) {
                     
                     console.log("##############################gets here")
                     setError([])
-                    // setStartDate("")
-                    // setEndDate("")
                     dispatch(getCurrUserBookings())
                     history.push('/mytrips')
                 }else{

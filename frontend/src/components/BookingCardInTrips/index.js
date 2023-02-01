@@ -1,5 +1,8 @@
 
 import React from "react";
+import './BookingCardInTrips.css'
+import { EditBookingModal } from '../EditBookingModal';
+import { DeleteBookingModal } from '../DeleteBookingModal';
 
 export function BookingCardInTrips({ futureBooking }) {
 
