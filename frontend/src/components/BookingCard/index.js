@@ -46,7 +46,7 @@ export function BookingCard({ oneSpotById, currUser }) {
 
 
     useEffect(() => {
-        setNumDays( Math.floor(((new Date(endDate).getTime()) - (new Date(startDate).getTime()))/1000/60/60/24));
+        setNumDays( Math.ceil(((new Date(endDate).getTime()) - (new Date(startDate).getTime()))/1000/60/60/24));
     },[startDate,endDate])
 
     useEffect(() => {

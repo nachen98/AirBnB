@@ -16,12 +16,13 @@ export default function CurrUserTrips() {
     
     const [futureBookings, setFutureBookings] = useState([])
     const [previousBookings, setPreviousBookings] = useState([])
+    const [isLoaded, setIsLoaded]=useState(false)
     let futureBookingArr = []
     let previousBookingArr = []
 
     useEffect(() => {
         dispatch(getCurrUserBookings())
-    }, [dispatch, currUser])
+    }, [dispatch])
 
 
     useEffect( () =>{
@@ -41,6 +42,7 @@ export default function CurrUserTrips() {
             }
            setPreviousBookings(previousBookingArr)
            setFutureBookings(futureBookingArr)
+           setIsLoaded(true)
         }   
     }, [dispatch, currUserBookings])
 
@@ -60,14 +62,16 @@ export default function CurrUserTrips() {
             </div>
 
             <div className="upcoming-reservations">
-                {futureBookings?.length > 0 && (
+                {isLoaded && (
                     <>
                     <div className="upcoming-title"> Upcoming reservations</div> 
-                    {futureBookings.map(futureBooking => <BookingCardInTrips key={futureBooking.id} futureBooking={futureBooking} />)}
+                    {futureBookings.map(futureBooking => {
+                    return (<BookingCardInTrips key={futureBooking.id} futureBooking={futureBooking} />)
+                    })}
                     </>
                 )}
 
-                {futureBookings?.length === 0 && (
+                {futureBookings.length === 0 && (
                     <div className="empty-booking-container">
                         <span className="no-booking-title">No trips booked...yet!</span>
                         <span className="no-booking-message">Time to dust off your bags and start planning your next adventure</span>
