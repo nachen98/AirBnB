@@ -18,16 +18,17 @@ export default function CurrUserTrips() {
     const [previousBookings, setPreviousBookings] = useState([])
     let futureBookingArr = []
     let previousBookingArr = []
-    console.log("@@@@@@@@@@@@@@@currUserBooking", currUserBookings )
 
-    const bookingValues = Object.values(currUserBookings)
-    console.log("@@@@@@@@@@@@@@@bookingValues", bookingValues )
     useEffect(() => {
         dispatch(getCurrUserBookings())
     }, [dispatch, currUser])
 
 
     useEffect( () =>{
+        console.log("@@@@@@@@@@@@@@@currUserBooking", currUserBookings )
+
+        const bookingValues = Object.values(currUserBookings)
+        console.log("@@@@@@@@@@@@@@@bookingValues", bookingValues )
         if(bookingValues?.length > 0){
             for (let i = 0; i < bookingValues.length; i++){
                 let individualBooking=bookingValues[i]
@@ -41,7 +42,7 @@ export default function CurrUserTrips() {
            setPreviousBookings(previousBookingArr)
            setFutureBookings(futureBookingArr)
         }   
-    }, [dispatch, bookingValues])
+    }, [dispatch, currUserBookings])
 
     useEffect(() => {
         if(!currUser) {

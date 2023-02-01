@@ -78,8 +78,8 @@ export const createBooking = (spotId, bookingInfo) => async (dispatch) => {
     return response
 }
 
-export const updateBooking = (spotId, bookingInfo) => async (dispatch) => {
-    const response = await csrfFetch(`/api/spots/${spotId}/bookings`, {
+export const updateBooking = (bookingId, bookingInfo) => async (dispatch) => {
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

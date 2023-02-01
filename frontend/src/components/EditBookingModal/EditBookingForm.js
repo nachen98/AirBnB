@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./EditBooking.css"
 import { updateBooking } from '../../store/bookings';
+import { getCurrUserBookings } from '../../store/bookings';
 
-const EditBookingForm = ({ futureBooking, setShowModal, oldStartDate, oldEndDate }) => {
+export default function EditBookingForm ({ futureBooking, setShowModal, oldStartDate, oldEndDate }){
     const dispatch = useDispatch();
     const history = useHistory()
 
+    const currUser = useSelector(state=> state.session.user)
     const today = new Date().toISOString().split('T')[0];
-
-    const [startDate, setStartDate] = useState({ oldStartDate })
-    const [endDate, setEndDate] = useState({ oldEndDate })
+    console.log("@@@@@@@@@@@@@@@@@@@@@oldStartDate", oldStartDate)
+    const [startDate, setStartDate] = useState(oldStartDate)
+    const [endDate, setEndDate] = useState(oldEndDate)
     const [numDays, setNumDays] = useState(Math.floor(((new Date(oldEndDate).getTime()) - (new Date(oldStartDate).getTime())) / 1000 / 60 / 60 / 24))
     const [errors, setErrors] = useState([])
     const [total, setTotal] = useState(futureBooking.Spot.price * numDays + parseInt(futureBooking.Spot.price * numDays * 0.02) + parseInt(futureBooking.Spot.price * numDays * 0.05))
@@ -44,7 +46,7 @@ const EditBookingForm = ({ futureBooking, setShowModal, oldStartDate, oldEndDate
 
         const updatedBooking = { startDate, endDate }
 
-        dispatch(updateBooking(futureBooking.Spot.id, updatedBooking))
+        dispatch(updateBooking(futureBooking.id, updatedBooking))
             .then(async (res) => {
                 console.log("res.ok#################", res.ok)
                 if (res.ok) {
@@ -93,7 +95,7 @@ const EditBookingForm = ({ futureBooking, setShowModal, oldStartDate, oldEndDate
                                     min={today}
                                     required
                                     onChange={e => setStartDate(e.target.value)}
-                                    onClick={(e) => e.target.focus()}
+                   
                                 />
                             </div>
                             <div className="check-out-container">
@@ -105,7 +107,6 @@ const EditBookingForm = ({ futureBooking, setShowModal, oldStartDate, oldEndDate
                                     min={startDate}
                                     required
                                     onChange={e => setEndDate(e.target.value)}
-                                    onClick={(e) => e.target.focus()}
 
                                 />
                             </div>
@@ -171,5 +172,3 @@ const EditBookingForm = ({ futureBooking, setShowModal, oldStartDate, oldEndDate
     )
 
 }
-
-export default EditBookingForm

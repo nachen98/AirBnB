@@ -135,7 +135,7 @@ router.delete('/:bookingId', requireAuth, async(req, res) => {
         }
     })
     if(booking){
-        if(booking.userId !== req.user.id || booking.Spot.ownerId !== req.user.id){
+        if(booking.userId !== req.user.id || booking.Spot.ownerId === req.user.id){
             res.status(403);
             return res.json({
                 "message": "You cannot delete this booking.",
