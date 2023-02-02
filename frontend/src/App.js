@@ -32,7 +32,7 @@ function App() {
         </Route>
 
         <Route path="/mytrips">
-          <Navigation  NavBar="NavBar" />
+          <Navigation   isLoaded={isLoaded} NavBar="NavBarNarrow" />
             {isLoaded && (
             <CurrUserTrips />
             )}

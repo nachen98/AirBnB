@@ -5,7 +5,7 @@ import "./EditBooking.css"
 import { updateBooking } from '../../store/bookings';
 import { getCurrUserBookings } from '../../store/bookings';
 
-export default function EditBookingForm ({ futureBooking, setShowModal, oldStartDate, oldEndDate }){
+export default function EditBookingForm ({ futureBooking, setShowBookingEditModal, oldStartDate, oldEndDate }){
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -53,7 +53,7 @@ export default function EditBookingForm ({ futureBooking, setShowModal, oldStart
 
                     console.log("##############################gets here")
                     setErrors([])
-                    setShowModal(false)
+                    setShowBookingEditModal(false)
                     dispatch(getCurrUserBookings())
                     history.push('/mytrips')
                 } else {
@@ -75,6 +75,7 @@ export default function EditBookingForm ({ futureBooking, setShowModal, oldStart
         <div className='edit-booking-container'>
             <div className='edit-booking-title'>
                 Update Booking for {futureBooking.Spot.name}
+                {console.log("#################currUser", currUser)}
             </div>
             <form onSubmit={handleSubmit} className="booking-form">
                 {errors.length > 0 && (<div className="error-message-create-booking">

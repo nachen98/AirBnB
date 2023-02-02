@@ -1,13 +1,29 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './BookingCardInTrips.css'
 import { useSelector } from "react-redux";
 import { EditBookingModal } from '../EditBookingModal';
 import { DeleteBookingModal } from '../DeleteBookingModal';
 
 const formatedDate = (dateStr) => {
+    let date
+    if (typeof dateStr === 'string') {
+        date = new Date(dateStr);
+      } else if (dateStr instanceof Date) {
+        date = dateStr;
+      } else {
+        console.error('Invalid date input: ', dateStr);
+        return;
+      }
+    date = new Date(Date.UTC(
+        date.getUTCFullYear(),
+        date.getUTCMonth(),
+        date.getUTCDate() + 1,
+        date.getUTCHours(),
+        date.getUTCMinutes(),
+        date.getUTCSeconds()
+    ))
 
-    const date = new Date(dateStr)
     const options = { month: 'short', day: 'numeric', year: 'numeric' }
     return date.toLocaleDateString('en-US', options);
 }
@@ -16,15 +32,10 @@ export function BookingCardInTrips({ futureBooking }) {
     const currUser = useSelector(state => state.session.user)
     const [showBookingDeleteModal, setShowBookingDeleteModal] = useState(false)
     const [showBookingEditModal, setShowBookingEditModal] = useState(false)
-    const [isLoaded, setIsLoaded] = useState(false)
-
-    useEffect(()=>{
-
-    })
+  
     console.log('futureBooking@@@@@@@@@@@@@@', futureBooking)
     return (
-        <>
-            { (
+     
                 <div className="future-booking-card-container">
                     <div className="booking-card-left">
                         <div className="booking-card-site-name">{futureBooking.Spot.name}</div>
@@ -62,9 +73,6 @@ export function BookingCardInTrips({ futureBooking }) {
                     </div>
                     <img src={futureBooking.Spot.previewImage} className='bookingcard-img' />
                 </div>
-
-            )}
-        </>
 
     )
 }
