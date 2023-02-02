@@ -586,8 +586,13 @@ async function bookingConflicts(spotId, startDate, endDate) {
 router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     let { startDate, endDate } = req.body
     const { spotId } = req.params
-    const selectedSpot = await Spot.findByPk(spotId, { raw: true });
+    const selectedSpot = await Spot.findByPk(spotId, {raw: true});
 
+    const ownerObj = await User.findByPk(selectedSpot.ownerId, {
+        attribues: ['firstName', 'lastName'],
+        raw: true
+    })
+    
     console.log('startdate in route@@@@@@@@@@@@', startDate)
     if (selectedSpot) {
         if (selectedSpot.ownerId === req.user.id) {
@@ -633,6 +638,9 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
                 startDate,
                 endDate
             })
+            console.log("####################createdBooking", createdBooking)
+            createdBooking.dataValues.Spot=selectedSpot
+            createdBooking.dataValues.Spot.ownerInfo = ownerObj
             return res.json(createdBooking)
         }
     } else {

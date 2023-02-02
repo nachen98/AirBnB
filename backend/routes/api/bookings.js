@@ -25,28 +25,30 @@ router.get('/current', requireAuth, async(req, res) => {
     })
     for (let i = 0; i< currBookings.length; i++){
         bookingsObj = currBookings[i].toJSON();
-        const previewImageUrl = await SpotImage.findByPk(currBookings[i].id, {
+        const previewImageUrl = await SpotImage.findByPk(bookingsObj.spotId, {
             where: { preview: true },
             attributes: ['url'], 
             raw: true
         })
-        
+
         bookingsObj.Spot.previewImage = !previewImageUrl ? '' : previewImageUrl.url;
         const ownerObj = await User.findByPk(currBookings[i].Spot.ownerId, {
             attribues: ['firstName', 'lastName'],
             raw: true
         })
         bookingsObj.Spot.ownerInfo = ownerObj
-        console.log("bookingsObj##################", bookingsObj)
         newArray.push(bookingsObj)
     }
     return res.json({
         Bookings: newArray})
 })
 
-async function bookingConflicts(spotId, startDate, endDate){
+async function bookingConflictsEditing(spotId, startDate, endDate, currentBookingId){
     const conflictBookings = await Booking.findOne({
         where: {
+            id: {
+                [Op.ne]: currentBookingId,
+              },
             spotId,
             [Op.or]: [{
                     startDate: {
@@ -82,6 +84,12 @@ async function bookingConflicts(spotId, startDate, endDate){
 router.put('/:bookingId', requireAuth, async(req, res)=> {
     let today = new Date().toISOString().slice(0, 10)
     const booking = await Booking.findByPk(req.params.bookingId)
+    const selectedSpot= await Spot.findByPk(booking.spotId, {raw: true})
+
+    const ownerObj = await User.findByPk(selectedSpot.ownerId, {
+        attribues: ['firstName', 'lastName'],
+        raw: true
+    })
     const {startDate, endDate} = req.body
     if(booking){
         if(endDate<startDate){
@@ -101,7 +109,7 @@ router.put('/:bookingId', requireAuth, async(req, res)=> {
                 "statusCode": 403
             })
         }
-        const conflictBookings = await bookingConflicts(booking.spotId, startDate, endDate)
+        const conflictBookings = await bookingConflictsEditing(booking.spotId, startDate, endDate, booking.id)
         if(conflictBookings){
             res.status(403);
             return res.json({
@@ -115,6 +123,9 @@ router.put('/:bookingId', requireAuth, async(req, res)=> {
         }
         booking.startDate = startDate;
         booking.endDate = endDate;
+        console.log("booking%%%%%%%%%%%%%%%%%%%%%%", booking)
+        booking.dataValues.Spot = selectedSpot
+        booking.dataValues.Spot.ownerInfo = ownerObj
         await booking.save();
         return res.json(booking)
 
