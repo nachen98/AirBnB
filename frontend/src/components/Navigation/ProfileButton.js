@@ -1,7 +1,8 @@
 // frontend/src/components/Navigation/ProfileButton.js
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
+import { NavLink  } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import CreateSpotModal from "../CreateSpotModal";
 function ProfileButton({ user }) {
@@ -32,6 +33,8 @@ function ProfileButton({ user }) {
     history.push('/')
   };
 
+
+
   return (
     <>
       <CreateSpotModal />
@@ -41,11 +44,17 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <div className="div-profile-dropdown">
-            <div className="user-info">{user.username}</div>
-            <div className="user-info">{user.email}</div>
-            <div className="button-li">
-              <button onClick={logout} className="logout-button">Log out</button>
-            </div>
+          <div className="user-info">{user.username}</div>
+          <div className="user-info">{user.email}</div>
+          {/* <div className="trips-button-container">
+            <NavLink to='/mytrips' className='trips-button'>Trips</NavLink>
+          </div> */}
+            <NavLink to="/mytrips">
+      <button className="trips-button">Trips</button>
+    </NavLink>
+          <div className="button-li">
+            <button onClick={logout} className="logout-button">Log out</button>
+          </div>
         </div>
 
       )}

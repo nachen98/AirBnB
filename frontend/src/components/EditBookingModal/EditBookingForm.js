@@ -11,7 +11,7 @@ export default function EditBookingForm ({ futureBooking, setShowBookingEditModa
 
     const currUser = useSelector(state=> state.session.user)
     const today = new Date().toISOString().split('T')[0];
-    console.log("@@@@@@@@@@@@@@@@@@@@@oldStartDate", oldStartDate)
+
     const [startDate, setStartDate] = useState(oldStartDate)
     const [endDate, setEndDate] = useState(oldEndDate)
     const [numDays, setNumDays] = useState(Math.floor(((new Date(oldEndDate).getTime()) - (new Date(oldStartDate).getTime())) / 1000 / 60 / 60 / 24))
@@ -50,21 +50,19 @@ export default function EditBookingForm ({ futureBooking, setShowBookingEditModa
             .then(async (res) => {
                 console.log("res.ok#################", res.ok)
                 if (res.ok) {
-
-                    console.log("##############################gets here")
                     setErrors([])
                     setShowBookingEditModal(false)
                     dispatch(getCurrUserBookings())
                     history.push('/mytrips')
                 } else {
-                    console.log('res@@@@@@@@@@@@@@@@@@@@@@', res)
+                
                     const result = await res.json()
 
                     const errors = []
-                    // console.log('result@@@@@@@@@@@@@@@@@', result)
+          
                     if (result && result.message) {
                         errors.push(result.message)
-                        console.log('errors!!!!!!!!!!!!!!!!!!', errors)
+                        
                     }
                     setErrors(errors)
                 }
@@ -75,7 +73,7 @@ export default function EditBookingForm ({ futureBooking, setShowBookingEditModa
         <div className='edit-booking-container'>
             <div className='edit-booking-title'>
                 Update Booking for {futureBooking.Spot.name}
-                {console.log("#################currUser", currUser)}
+    
             </div>
             <form onSubmit={handleSubmit} className="booking-form">
                 {errors.length > 0 && (<div className="error-message-create-booking">

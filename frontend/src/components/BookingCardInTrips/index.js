@@ -45,6 +45,9 @@ export function BookingCardInTrips({ futureBooking }) {
                         <div className="booking-date">
                             {formatedDate(futureBooking.startDate)} - {formatedDate(futureBooking.endDate)}
                         </div>
+                        <div className="num-nights">
+                        {Math.ceil(((new Date(futureBooking.endDate).getTime()) - (new Date(futureBooking.startDate).getTime()))/1000/60/60/24)} nights
+                        </div>
                         <div className="booking-full-address">
                             <div className="booking-address">
                                 {futureBooking.Spot.address}

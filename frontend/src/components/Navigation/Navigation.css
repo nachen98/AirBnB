@@ -130,9 +130,9 @@
     border-radius: 10px;
     position: absolute;
     top: calc(90%);
-    /* right: calc(14%); */
+    right: calc(10%+1px);
     margin-top: 10px;
-    height: 100px;
+    height: 150px;
     width: 222px;
     box-shadow: 2px 2px 2px 0px rgba(195, 195, 195, 0.6);
     background-color: white;
@@ -150,6 +150,7 @@ li{
     font-size: 16px;
     background: none;
     border: none;
+    width: 100%;
     font-family: Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
     text-align: left;
     position: relative;
@@ -170,4 +171,23 @@ li{
 .user-info{
     padding: 7px 0 7px 30px;
     font-family: Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
+}
+
+.trips-button{
+    cursor: pointer;
+
+    font-size: 16px;
+    background: none;
+    border: none;
+    width: 100%;
+    font-family: Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
+    position: relative;
+    text-align: left;
+  
+    padding: 7px 0 7px 30px;
+    font-family: Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif;
+}
+
+.trips-button:hover{
+    background-color:  rgb(243, 242, 242);;
 }
