@@ -43,3 +43,12 @@
     flex-direction:column;
     justify-content:space-between
 }
+
+.ctr-algn-text {
+    text-align: center;
+}
+
+.text-deco{
+    text-decoration: underline
+}
+

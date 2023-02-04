@@ -132,7 +132,7 @@ export function BookingCard({ oneSpotById, currUser }) {
                                     </div>
 
                                 </div>
-                                <div className="check-out-container">
+                                <div className="check-out-container cur-poi">
                                     <div className="check-out-inner-container">
                                         <span className='check-in-label'>CHECK-OUT</span>
                                         <input
@@ -163,25 +163,26 @@ export function BookingCard({ oneSpotById, currUser }) {
                                     <button onClick={() => setShowModal(true)} className="reserve-to-login">Reserve</button>
                                     {showModal && (
                                         <Modal onClose={() => setShowModal(false)}>
-                                            <LoginForm />                              </Modal>
+                                            <LoginForm />                              
+                                        </Modal>
                                     )}
                                 </>
                             }
 
                         </div>
-                        <span className='not-charging-message'>You won't be charged yet</span>
-                        <div className="reserved-nights-section">
-                            <div>
-                                {oneSpotById.price} x {numDays} nights
+                        <div className='not-charging-message ctr-algn-text'>You won't be charged yet</div>
+                        <div className="pricing-info flx-row-space-btw">
+                            <div className="text-deco">
+                                ${oneSpotById.price} x {numDays} nights
                             </div>
 
                             <div>
-                                {oneSpotById.price * numDays}
+                                ${oneSpotById.price * numDays}
                             </div>
                         </div>
 
-                        <div className="cleaning-fee-section">
-                            <div>
+                        <div className="pricing-info flx-row-space-btw">
+                            <div className="text-deco">
                                 Cleaning fee
                             </div>
 
@@ -190,8 +191,8 @@ export function BookingCard({ oneSpotById, currUser }) {
                             </div>
                         </div>
 
-                        <div className="service-fee-section">
-                            <div>
+                        <div className="pricing-info flx-row-space-btw">
+                            <div className="text-deco">
                                 Service fee
                             </div>
                             <div>
@@ -202,7 +203,7 @@ export function BookingCard({ oneSpotById, currUser }) {
 
                         </div>
 
-                        <div className="total-section">
+                        <div className="total-section flx-row-space-btw">
                             <div>
                                 Total before taxes
                             </div>
