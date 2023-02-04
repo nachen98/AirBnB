@@ -1,0 +1,78 @@
+.future-booking-card-container{
+    display:flex;
+    width: 100%;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 15px;
+    height: 300px;
+    margin-bottom: 30px
+}
+
+.booking-card-left{
+    width: 50%;   
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 20px;
+
+}
+.bookingcard-img{
+    width: 50%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.booking-card-left-upper{
+    border-bottom: 1px solid rgb(238,238,238)
+}
+
+.booking-card-site-name{
+    font-size: 25px;
+    margin-bottom: 10px
+}
+
+.booking-card-left-lower{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-width: 45%;
+    height: 55%
+}
+
+.owner-name{
+    margin-bottom: 20px;
+    color: rgb(113, 113, 113)
+
+}
+
+.booking-date-night-buttons{
+    width: 40%;
+    border-right: 1px solid rgb(238,238,238);
+    padding-right: 10px
+}
+
+.booking-dates{
+    margin-bottom: 15px
+}
+
+.edit-delete-booking{
+
+}
+
+.dash-sign{
+    margin: 5% 0 5% 25%
+}
+
+.num-nights{
+    margin-bottom: 15px
+}
+
+.booking-full-address{
+    padding: 0 10% 10% 10%;
+    width: 60%
+}
+
+.booking-address{
+    margin-bottom: 15px
+}
+
+.booking-city{
+    margin-bottom: 15px
+}

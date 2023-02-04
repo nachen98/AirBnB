@@ -6,6 +6,7 @@ import { getCurrUserBookings } from "../../store/bookings";
 import { dateToStr } from "../BookingCard";
 import { BookingCardInTrips } from "../BookingCardInTrips";
 import { PreviousBooking } from "../PreviousBooking";
+import "./CurrUserTrips.css"
 
 export default function CurrUserTrips() {
     const dispatch = useDispatch();
@@ -56,12 +57,11 @@ export default function CurrUserTrips() {
 
     return (
         <div className="trips-page-container">
-
+         
             <div className="trips-title">
                 Trips
             </div>
 
-            <div className="upcoming-reservations">
                 {isLoaded && (
                     <>
                     <div className="upcoming-title"> Upcoming reservations</div> 
@@ -83,7 +83,7 @@ export default function CurrUserTrips() {
                     </div>
 
                 )}
-            </div>
+         
 
             {previousBookings.length > 0 && (
                 <div className="previous-bookings">
@@ -92,11 +92,7 @@ export default function CurrUserTrips() {
                         {previousBookings?.map(previousBooking => <PreviousBooking key = {previousBooking.id} previousBooking={previousBooking}/>)}
                         </div>
                     </div>
-            )}
+            )}    
         </div>
-
-
-
-
     )
 }

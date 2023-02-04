@@ -87,10 +87,10 @@ export function SingleSpot() {
                 </div>
             </div>
 
-            <div className='single-spot-img'>
+            <div >
 
                 {oneSpotById.SpotImages.map(img =>
-                    (<img key={img.id} src={img.url} alt={img.url} />)
+                    (<img key={img.id} src={img.url} alt={img.url} className='single-spot-img'/>)
                 )}
             </div>
             <div className='single-spot-info-container'>

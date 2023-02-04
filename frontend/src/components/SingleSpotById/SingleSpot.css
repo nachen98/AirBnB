@@ -46,7 +46,7 @@
 /* .single-spot-img{
     margin: 4% 24% 10% 24%;
 } */
-img{
+.single-spot-img{
     width: 100%;
     object-fit: cover;
     border-radius: 15px;
