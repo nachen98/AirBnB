@@ -65,9 +65,9 @@ export function BookingCardInTrips({ futureBooking }) {
                         <div className="edit-delete-booking flx-row-space-btw">
                             {!!currUser && (
                                 <>
-                                    <button onClick={() => setShowBookingEditModal(true)} id="edit-booking-button">Edit</button>
+                                    <button onClick={() => setShowBookingEditModal(true)} className="edit-delete-booking-button cur-poi">Edit</button>
                                     {showBookingEditModal && <EditBookingModal futureBooking={futureBooking} showBookingEditModal={showBookingEditModal} setShowBookingEditModal={setShowBookingEditModal} />}
-                                    <button onClick={() => setShowBookingDeleteModal(true)} id="delete-booking-button">Delete</button>
+                                    <button onClick={() => setShowBookingDeleteModal(true)} className="edit-delete-booking-button  cur-poi">Delete</button>
                                     {showBookingDeleteModal && <DeleteBookingModal futureBooking={futureBooking} showBookingDeleteModal={showBookingDeleteModal} setShowBookingDeleteModal={setShowBookingDeleteModal} />}
                                 </>
                             )}
