@@ -1,1 +1,45 @@
 /* TODO Add site wide styles */
+*{
+    box-sizing:border-box;
+    font-family:  Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+}
+.flx-row-space-btw {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center
+}
+
+.flx-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flx-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.cur-poi{
+    cursor: pointer;
+}
+
+.flx-col-justify-align-ctr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flx-row-wrap{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    align-items: flex-start
+}
+
+.flx-col-space-btwn{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between
+}
