@@ -5,11 +5,11 @@ import "./EditBooking.css"
 import { updateBooking } from '../../store/bookings';
 import { getCurrUserBookings } from '../../store/bookings';
 
-export default function EditBookingForm ({ futureBooking, setShowBookingEditModal, oldStartDate, oldEndDate }){
+export default function EditBookingForm({ futureBooking, setShowBookingEditModal, oldStartDate, oldEndDate }) {
     const dispatch = useDispatch();
     const history = useHistory()
 
-    const currUser = useSelector(state=> state.session.user)
+    const currUser = useSelector(state => state.session.user)
     const today = new Date().toISOString().split('T')[0];
 
     const [startDate, setStartDate] = useState(oldStartDate)
@@ -55,14 +55,14 @@ export default function EditBookingForm ({ futureBooking, setShowBookingEditModa
                     dispatch(getCurrUserBookings())
                     history.push('/mytrips')
                 } else {
-                
+
                     const result = await res.json()
 
                     const errors = []
-          
+
                     if (result && result.message) {
                         errors.push(result.message)
-                        
+
                     }
                     setErrors(errors)
                 }
@@ -70,13 +70,14 @@ export default function EditBookingForm ({ futureBooking, setShowBookingEditModa
             })
     }
     return (
-        <div className='edit-booking-container'>
+        <div className='edit-booking-container flx-col-align-ctr'>
+
             <div className='edit-booking-title'>
                 Update Booking for {futureBooking.Spot.name}
-    
+
             </div>
             <form onSubmit={handleSubmit} className="booking-form">
-                {errors.length > 0 && (<div className="error-message-create-booking">
+                {errors.length > 0 && (<div className="error-message-create-booking ctr-algn-text">
 
                     {errors.map((error, idx) => <div key={idx}>{error}</div>)}
 
@@ -84,34 +85,39 @@ export default function EditBookingForm ({ futureBooking, setShowBookingEditModa
 
                 {(!currUser || (currUser && currUser.id !== futureBooking.Spot.ownerId)) &&
                     <>
-                        <div className="booking-dates-container">
-                            <div className="check-in-container">
-                                <span className='check-in-lable'>CHECK-IN</span>
-                                <input
-                                    type="date"
-                                    id="check-in-date"
-                                    value={startDate}
-                                    min={today}
-                                    required
-                                    onChange={e => setStartDate(e.target.value)}
-                   
-                                />
+                        <div className="booking-dates-container flx-col">
+                            <div className="checkin-checkout-container flx-row">
+                                <div className="check-in-container  cur-poi">
+                                    <div className="check-in-inner-container flx-col-align-start-justify-ctr">
+                                        <span className='check-in-label'>CHECK-IN</span>
+                                        <input
+                                            type="date"
+                                            className="check-in-date"
+                                            value={startDate}
+                                            min={today}
+                                            required
+                                            onChange={e => setStartDate(e.target.value)}
+
+                                        />
+                                    </div>
+                                </div>
+                                <div className="check-in-container cur-poi">
+                                <div className="check-in-inner-container flx-col-align-start-justify-ctr">
+                                    <span className='check-in-label'>CHECK-OUT</span>
+                                    <input
+                                        type="date"
+                                        className="check-in-date"
+                                        value={endDate}
+                                        min={startDate}
+                                        required
+                                        onChange={e => setEndDate(e.target.value)}
+
+                                    />
+                                  </div>
+                                </div>
                             </div>
-                            <div className="check-out-container">
-                                <span className='check-out-lable'>CHECK-OUT</span>
-                                <input
-                                    type="date"
-                                    id="check-out-date"
-                                    value={endDate}
-                                    min={startDate}
-                                    required
-                                    onChange={e => setEndDate(e.target.value)}
 
-                                />
-                            </div>
-
-
-                            <button className="reserve-button"
+                            <button className="reserve-button cur-poi"
                                 type="submit"
 
                                 disabled={errors.length > 0}
@@ -121,19 +127,19 @@ export default function EditBookingForm ({ futureBooking, setShowBookingEditModa
 
 
                         </div>
-                        <span className='not-charging-message'>You won't be charged yet</span>
-                        <div className="reserved-nights-section">
-                            <div>
-                                {futureBooking.Spot.price} x {numDays} nights
+                        <div className='not-charging-message ctr-algn-text'>You won't be charged yet</div>
+                        <div className="pricing-info flx-row-space-btw">
+                            <div className="text-deco">
+                                ${futureBooking.Spot.price} x {numDays} {numDays === 1? 'night' : 'nights'}
                             </div>
 
                             <div>
-                                {futureBooking.Spot.price * numDays}
+                                ${futureBooking.Spot.price * numDays}
                             </div>
                         </div>
 
-                        <div className="cleaning-fee-section">
-                            <div>
+                        <div className="pricing-info flx-row-space-btw">
+                            <div className="text-deco">
                                 Cleaning fee
                             </div>
 
@@ -142,8 +148,8 @@ export default function EditBookingForm ({ futureBooking, setShowBookingEditModa
                             </div>
                         </div>
 
-                        <div className="service-fee-section">
-                            <div>
+                        <div className="pricing-info flx-row-space-btw">
+                            <div className="text-deco">
                                 Service fee
                             </div>
                             <div>
@@ -154,7 +160,7 @@ export default function EditBookingForm ({ futureBooking, setShowBookingEditModa
 
                         </div>
 
-                        <div className="total-section">
+                        <div className="total-section flx-row-space-btw">
                             <div>
                                 Total before taxes
                             </div>

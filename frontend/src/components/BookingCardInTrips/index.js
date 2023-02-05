@@ -30,6 +30,7 @@ const formatedDate = (dateStr) => {
 export function BookingCardInTrips({ futureBooking }) {
 
     const currUser = useSelector(state => state.session.user)
+    const [numNights, setNumNights] = useState(Math.ceil(((new Date(futureBooking.endDate).getTime()) - (new Date(futureBooking.startDate).getTime())) / 1000 / 60 / 60 / 24))
     const [showBookingDeleteModal, setShowBookingDeleteModal] = useState(false)
     const [showBookingEditModal, setShowBookingEditModal] = useState(false)
 
@@ -59,7 +60,7 @@ export function BookingCardInTrips({ futureBooking }) {
 
                         </div>
                         <div className="num-nights">
-                            {Math.ceil(((new Date(futureBooking.endDate).getTime()) - (new Date(futureBooking.startDate).getTime())) / 1000 / 60 / 60 / 24)} nights
+                            {numNights} {numNights === 1? 'night' : 'nights'}
                         </div>
 
                         <div className="edit-delete-booking flx-row-space-btw">

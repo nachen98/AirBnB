@@ -87,7 +87,7 @@ export function BookingCard({ oneSpotById, currUser }) {
     return (
         <div className='spot-info-right'>
             <form onSubmit={handleSubmit} className="booking-form">
-                {errors.length > 0 && (<div className="error-message-create-booking">
+                {errors.length > 0 && (<div className="error-message-create-booking ctr-algn-text">
 
                     {errors.map((error, idx) => <div key={idx}>{error}</div>)}
 
@@ -127,7 +127,7 @@ export function BookingCard({ oneSpotById, currUser }) {
                                             min={today}
                                             required
                                             onChange={e => setStartDate(e.target.value)}
-                                            onClick={(e) => e.target.focus()}
+                                            
                                         />
                                     </div>
 
@@ -142,7 +142,7 @@ export function BookingCard({ oneSpotById, currUser }) {
                                             min={startDate}
                                             required
                                             onChange={e => setEndDate(e.target.value)}
-                                            onClick={(e) => e.target.focus()}
+                                 
 
                                         />
                                     </div>
@@ -173,7 +173,7 @@ export function BookingCard({ oneSpotById, currUser }) {
                         <div className='not-charging-message ctr-algn-text'>You won't be charged yet</div>
                         <div className="pricing-info flx-row-space-btw">
                             <div className="text-deco">
-                                ${oneSpotById.price} x {numDays} nights
+                                ${oneSpotById.price} x {numDays} {numDays === 1 ? 'night' :'nights'}
                             </div>
 
                             <div>

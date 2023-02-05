@@ -98,3 +98,10 @@
     padding-top: 20px;
     border-top: 1px solid #b0b0b0;
 }
+
+.error-message-create-booking{
+    color: rgb(255, 56, 92);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px
+}

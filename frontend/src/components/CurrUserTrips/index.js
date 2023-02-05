@@ -87,7 +87,7 @@ export default function CurrUserTrips() {
 
             {previousBookings.length > 0 && (
                 <div className="previous-bookings">
-                    <span className="previous-booking-title">Where You've Been</span>
+                    {/* <span className="previous-booking-title">Where You've Been</span> */}
                     <div>
                         {previousBookings?.map(previousBooking => <PreviousBooking key = {previousBooking.id} previousBooking={previousBooking}/>)}
                         </div>
