@@ -2,7 +2,7 @@
     background-color: white;
     border-radius: 10px;
     width: 280px;
-    height: 120px;
+    height: 200px;
     padding: 20px;
     z-index: 100
 }
@@ -18,28 +18,22 @@
 }
 
 .cancel-delete-comment-and-booking{
+    outline: none;
     border: none;
-    color: rgb(26, 108, 215);
-    background-color: white;
-    font-weight: 500;
-    margin-right: 20px;
-    cursor: pointer;
-    width: 70px;
-    height: 35px;
-    padding: 10px;
-    border-radius: 20px;
+    background-color: #db0d64;
+    color:white;
+    border-radius: 12px;
+    padding: 5px 10px;
+  
 }
 
 .confirm-delete-comment-and-booking{
+    outline: none;
     border: none;
-    background-color: white;
-    color: rgb(26, 108, 215);
-    font-weight: 500;
-    cursor: pointer;
-    width: 70px;
-    height: 35px;
-    padding: 10px;
-    border-radius: 20px;
+    background-color: #db0d64;
+    color:white;
+    border-radius: 12px;
+    padding: 5px 10px
 }
 
 .cancel-delete-comment-and-video:hover{

@@ -27,11 +27,11 @@ export function ConfirmDeleteBooking({ futureBooking, setShowBookingDeleteModal 
                 Delete Booking
             </div>
             <div className="delete-messages">
-                Delete your booking permanently?
+                Are you sure you want to cancel this booking?
             </div>
-            <div className="confirm-delete-comments-buttons flx-row-end">
-                <button className="cancel-delete-comment-and-booking" onClick={cancelDeleteButton}>Cancel</button>
-                <button  className="confirm-delete-comment-and-booking" onClick={deleteBookingButton}>Delete</button>
+            <div className="confirm-delete-comments-buttons flx-row-space-btw">
+                <button className="cancel-delete-comment-and-booking cur-poi" onClick={cancelDeleteButton}>Cancel</button>
+                <button  className="confirm-delete-comment-and-booking cur-poi" onClick={deleteBookingButton}>Delete</button>
 
             </div>
         </div>

@@ -63,3 +63,9 @@
     align-items: flex-start;
     justify-content: center
 }
+
+.flx-row-end{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
