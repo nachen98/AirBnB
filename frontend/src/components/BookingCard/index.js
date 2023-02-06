@@ -160,7 +160,7 @@ export function BookingCard({ oneSpotById, currUser }) {
                                 </button>
                                 :
                                 <>
-                                    <button onClick={() => setShowModal(true)} className="reserve-to-login">Reserve</button>
+                                    <button onClick={() => setShowModal(true)} className="reserve-button">Reserve</button>
                                     {showModal && (
                                         <Modal onClose={() => setShowModal(false)}>
                                             <LoginForm />                              
