@@ -3,13 +3,18 @@
     box-sizing:border-box;
     font-family:  Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
 }
-.flx-row-space-btw {
+.flx-row-space-btw{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items:center
 }
 
+.flx-row-space-btw-no-aln-ctr{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .flx-col {
     display: flex;
     flex-direction: column;

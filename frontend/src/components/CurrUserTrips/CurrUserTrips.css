@@ -16,3 +16,43 @@
     margin-bottom: 15px
 
 }
+
+.empty-booking-container {
+  display:flex;
+  width: 100%;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 15px;
+  height: 330px;
+  margin-bottom: 30px
+}
+
+.no-trip-card-left{
+  width: 50%;   
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 15px
+}
+
+.no-booking-title{
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-weight: 600
+}
+
+.no-booking-message{
+  color:rgb(133, 133, 133);
+  margin-bottom: 40px
+}
+
+.start-searching-button{
+  width: 50%;
+  border:none;
+  height: 50px;
+  color: white;
+  font-weight: 600;
+  border-radius: 7px;
+  font-size: 15px;
+  background: linear-gradient(45deg, rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
+}

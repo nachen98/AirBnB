@@ -26,8 +26,8 @@ export default function EditBookingForm({ futureBooking, setShowBookingEditModal
             errors.push("Please book dates after today.")
         }
 
-        if (startDate > endDate) {
-            errors.push("End date cannot be earlier than start date.")
+        if (startDate >= endDate) {
+            errors.push("End date has to be at least 1 day after the start date.")
         }
 
         setErrors(errors)
@@ -53,7 +53,8 @@ export default function EditBookingForm({ futureBooking, setShowBookingEditModal
                     setErrors([])
                     setShowBookingEditModal(false)
                     dispatch(getCurrUserBookings())
-                    history.push('/mytrips')
+                    setNumDays(Math.floor(((new Date(endDate).getTime()) - (new Date(startDate).getTime())) / 1000 / 60 / 60 / 24));
+                    // history.push('/mytrips')
                 } else {
 
                     const result = await res.json()

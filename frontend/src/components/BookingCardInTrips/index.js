@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './BookingCardInTrips.css'
 import { useSelector } from "react-redux";
 import { EditBookingModal } from '../EditBookingModal';
@@ -34,6 +34,9 @@ export function BookingCardInTrips({ futureBooking }) {
     const [showBookingDeleteModal, setShowBookingDeleteModal] = useState(false)
     const [showBookingEditModal, setShowBookingEditModal] = useState(false)
 
+    useEffect(() => {
+        setNumNights(Math.floor(((new Date(futureBooking.endDate).getTime()) - (new Date(futureBooking.startDate).getTime())) / 1000 / 60 / 60 / 24));
+    }, [futureBooking.startDate, futureBooking.endDate])
     //console.log('futureBooking@@@@@@@@@@@@@@', futureBooking)
     return (
 
