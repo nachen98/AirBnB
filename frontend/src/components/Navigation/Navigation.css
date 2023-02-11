@@ -5,12 +5,14 @@
     position: sticky;
     top:0;
     background-color: white;
+    z-index: 1;
 }
 .NavBar{
     display:flex;
     justify-content: space-between;
     margin: 0 14% 0 14%;
     height: 80px;
+    
 }
 .RightNav{
     position:relative;

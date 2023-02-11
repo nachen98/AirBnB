@@ -50,16 +50,11 @@
     width: 100%;
     object-fit: cover;
     border-radius: 15px;
-    cursor: pointer;
     transition-duration: 200ms;
     aspect-ratio: 2;
 }
 
-img:hover{
-    filter: brightness(90%);
-    transition-duration: 200ms;
-   
-}
+
 .single-spot-info-container{
     display: flex;
     justify-content: space-between;

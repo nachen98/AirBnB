@@ -12,6 +12,12 @@ a{
         aspect-ratio: 1;
     
 }
+
+.spotcard-img:hover{
+        filter: brightness(90%);
+        transition-duration: 200ms;
+       
+    }
 .spotcard-info{
         line-height: 2;
         display: flex;
