@@ -29,59 +29,54 @@ function LoginForm() {
 
   return (
 
-    <form onSubmit={handleSubmit}>
-      <div className="loginform-container">
-        <div className="nav-container">
-          Log in
+    <div className="loginform-container flx-col-align-ctr">
+      <div className="login-nav-container flx-col-justify-align-ctr">
+        Log in
+      </div>
+      <div className="login-nav-lower-container">
+        <div className="login-nav-header ">
+          Welcome to funfairbnb
         </div>
-
-        <div className="nav-header">
-          Welcome to funfairbnb!
-        </div>
-        {errors.length > 0 && (<div className="error-message">
-         
-          <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
-        </div>)}
-        <div className="field-container">
-        <div className="input-field-container">
-        <div className="input-field-email">
-        <label>
-          
-          <input className="input"
-            type="text"
-            value={credential}
-            placeholder="Username or Email"
-            onChange={(e) => setCredential(e.target.value)}
-          //required
-          />
-        </label>   
-        </div>
-      
-        <div className="input-field-password">
-        <label>
-          <input className="input"
+        <form onSubmit={handleSubmit}>
+       
+            <input
+              className="login-username-input"
+              type="text"
+              value={credential}
+              placeholder="Username or Email"
+              onChange={(e) => setCredential(e.target.value)}
+              style={{borderBottom: 'none'}}
+              required
+            />
+     
+          <input className="login-password-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-          //required
+            required
           />
-        </label>  
-        </div>
-        </div>
-        <div className="login-button">
-          <button type="submit">Log In</button>
-          </div>      
-        <div className="demo-button">
-        <button onClick={demoUserLogin}>Log in as demo user</button>
-        </div>
-        </div>
-      </div>
-    </form>
+          {errors.length > 0 &&
+            <div className="login-error-message">{errors}</div>
+          }
+
+     
+          <button type="submit"  className="login-button">Continue</button>
+          <div className="or-separator flx-row-space-btw-no-justify-content">
+            <div className="separate-line"></div>
+            <div className="or-message">or</div>
+            <div className="separate-line"></div>
+          </div>
+
+          
+       
+          <button className="login-demo-button" onClick={demoUserLogin}>Continue as demo user</button>
+    
+        </form>
+      </div >
+    </div>
+
+
   );
 }
 

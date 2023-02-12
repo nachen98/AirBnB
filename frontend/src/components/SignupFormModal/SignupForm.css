@@ -25,11 +25,11 @@
 }
 
 .nav-header{
-    margin-top: 10px;
+
     margin-bottom: 40px;
     font-size: 25px;
     font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif; 
-    padding-left: 10px;
+
     font-weight: 500;
 }
 .error-message{
@@ -38,31 +38,7 @@
     margin-bottom:1px;
     height: auto
 }
-.input-field-container{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgb(80, 80, 80);
-    /* margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 10px; */
-    margin-top: 15px
-}
-.input-field input{
-    border: 0 none;
-    outline: none;
-    width: 99%;
-    height: 20px;
-    font-size: 10px;  
 
-}
-
-.input-field{
-    border-bottom: 1px solid rgb(80, 80, 80);
-}
-
-li{
-    list-style-type: none;
-}
 
 .signup-button{
     margin-top: 0px;

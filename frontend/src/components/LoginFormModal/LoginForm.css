@@ -1,120 +1,103 @@
 
 .loginform-container{
-   padding-top: 10px;
-   width:350px;
-   height: auto;
-   border: 2px rgb(94, 93, 93);
-   border-radius: 15px;
-   /* box-shadow: 0 0 0 6px rgba(94, 93, 93); */
-   padding:10px;
+   width:500px;
+   height: 520px;
+   border-radius: 12px;
    background-color: white;
-   
 }
-.nav-container{
+.login-nav-container{
 
-    font-family: Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif; 
     font-weight: bold;
-    font-size: 16px;
-    text-align: center;
-   
-    margin-bottom: 8px;
+    font-size: 16px;   
     border-bottom: 1px solid rgb(201, 201, 201);
-    padding-top: 8px;
-    padding-bottom: 20px;
-    height: 30px
+    width: 100%;
+    height: 65px
 }
 
-.nav-header{
-    margin-top:10px;
-    margin-bottom: 15px;
-    font-size: 25px;
-    font-family: Plus Jakarta Sans,Montserrat Alternates,Open Sans,Arimo,Roboto,sans-serif; 
-    padding-left: 10px;
-    font-weight: 500;
-    position:relative;
-    top: 15px
+.login-nav-lower-container{
+    width: 100%;
+    padding: 30px;
+}
+.login-nav-header{
+   margin-top:10px;
+    margin-bottom: 40px;
+    font-size: 22px;
    
 }
-.error-message{
-    color: #db0d64;
-    display:block;
-    height: 2px;
-    margin-bottom:1px
-}
-.input-field-container{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgb(80, 80, 80);
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 4px;
-    outline: none;
-    /* box-shadow: -1px -1px 1px 1px rgb(80, 80, 80); */
-    position:relative;
-    bottom: 13px
-
-}
-.input-field-email input{
-    /* border: 0 none; */
-    outline: none;
-    width: 99%;
-    height: 30px;
-    font-size: 20px;
-    
-    
-}
-.input-field-password input{
-    /* border: 0 none; */
-    outline: none;
-    width: 99%;
-    height: 30px;
-    font-size: 20px;
-    
-}
-li{
-    list-style-type: none;
+.login-error-message{
+    color: rgb(193, 53, 21);
+    margin-top: 10px;
+    font-size: 12px;
 }
 
-.input-field.email{
-    border-bottom: 1px solid rgb(80, 80, 80);
+.login-username-input{
+    width: 100%;
+    height: 55px;
+    border:1px solid rgb(175, 175, 175);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+
 }
 
-input:focus{
-  border:1px solid black
+.login-username-input:focus{
+    border-radius: 10px
 }
 
+.login-password-input{
+    width: 100%;
+    height: 55px;
+    border-top: 1px solid white;
+    border:1px solid rgb(175, 175, 175);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+}
 
-.login-button button{
-    width: 97%;
+.login-button{
+    width: 100%;
     border: none;
     background: linear-gradient(45deg, rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
-    /* margin-top: 20px; */
-    height: 35px;
-    margin-left: 10px;
-    margin-right: 40px;
-    border-radius: 10px;
+    height: 40px;
+    border-radius: 8px;
     cursor: pointer;
+    margin-top: 40px;
     color: white;
-    font-size: 20px
+    font-size: 15px
 }
 
-.login-button button:hover{
+.login-button:hover{
     background: linear-gradient(45deg,  rgb(248, 112, 15), rgb(244, 27, 63));
-}
-.demo-button button{
-    width: 97%;
-    border: none;
-    background: linear-gradient(45deg,  rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
-    margin-top: 15px;
-    height: 35px;
-    margin-left: 10px;
-    margin-right: 50px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: white;
-    font-size: 20px
 }
 
-.demo-button button:hover{
-    background: linear-gradient(45deg,  rgb(248, 112, 15), rgb(244, 27, 63));
+.or-separator{
+  
+    margin-top: 35px;
+}
+
+.separate-line{
+    background-color: rgb(221, 221, 221);
+    height: 1px;
+    width: 45%;
+}
+.or-message{
+    font-size: 12px;
+    color: rgb(146, 146, 146);
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.login-demo-button{
+    width: 100%;
+    border: 1px solid black;
+    background:white;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 35px;
+    color: black;
+    font-size: 15px
+}
+
+.login-demo-button:hover{
+    background: rgb(246, 246, 246)
 }
