@@ -1,11 +1,11 @@
 
-.loginform-container{
+.loginsignupform-container {
    width:500px;
    height: 520px;
    border-radius: 12px;
    background-color: white;
 }
-.login-nav-container{
+.loginsignup-nav-container{
 
     font-weight: bold;
     font-size: 16px;   
@@ -14,7 +14,7 @@
     height: 65px
 }
 
-.login-nav-lower-container{
+.loginsignup-nav-lower-container{
     width: 100%;
     padding: 30px;
 }
@@ -53,8 +53,10 @@
     border-bottom-right-radius: 10px;
     padding: 10px;
 }
-
-.login-button{
+.login-password-input:focus{
+    border-radius: 10px
+}
+.loginsignup-button{
     width: 100%;
     border: none;
     background: linear-gradient(45deg, rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
@@ -66,7 +68,7 @@
     font-size: 15px
 }
 
-.login-button:hover{
+.loginsignup-button:hover{
     background: linear-gradient(45deg,  rgb(248, 112, 15), rgb(244, 27, 63));
 }
 

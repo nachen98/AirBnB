@@ -29,11 +29,11 @@ function LoginForm() {
 
   return (
 
-    <div className="loginform-container flx-col-align-ctr">
-      <div className="login-nav-container flx-col-justify-align-ctr">
+    <div className="loginsignupform-container flx-col-align-ctr">
+      <div className="loginsignup-nav-container flx-col-justify-align-ctr">
         Log in
       </div>
-      <div className="login-nav-lower-container">
+      <div className="loginsignup-nav-lower-container">
         <div className="login-nav-header ">
           Welcome to funfairbnb
         </div>
@@ -61,7 +61,7 @@ function LoginForm() {
           }
 
      
-          <button type="submit"  className="login-button">Continue</button>
+          <button type="submit"  className="loginsignup-button">Continue</button>
           <div className="or-separator flx-row-space-btw-no-justify-content">
             <div className="separate-line"></div>
             <div className="or-message">or</div>
