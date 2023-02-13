@@ -9,16 +9,13 @@
 }
 
 
-input:focus{
-    border:1px solid black
+.create-review-form-container{
+    width:350px;
+    height: 350px;
+    border-radius: 12px;
+    background-color: white;
 }
 
-textarea:focus{
-    border:1px solid black
-}
-
-.error-message{
-    color: #db0d64;
-    margin-top: 2px;
-    height: auto
+.review-form-container{
+    margin-top: 20px
 }

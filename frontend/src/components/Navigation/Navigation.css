@@ -93,10 +93,10 @@
     /* width: 30px; */
     height: 50px;
     /* outline-color: rgb(225, 217, 217); */
-    border-top: 2px solid rgb(222, 219, 219);
-    border-bottom: 2px solid rgb(222, 219, 219);
-    border-left: 2px solid rgb(222, 219, 219);
-    border-right: 2px solid rgb(222, 219, 219);
+    border-top: 1px solid rgb(222, 219, 219);
+    border-bottom: 1px solid rgb(222, 219, 219);
+    border-left: 1px solid rgb(222, 219, 219);
+    border-right: 1px solid rgb(222, 219, 219);
     cursor: pointer;
 }
 

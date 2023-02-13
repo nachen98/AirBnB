@@ -51,14 +51,14 @@ function CreateReviewForm({ setShowModal }) {
     };
 
     return (
-        <div className="form-container">
-            <div className="form-header">
+        <div className="create-review-form-container flx-col-align-ctr">
+            <div className="loginsignup-nav-container flx-col-justify-align-ctr">
                 Create a Review
             </div>
 
-            <div className="form-body">
-                <form onSubmit={handleSubmit}>
-                    {errors.length > 0 && (<div className="error-message">
+   
+                <form onSubmit={handleSubmit} className="review-form-container">
+                    {errors.length > 0 && (<div className="signup-error-message">
 
                         <ul>
                             {errors.map((error, idx) => (
@@ -66,42 +66,43 @@ function CreateReviewForm({ setShowModal }) {
                             ))}
                         </ul>
                     </div>)}
-                    <div className="input-field-container">
-                        <div className="input-field">
-                            <label>
+                 
                                 <input
-                                    type="text"
+                                className="login-username-input"
+                                    type="number"
                                     value={stars}
                                     placeholder="Rating from 1 to 5"
                                     onChange={(e) => setStars(e.target.value)}
+                                    style={{ borderBottom: 'none' }}
+                                    min='1'
+                                    max='5'
+                                    required
                                 />
-                            </label>
-                        </div>
-                        <div className="input-field">
-                            <label>
+                     
                                 <textarea
+                                 className="text-area"
                                     value={review}
                                     placeholder='Type your review here...'
                                     onChange={(e) => setReview(e.target.value)}
+                                    required
                                 />
-                            </label>
+           
+   
 
-                        </div>
-                    </div>
+              
+           <button
+            className="spot-submit"
+              type="submit"
+              disabled={isSubmitted && errors.length > 0}
+            >
+              Submit
 
-                    <div className="submit-button">
-                        <button
-                            type="submit"
-                            disabled={isSubmitted && errors.length > 0}
-                        >
-                            Submit
-
-                        </button>
-                    </div>
+            </button>
+         
                 </form>
 
             </div>
-        </div>
+  
     )
 
 };
