@@ -1,11 +1,11 @@
-// frontend/src/components/LoginFormModal/LoginForm.js
+
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./CreateSpot.css"
 import { addSpot, addImage, getAllSpots } from '../../store/spots';
 
-function CreateSpotForm({ setShowModal }) {
+function CreateSpotForm() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [address, setAddress] = useState("");
@@ -21,9 +21,6 @@ function CreateSpotForm({ setShowModal }) {
   const [errors, setErrors] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  //   useEffect(() => {
-  //     dispatch(getAllSpots())
-  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,29 +50,26 @@ function CreateSpotForm({ setShowModal }) {
       setErrors(validationErrors)
       return;
     }
-    //console.log('!!!!!!!!!!!!!!validationErrors', validationErrors)
+
     setErrors([]);
 
     const addedSpot = { address, city, state, country, lat, lng, name, description, price }
-    //console.log('!!!!!!!!!!!!!!addSpot', addedSpot)
+
     dispatch(addSpot(addedSpot)).then(
       async (res) => {
-        //console.log('!!!!!!!!!!!!!!res', res)
-        //const data = await res.json();
-        //console.log('!!!!!!!!!!!!!!data', data)
+
         let newSpot = res
         if (res && res.errors) {
-          //console.log('!!!!!!!!!!!!!!errros', res.errors)
+
           setErrors(res.errors);
         } else {
-          //console.log('###########imgUrl', imgUrl)
+
           dispatch(addImage(res.id, { preview: true, url: imgUrl })).then(
             async (res) => {
               const data = await res.json();
               if (data && data.errors) {
                 setErrors(data.errors);
               } else {
-                setShowModal(false)
                 history.push(`/spots/${newSpot.id}`)
               }
             }
@@ -85,153 +79,152 @@ function CreateSpotForm({ setShowModal }) {
         }
       }
     );
-
-
-
   };
 
 
 
   return (
-    <div className="form-container">
-      <div className="form-header">
+
+    <div className="create-spot-form-container flx-col-justify-align-ctr ">
+      <div className="create-spot-form-header">
         Create a Spot
       </div>
-      <div className="form-body">
-        <form onSubmit={handleSubmit}>
-          {errors.length > 0 && (<div className="error-message-create-spot">
-          
-              {errors.map((error, idx) => <div key={idx}>{error}</div>)}
-          
+ 
+        <form onSubmit={handleSubmit} className="spot-form-container">
+          {errors.length > 0 && (<div className="signup-error-message">
+
+            {errors.map((error, idx) => <div key={idx}>{error}</div>)}
+
           </div>)}
-          <div className="input-field-container">
-            <div className="input-field">
-              <label>
+       
                 <input
+                  className="login-username-input"
                   type="text"
                   placeholder='Address'
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
+                  style={{ borderBottom: 'none' }}
+                  required
                 />
-              </label>
-            </div>
+         
 
-            <div className="input-field">
-              <label>
+         
                 <input
+                  className="signup-username-input"
                   type="text"
                   value={city}
                   placeholder='City'
                   onChange={(e) => setCity(e.target.value)}
+                  style={{ borderBottom: 'none' }}
+                  required
                 />
-              </label>
-            </div>
+      
 
-            <div className="input-field">
-              <label>
+         
                 <input
+                 className="signup-username-input"
                   type="text"
                   value={state}
                   placeholder='State'
                   onChange={(e) => setState(e.target.value)}
+                  style={{ borderBottom: 'none' }}
+                  required
                 />
-              </label>
-            </div>
+  
 
-            <div className="input-field">
-              <label>
+      
                 <input
+                  className="signup-username-input"
                   type="text"
                   value={country}
                   placeholder='Country'
                   onChange={(e) => setCountry(e.target.value)}
+                  style={{ borderBottom: 'none' }}
+                  required
                 />
-              </label>
-            </div>
+          
 
-            <div className="input-field">
-              <label>
+          
                 <input
+                  className="signup-username-input"
                   type="number"
                   value={lat}
                   name="latitude"
                   placeholder='Latitude'
                   onChange={(e) => setLat(e.target.value)}
-                // min='-90'
-                // max='90'
+                  style={{ borderBottom: 'none' }}
+                  min='-90'
+                  max='90'
+                  required
                 />
-              </label>
-            </div>
-            <div className="input-field">
-              <label>
+          
+         
                 <input
+                  className="signup-username-input"
                   type="number"
                   value={lng}
                   placeholder='Longitude'
                   onChange={(e) => setLng(e.target.value)}
-                // min='-180'
-                // max='180'
+                  style={{ borderBottom: 'none' }}
+                  min='-180'
+                  max='180'
                 />
-              </label>
-            </div>
-
-            <div className="input-field">
-              <label>
+         
                 <input
+                  className="signup-username-input"
                   type="text"
                   value={name}
                   placeholder='Name'
                   onChange={(e) => setName(e.target.value)}
-
+                  style={{ borderBottom: 'none' }}
+                  required
                 />
-              </label>
-            </div>
-            <div className="input-field">
-              <label>
+          
+       
                 <input
-                  type="text"
+                  className="signup-username-input"
+                  type="number"
                   value={price}
                   placeholder='Price'
                   onChange={(e) => setPrice(e.target.value)}
-                // min='0'
+                  style={{ borderBottom: 'none' }}
+                  min='0'
+                  required
                 />
-              </label>
-            </div>
-            <div className="input-field text-area">
-              <label>
-                <textarea
-                  value={description}
-                  placeholder='Description'
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </label>
-            </div>
-
-            <div className="input-field">
-              <label>
+       
                 <input
+                  className="signup-username-input"
                   type="url"
                   value={imgUrl}
                   placeholder='Image Url'
                   onChange={(e) => setImgUrl(e.target.value)}
+                  style={{ borderBottom: 'none' }}
                 />
-              </label>
-            </div>
-          </div>
-          <div className="submit-button">
+                <textarea
+                  className="text-area"
+                  value={description}
+                  placeholder='Description'
+                  onChange={(e) => setDescription(e.target.value)}
+          
+                  required
+                />
+    
             <button
+            className="spot-submit"
               type="submit"
               disabled={isSubmitted && errors.length > 0}
             >
               Submit
 
             </button>
-          </div>
-
+    
+  
         </form>
-      </div>
 
-    </div>
+
+    </div >
+
+
 
   );
 }

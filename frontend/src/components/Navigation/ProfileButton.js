@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Redirect, useHistory } from "react-router-dom";
 import { NavLink  } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
-import CreateSpotModal from "../CreateSpotModal";
+import CreateSpotForm from "../CreateSpotForm/CreateSpotForm";
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -37,7 +37,8 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <CreateSpotModal />
+      <button onClick={() => history.push('/create-spot')} className="host-button">Become a Host</button>
+    
       <button onClick={openMenu} className='profile-button'>
         <i className="fa-solid fa-bars"></i>
         <i className="fas fa-user-circle" />
