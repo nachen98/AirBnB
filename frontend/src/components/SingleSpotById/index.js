@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getOneSpot, deleteSpot } from '../../store/spots';
 import { getAllReviewsBySpot } from '../../store/review';
-import EditSpotModal from '../EditSpotModal';
 import CreateReviewModal from '../CreateReviewModal';
 import SpotReview from '../SpotReview';
 import { BookingCard } from '../BookingCard';
@@ -17,7 +16,6 @@ export function SingleSpot() {
     const oneSpotById = useSelector(state => state.spots.singleSpot)
     const currUser = useSelector(state => state.session.user)
     const reviews = useSelector(state => state.reviews.spot)
-    //console.log('reviews!!!!!!!!!!!!!!', reviews)
 
     const reviewContents = Object.values(reviews)
     useEffect(() => {
@@ -39,14 +37,10 @@ export function SingleSpot() {
 
     if (Object.keys(oneSpotById).length === 0) return null
     console.log('oneSpotById!!!!!!!', oneSpotById)
-    //console.log('reviewContents*************', reviewContents)
-    //console.log('currUser!!!!!!', currUser.id)
 
     let userCreatedReview = false
     if (currUser && "id" in currUser) {
         let filteredContents = reviewContents.filter(reviewContent => reviewContent.userId === currUser.id)
-
-        //console.log('filteredContents!!!!!!!!!!!', filteredContents)
         if (filteredContents.length > 0) userCreatedReview = true
     } else
         userCreatedReview = true;
@@ -80,7 +74,7 @@ export function SingleSpot() {
                     {currUserIsOwner && (
                         <div >
                             <button onClick={deleteSpotButton} className='delete-spot-button'>Delete spot</button>
-                            <EditSpotModal spotId={spotId} />
+                            <button onClick={() => history.push(`/spots/${spotId}/edit`)} className="edit-spot-button">Edit spot</button>
                         </div>
 
                     )}

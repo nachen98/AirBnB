@@ -32,7 +32,14 @@
     display: flex;
     flex-direction: row;
 }
-
+.edit-spot-button{
+    background-color: #db0d64;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 12px;
+    cursor:pointer;
+}
 .delete-spot-button{
     background-color: #db0d64;
     border: none;

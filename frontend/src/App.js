@@ -7,8 +7,10 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SpotsList from "../src/components/SpotsList/index"
 import { SingleSpot } from "./components/SingleSpotById";
-import CreateSpotForm  from "./components/CreateSpotForm/CreateSpotForm"
-import CurrUserTrips from "./components/CurrUserTrips"
+import CreateSpotForm  from "./components/CreateSpotForm/CreateSpotForm";
+import EditSpotForm from "./components/EditSpotForm/EditSpotForm";
+import CurrUserTrips from "./components/CurrUserTrips";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,7 +28,7 @@ function App() {
           {isLoaded && (
             <SpotsList />)}
         </Route>
-        <Route path="/spots/:spotId">
+        <Route exact path="/spots/:spotId">
           <Navigation isLoaded={isLoaded} NavBar="NavBarNarrow"/>
           {isLoaded && (
             <SingleSpot />)}
@@ -36,6 +38,12 @@ function App() {
           <Navigation isLoaded={isLoaded} NavBar="NavBar"/>
           {isLoaded && (
             <CreateSpotForm />)}
+        </Route>
+
+        <Route exact path="/spots/:spotId/edit">
+          <Navigation isLoaded={isLoaded} NavBar="NavBar"/>
+          {isLoaded && (
+            <EditSpotForm />)}
         </Route>
 
         <Route path="/mytrips">

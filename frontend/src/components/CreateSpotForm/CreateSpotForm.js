@@ -168,6 +168,7 @@ function CreateSpotForm() {
                   style={{ borderBottom: 'none' }}
                   min='-180'
                   max='180'
+                  required
                 />
          
                 <input
