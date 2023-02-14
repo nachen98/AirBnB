@@ -118,7 +118,7 @@ export function BookingCard({ oneSpotById, currUser }) {
                         <div className="booking-dates-container flx-col">
                             <div className="checkin-checkout-container flx-row">
                                 <div className="check-in-container flx-col-justify-align-ctr cur-poi">
-                                    <div className="check-in-inner-container">
+                                    <div className="check-in-inner-container flx-col-align-start-justify-ctr">
                                         <span className='check-in-label'>CHECK-IN</span>
                                         <input
                                             type="date"
@@ -132,8 +132,8 @@ export function BookingCard({ oneSpotById, currUser }) {
                                     </div>
 
                                 </div>
-                                <div className="check-out-container cur-poi">
-                                    <div className="check-out-inner-container">
+                                <div className="check-out-container flx-col-justify-align-ctr cur-poi">
+                                    <div className="check-out-inner-container flx-col-align-start-justify-ctr">
                                         <span className='check-in-label'>CHECK-OUT</span>
                                         <input
                                             type="date"

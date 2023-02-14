@@ -124,3 +124,21 @@ i{
   grid-template-columns: 50% 50%;
   gap: 20px
 }
+
+@media (max-width: 1600px){
+    .single-spot-info{
+        margin: 30px 250px 0 250px
+    }
+}
+@media (max-width: 1300px){
+    .single-spot-info{
+        margin: 30px 100px 0 100px
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .single-spot-info{
+ 
+   margin: 30px 100px 0 100px
+    }
+}

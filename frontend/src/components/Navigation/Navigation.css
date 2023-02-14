@@ -10,7 +10,7 @@
 .NavBar{
     display:flex;
     justify-content: space-between;
-    padding: 0 14% 0 14%;
+    padding: 0 5% 0 5%;
     height: 80px;
     
 }
@@ -195,4 +195,22 @@ li{
 
 .trips-button:hover{
     background-color:  rgb(243, 242, 242);;
+}
+
+@media (max-width: 1600px){
+    .NavBarNarrow{
+        margin: 0 250px 0 250px
+    }
+}
+
+@media (max-width: 1300px){
+    .NavBarNarrow{
+        margin: 0 100px 0 100px
+    }
+}
+
+@media (max-width: 1024px){
+    .NavBarNarrow{
+        margin: 0 100px 0 100px
+    }
 }

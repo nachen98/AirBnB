@@ -6,7 +6,7 @@
     border-radius: 15px;
     height: auto;
     padding: 30px;
-    width: 35%;
+    width: 40%;
     cursor: pointer;
     justify-content: space-between;
 }
@@ -45,7 +45,7 @@
     position:absolute;
     height: 80%;
     left: 10px;
-    top: 5px
+    top: 5px;
 
 }
 .check-in-label{
@@ -66,7 +66,7 @@
 .check-out-inner-container{
     position: absolute;
     left: 10px;
-    top: 5px
+
 }
 
 .reserve-button{
@@ -104,4 +104,25 @@
     font-size: 15px;
     font-weight: 600;
     margin-bottom: 20px
+}
+
+/* @media (max-width: 1380px) {
+    .spot-info-right{
+        width:45%;
+        margin-left: 20px
+    }
+} */
+
+@media (max-width: 1600px) {
+    .spot-info-right{
+        width:45%;
+        margin-left: 20px
+    }
+}
+
+@media(max-width: 3000px) and(min-width: 1601px){
+    .spot-info-right{
+        width:40%;
+        margin-left: 20px
+    }
 }
