@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { deleteBooking } from "../../store/bookings"
+import { deleteBooking, getCurrUserBookings } from "../../store/bookings"
 import "./ConfirmDeleteBooking.css"
 
 export function ConfirmDeleteBooking({ futureBooking, setShowBookingDeleteModal }) {
@@ -13,7 +13,8 @@ export function ConfirmDeleteBooking({ futureBooking, setShowBookingDeleteModal 
 
         e.preventDefault();
         await dispatch(deleteBooking(futureBooking.id))
-        history.push('/mytrips')
+        //await dispatch(getCurrUserBookings())
+        setShowBookingDeleteModal(false)
     }
 
     const cancelDeleteButton = async (e) => {

@@ -101,6 +101,7 @@ export const deleteBooking = (bookingId) => async (dispatch) => {
 
     if(response.ok){
         dispatch(deleteOneBooking(bookingId))
+        return {ok: true}
     }
 }
 

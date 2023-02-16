@@ -14,24 +14,27 @@ export default function CurrUserTrips() {
 
     const currUser = useSelector(state => state.session.user)
     const currUserBookings = useSelector(state => state.booking.user)
+    const bookingValues = Object.values(currUserBookings)
 
     const [futureBookings, setFutureBookings] = useState([])
     const [previousBookings, setPreviousBookings] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
-    let futureBookingArr = []
-    let previousBookingArr = []
-
+    
     useEffect(() => {
         dispatch(getCurrUserBookings())
+        console.log("#######################")
     }, [dispatch])
-
-
+    
+    
     useEffect(() => {
+        
+        let futureBookingArr = []
+        let previousBookingArr = []
         console.log("@@@@@@@@@@@@@@@currUserBooking", currUserBookings)
 
-        const bookingValues = Object.values(currUserBookings)
         console.log("@@@@@@@@@@@@@@@bookingValues", bookingValues)
-        if (bookingValues?.length > 0) {
+      
+          
             for (let i = 0; i < bookingValues.length; i++) {
                 let individualBooking = bookingValues[i]
 
@@ -44,8 +47,9 @@ export default function CurrUserTrips() {
             setPreviousBookings(previousBookingArr)
             setFutureBookings(futureBookingArr)
             setIsLoaded(true)
-        }
-    }, [dispatch, currUserBookings])
+            
+        
+    }, [dispatch, bookingValues.length])
 
     useEffect(() => {
         if (!currUser) {
@@ -53,7 +57,7 @@ export default function CurrUserTrips() {
         }
     }, [currUser])
 
-    if (Object.keys(currUserBookings).length === 0) return null
+    //if (Object.keys(currUserBookings).length === 0) return null
 
     return (
         <div className="trips-page-container">
@@ -70,8 +74,7 @@ export default function CurrUserTrips() {
                     })}
                 </>
             )}
-
-            {futureBookings.length === 0 && (
+            {(futureBookings.length === 0) && (
                 <div className="empty-booking-container flx-row-space-btw-no-aln-ctr ">
                     <div className="no-trip-card-left">
                         <i class="fa-solid fa-hand-sparkles fa-3x"></i>
@@ -89,6 +92,7 @@ export default function CurrUserTrips() {
                 </div>
 
             )}
+
 
 
             {previousBookings.length > 0 && (

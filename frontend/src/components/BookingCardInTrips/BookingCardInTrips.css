@@ -19,6 +19,7 @@
     width: 50%;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+    object-fit: cover;
 }
 
 .booking-card-left-upper{
