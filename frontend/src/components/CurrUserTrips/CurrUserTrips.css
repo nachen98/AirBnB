@@ -57,9 +57,14 @@
   background: linear-gradient(45deg, rgb(234, 7, 124), rgba(244, 5, 45, 0.985));
 }
 
-@media(max-width: 1300px){
+@media (max-width: 1600px) and (min-width: 1301px){
   .trips-page-container{
+      margin: 0 250px 0 250px
+  }
+}
 
-    margin: 0 100px 0 100px
+@media (max-width: 1300px) {
+  .trips-page-container{
+      margin: 0 100px 0 100px
   }
 }

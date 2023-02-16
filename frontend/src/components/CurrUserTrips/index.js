@@ -22,7 +22,6 @@ export default function CurrUserTrips() {
     
     useEffect(() => {
         dispatch(getCurrUserBookings())
-        console.log("#######################")
     }, [dispatch])
     
     
@@ -30,10 +29,6 @@ export default function CurrUserTrips() {
         
         let futureBookingArr = []
         let previousBookingArr = []
-        console.log("@@@@@@@@@@@@@@@currUserBooking", currUserBookings)
-
-        console.log("@@@@@@@@@@@@@@@bookingValues", bookingValues)
-      
           
             for (let i = 0; i < bookingValues.length; i++) {
                 let individualBooking = bookingValues[i]
@@ -49,7 +44,7 @@ export default function CurrUserTrips() {
             setIsLoaded(true)
             
         
-    }, [dispatch, bookingValues.length])
+    }, [dispatch, currUserBookings])
 
     useEffect(() => {
         if (!currUser) {

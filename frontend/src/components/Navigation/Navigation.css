@@ -197,20 +197,15 @@ li{
     background-color:  rgb(243, 242, 242);;
 }
 
-@media (max-width: 1600px){
+@media (max-width: 1600px) and (min-width: 1301px){
     .NavBarNarrow{
         margin: 0 250px 0 250px
     }
 }
 
-@media (max-width: 1300px){
+@media (max-width: 1300px) {
     .NavBarNarrow{
         margin: 0 100px 0 100px
     }
 }
 
-@media (max-width: 1024px){
-    .NavBarNarrow{
-        margin: 0 100px 0 100px
-    }
-}
