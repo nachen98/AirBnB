@@ -13,7 +13,6 @@ export function ConfirmDeleteBooking({ futureBooking, setShowBookingDeleteModal 
 
         e.preventDefault();
         await dispatch(deleteBooking(futureBooking.id))
-        //await dispatch(getCurrUserBookings())
         setShowBookingDeleteModal(false)
     }
 
