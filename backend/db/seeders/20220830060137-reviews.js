@@ -228,146 +228,146 @@ module.exports = {
         "review": "Nick has created a unique and amazing space in a beautiful area. We loved sitting on the porch overlooking the trees, listening to the river in the distance and just enjoying the natural beauty.",
         "stars": 5
     },
+    // {
+    //     "spotId": 13,
+    //     "userId": 4,
+    //     "review": "This listing is fake. In other words it is s fraudulent listing. Do not book with this person. We were able to stay at this Riad and it was amazing but they do not provide bookings through airBnb.",
+    //     "stars": 4
+    // },
+    // {
+    //     "spotId": 13,
+    //     "userId": 5,
+    //     "review": "The host canceled this reservation 22 days before arrival. This is an automated posting..",
+    //     "stars": 5
+    // },
+    // {
+    //     "spotId": 13,
+    //     "userId": 1,
+    //     "review": "Fun little place to stay! The theme is very well done and makes for a cozy spot..",
+    //     "stars": 4
+    // },
     {
         "spotId": 13,
-        "userId": 4,
-        "review": "This listing is fake. In other words it is s fraudulent listing. Do not book with this person. We were able to stay at this Riad and it was amazing but they do not provide bookings through airBnb.",
-        "stars": 4
-    },
-    {
-        "spotId": 13,
-        "userId": 5,
-        "review": "The host canceled this reservation 22 days before arrival. This is an automated posting..",
-        "stars": 5
-    },
-    {
-        "spotId": 13,
-        "userId": 1,
-        "review": "Fun little place to stay! The theme is very well done and makes for a cozy spot..",
-        "stars": 4
-    },
-    {
-        "spotId": 14,
         "userId": 5,
         "review": "Perfect! The place was amazing..",
         "stars": 5
     },
     {
-        "spotId": 14,
+        "spotId": 13,
         "userId": 1,
         "review": "Very unique experience..",
         "stars": 4
     },
     {
-        "spotId": 14,
+        "spotId": 13,
         "userId": 2,
         "review": "Fun themed place!! is in the backyard, but fun place to watch movies or something after a day of travel :).",
         "stars": 3
     },
     {
-        "spotId": 15,
+        "spotId": 14,
         "userId": 1,
         "review": "Clean, professional and unique stay. We had a blast watching LOTR in our Hobbit House..",
         "stars": 3
     },
     {
-        "spotId": 15,
+        "spotId": 14,
         "userId": 2,
         "review": "This was the cutest little cottage EVER.",
         "stars": 5
     },
     {
-        "spotId": 15,
+        "spotId": 14,
         "userId": 3,
         "review": "Beautiful home on private island and set up is excellent for multiple families. Quiet and peaceful. Lake is wonderful for swimming and fishing..",
         "stars": 3
     },
     {
-        "spotId": 16,
+        "spotId": 15,
         "userId": 2,
         "review": "We are a family of six with kids ranging from 10-15. Huge WOW from\nevery single one of us. I have rented many houses over the years and this is one of the best. It does not feel like a rental at all.",
         "stars": 4
     },
     {
-        "spotId": 16,
+        "spotId": 15,
         "userId": 3,
         "review": "Not a cabin, not a house, but an exquisite lodge built on a hilltop that forms a 4-acre island encircled by a magical, crystalline lake in Wisconsin's far north.",
         "stars": 5
     },
     {
-        "spotId": 16,
+        "spotId": 15,
         "userId": 4,
         "review": "Fantastic home with beautiful views, decor and furniture. everything was just as described. Jennifer communicated well and responded to every need..",
         "stars": 3
     },
     {
-        "spotId": 17,
+        "spotId": 16,
         "userId": 3,
         "review": "Amazing private island retreat on pristine, quiet, northern Wisconsin waters. All the comforts of a 5 star resort, in the heart of Mother Nature\u2019s paradise..",
         "stars": 5
     },
     {
-        "spotId": 17,
+        "spotId": 16,
         "userId": 4,
         "review": "Amazing retreat. Somewhere we will visit again.\nEverything was as expected and more..",
         "stars": 5
     },
     {
-        "spotId": 17,
+        "spotId": 16,
         "userId": 5,
         "review": "Funners & perfect for couples!!!.",
         "stars": 4
     },
     {
-        "spotId": 18,
+        "spotId": 17,
         "userId": 4,
         "review": "We loved our stay here! It\u2019s definitely a unique experience. While this is in the owners backyard, there\u2019s plenty of privacy. The treasure hunt is super fun too! Reminds me a lot of a an escape room.",
         "stars": 5
     },
     {
-        "spotId": 18,
+        "spotId": 17,
         "userId": 5,
         "review": "This place was so beautiful! We loved staying here and will definitely be planning to come back. They wrote little notes for us, had tons of snacks, and the treasure hunt was super fun..",
         "stars": 4
     },
     {
-        "spotId": 18,
+        "spotId": 17,
         "userId": 1,
         "review": "We just completed our stay in the treehouse for my birthday! The location is a bit weird (behind the host\u2019s house in a cul-de-sac), but the host has done a great job of making it feel private and romantic.",
         "stars": 4
     },
     {
-        "spotId": 19,
+        "spotId": 18,
         "userId": 5,
         "review": "Fantastic experience! This treehouse is everything the listing shows, and more. Communication was thorough, the property was clean with thoughtful touches, and the added fun of a treasure hunt really made our stay a special one.",
         "stars": 5
     },
     {
-        "spotId": 19,
+        "spotId": 18,
         "userId": 1,
         "review": "Me and my fianc\u00e9 had a great time, the vibe was perfect the host were excellent. Treasure hunt was a great addition 10/10 for us.",
         "stars": 3
     },
     {
-        "spotId": 19,
+        "spotId": 18,
         "userId": 2,
         "review": "A great space to decompress for a few days and enjoy peacefulness in nature. Mary and Matt are incredibly kind and great at communication. Thank you again!.",
         "stars": 3
     },
     {
-        "spotId": 20,
+        "spotId": 19,
         "userId": 1,
         "review": "Beautiful location. We loved the redwood trees and the remote, peaceful surroundings..",
         "stars": 3
     },
     {
-        "spotId": 20,
+        "spotId": 19,
         "userId": 2,
         "review": "An amazing cabin in the forest surrounded by towering redwoods. Comfortable for 6 people, very well equipped, lovely terrace to eat or sit and listen to the wildlife. Lots of great hiking nearby..",
         "stars": 3
     },
     {
-        "spotId": 20,
+        "spotId": 19,
         "userId": 3,
         "review": "Another relaxing stay at this redwood retreat. An ideal spot to relax and unwind. We enjoyed hiking the new trail to a meadow area above the woods and found the most amazing redwood cathedral.",
         "stars": 3

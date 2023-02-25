@@ -156,18 +156,18 @@ module.exports = {
         "description": "Take advantage of this once in a lifetime adventure in the Northwoods on your own private island on Katinka Lake!.",
         "price": "1285"
     },
-    {
-        "ownerId": 3,
-        "address": "2213, J O Stephenson Avenue NorthWest",
-        "city": "Kennesaw",
-        "state": "Georgia",
-        "country": "United States",
-        "lat": 34.0234337,
-        "lng": -84.6154897,
-        "name": "Treasure Hunt Tree House in Metro Atlanta",
-        "description": "Welcome to Treasure Hunt Tree House, located in Kennesaw GA (about 20 min drive from Atlanta).",
-        "price": "175"
-    },
+    // {
+    //     "ownerId": 3,
+    //     "address": "2213, J O Stephenson Avenue NorthWest",
+    //     "city": "Kennesaw",
+    //     "state": "Georgia",
+    //     "country": "United States",
+    //     "lat": 34.0234337,
+    //     "lng": -84.6154897,
+    //     "name": "Treasure Hunt Tree House in Metro Atlanta",
+    //     "description": "Welcome to Treasure Hunt Tree House, located in Kennesaw GA (about 20 min drive from Atlanta).",
+    //     "price": "175"
+    // },
     {
         "ownerId": 4,
         "address": "Civic Center & Webb, Civic Center Way, Malibu Beach",
